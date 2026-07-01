@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>At Home Riviera Maya — Luxury Property Management</title>
+  <meta name="description" content="Premium vacation rental management in the Riviera Maya. Serving Playa del Carmen, Akumal & Puerto Aventuras. 20+ years of local expertise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:      #FFFFFF;
+      --off-white:  #F8F6F2;
+      --stone:      #E8E3DB;
+      --slate:      #1C2B35;
+      --slate-mid:  #2E4150;
+      --gold:       #B89A5A;
+      --gold-light: #D4B878;
+      --text:       #2A2A2A;
+      --muted:      #6B6B6B;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184,154,90,0.15);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 500;
+      color: var(--slate); text-decoration: none; letter-spacing: 0.02em; line-height: 1.2;
+    }
+    .nav-logo span { display: block; font-size: 0.65rem; font-family: var(--font-body); font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 1px; }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--slate); color: var(--white);
+      padding: 0.6rem 1.4rem; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); }
+
+    .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-mobile-toggle span { display: block; width: 22px; height: 1.5px; background: var(--slate); margin: 5px 0; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0d3d4a 0%, #1a5c6e 35%, #2a7a85 60%, #4a9fa8 100%);
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1800&q=80&auto=format&fit=crop');
+      background-size: cover; background-position: center 40%;
+      opacity: 0; transition: opacity 1.2s ease;
+    }
+    .hero-img.loaded { opacity: 1; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(12,35,42,0.55) 0%, rgba(12,35,42,0.35) 50%, rgba(12,35,42,0.6) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 5%; max-width: 860px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem;
+    }
+    .hero-headline {
+      font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 1.75rem; letter-spacing: -0.01em;
+    }
+    .hero-headline em { font-style: italic; font-weight: 300; }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem); font-weight: 300;
+      color: rgba(255,255,255,0.82); line-height: 1.7; max-width: 520px; margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block; padding: 0.9rem 2.2rem;
+      background: var(--gold); color: var(--white);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block; padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.5); color: var(--white);
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* ── SECTION SCAFFOLDING ── */
+    section { padding: 6rem 5%; }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .section-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .section-headline { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--slate); margin-bottom: 1.25rem; }
+    .section-headline em { font-style: italic; }
+    .section-lead { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
+
+    /* ── STATS BAND ── */
+    .stats-band { background: var(--slate); padding: 3.5rem 5%; }
+    .stats-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+    }
+    .stat-number { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1; }
+    .stat-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.6rem; }
+
+    /* Alternating tile backgrounds — visible on all screens, most impactful on mobile */
+    .why-card:nth-child(odd)  { background: var(--white); }
+    .why-card:nth-child(even) { background: var(--stone); }
+    .how-step:nth-child(odd)  { background: var(--white); padding-left: 1rem; padding-right: 1rem; }
+    .how-step:nth-child(even) { background: var(--stone); padding-left: 1rem; padding-right: 1rem; }
+    .why-us { background: var(--off-white); }
+    .why-us .section-eyebrow { color: var(--gold); }
+    .why-us .section-headline { color: var(--slate); }
+    .why-us .section-lead { color: var(--muted); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 4rem; }
+    .why-card {
+      background: var(--white); padding: 2.75rem 2.25rem;
+      border-top: 2px solid transparent; transition: border-color 0.3s, transform 0.3s;
+    }
+    .why-card:hover { border-top-color: var(--gold); transform: translateY(-3px); }
+    .why-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .why-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .why-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--slate); margin-bottom: 0.75rem; line-height: 1.25; }
+    .why-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works { background: var(--off-white); }
+    .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+    .how-steps { display: flex; flex-direction: column; }
+    .how-step { display: flex; gap: 1.75rem; padding: 2rem 0; border-bottom: 1px solid var(--stone); }
+    .how-step:first-child { padding-top: 2rem; }
+    .how-step:last-child { border-bottom: none; }
+    .step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1; flex-shrink: 0; width: 2rem; transition: color 0.3s; }
+    .how-step:hover .step-num { color: var(--gold); }
+    .step-body h3 { font-size: 1rem; font-weight: 600; color: var(--slate); margin-bottom: 0.5rem; }
+    .step-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .how-visual { position: sticky; top: 110px; background: var(--slate); padding: 3rem; color: var(--white); }
+    .how-visual-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .how-visual h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; line-height: 1.35; margin-bottom: 1.5rem; }
+    .how-visual-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .how-visual-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .check { color: var(--gold); font-size: 1rem; line-height: 1.5; flex-shrink: 0; }
+    .how-visual-cta {
+      display: inline-block; margin-top: 2rem; padding: 0.8rem 1.75rem;
+      border: 1px solid var(--gold); color: var(--gold);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .how-visual-cta:hover { background: var(--gold); color: var(--white); }
+
+    /* ── PROPERTIES ── */
+    .properties { background: var(--white); }
+    .properties-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+    .properties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .prop-card { background: var(--white); overflow: hidden; }
+    .prop-img { height: 240px; overflow: hidden; position: relative; background: var(--stone); }
+    .prop-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .prop-card:hover .prop-img img { transform: scale(1.04); }
+    .prop-info { padding: 1.5rem; }
+    .prop-location { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .prop-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--slate); margin-bottom: 0.5rem; }
+    .prop-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .prop-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1rem; }
+    .prop-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--stone); color: var(--slate-mid); padding: 0.3rem 0.6rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--slate); padding: 6rem 5%; }
+    .testimonials .section-headline { color: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 4rem; background: rgba(255,255,255,0.08); }
+    .testi-card { background: var(--slate); padding: 2.5rem; }
+    .testi-quote { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 1.75rem; }
+    .testi-quote::before { content: '\201C'; color: var(--gold); font-size: 2rem; line-height: 0; vertical-align: -0.4em; margin-right: 0.15em; }
+    .testi-author { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); }
+
+    /* ── LOCATIONS ── */
+    .locations { background: var(--white); }
+    .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .location-cell {
+      background: var(--white); text-align: center;
+      overflow: hidden; position: relative;
+      transition: transform 0.3s;
+    }
+    .location-cell:hover { transform: translateY(-4px); }
+    .location-img { height: 220px; overflow: hidden; }
+    .location-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .location-cell:hover .location-img img { transform: scale(1.05); }
+    .location-label { padding: 1.25rem; background: var(--white); border-top: 2px solid var(--stone); }
+    .location-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin: 0 auto 0.6rem; }
+    .location-name { font-size: 0.85rem; font-weight: 600; color: var(--slate); letter-spacing: 0.05em; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--off-white); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+    .contact-info h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--slate); margin-bottom: 1rem; line-height: 1.3; }
+    .contact-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-detail { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; gap: 0.75rem; align-items: center; }
+    .contact-item svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+    .contact-item a { font-size: 0.9rem; color: var(--slate-mid); text-decoration: none; }
+    .contact-item a:hover { color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
+    .form-field input, .form-field textarea, .form-field select {
+      width: 100%; padding: 0.85rem 1rem;
+      border: 1px solid var(--stone); background: var(--white);
+      font-family: var(--font-body); font-size: 0.9rem; color: var(--text);
+      outline: none; appearance: none; transition: border-color 0.2s;
+    }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
+    .form-field textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      display: inline-block; padding: 0.9rem 2rem;
+      background: var(--slate); color: var(--white); border: none;
+      font-family: var(--font-body); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--slate); padding: 3rem 5%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); }
+    .footer-logo span { display: block; font-size: 0.6rem; font-family: var(--font-body); letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; gap: 1px; }
+      .how-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .how-visual { position: static; }
+      .properties-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; gap: 1px; }
+      .locations-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+      nav.menu-open .nav-links {
+        display: flex; flex-direction: column;
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: var(--white); padding: 2rem 5%;
+        gap: 1.5rem; border-bottom: 1px solid var(--stone);
+      }
+      nav.menu-open .nav-links a { font-size: 0.9rem; }
+      section { padding: 4rem 4%; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .properties-grid { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: 1fr !important; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
+      .properties-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">At Home Riviera Maya<span>Property Management</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Schedule a Consultation</a>
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-img" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Riviera Maya's Premier Property Management</p>
+      <h1 class="hero-headline">Your property,<br><em>expertly cared for.</em></h1>
+      <p class="hero-sub">We handle everything — from guest experience to maintenance — so you earn more from your property without the stress.</p>
+      <div class="hero-actions">
+        <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years in the Riviera Maya</div>
+      </div>
+      <div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Destination Communities</div>
+      </div>
+      <div>
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Owner Transparency</div>
+      </div>
+      <div>
+        <div class="stat-number">AMPI</div>
+        <div class="stat-label">Certified Member</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <section class="why-us" id="why-us">
+    <div class="section-inner">
+      <p class="section-eyebrow">Why property owners choose us</p>
+      <h2 class="section-headline">Local roots.<br><em>International results.</em></h2>
+      <p class="section-lead">We've been managing vacation properties in the Riviera Maya since 2011, with over two decades of living and working here. That depth of local knowledge is what sets your property apart.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3>Hands-On Property Care</h3>
+          <p>We personally oversee every property — regular inspections, trusted maintenance teams, and meticulous preparation before every guest arrival.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Maximized Rental Income</h3>
+          <p>Strategic pricing, multi-platform visibility, and a loyal network of repeat guests — we work to keep your property occupied and profitable year-round.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3>Bilingual, Always Available</h3>
+          <p>Fluent in English and Spanish, we're the trusted bridge between your international guests and the local community — available when it matters most.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Full Transparency</h3>
+          <p>Regular owner reports, clear accounting, and direct communication. You always know exactly how your property is performing — no surprises.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Curated Guest Experience</h3>
+          <p>We screen guests carefully and provide a white-glove experience that earns five-star reviews and keeps your property's reputation impeccable.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3>International Marketing Reach</h3>
+          <p>Your property reaches English- and Spanish-speaking markets through professional photography, premium listings, and targeted digital promotion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="section-inner">
+      <p class="section-eyebrow">Where we operate</p>
+      <h2 class="section-headline">Across the <em>Riviera Maya</em></h2>
+      <div class="locations-grid" style="grid-template-columns: repeat(3,1fr)">
+        <div class="location-cell">
+          <div class="location-img">
+            <img src="playa_del_carmen.jpg" alt="Playa del Carmen" loading="lazy" />
+          </div>
+          <div class="location-label">
+            <div class="location-dot"></div>
+            <div class="location-name">Playa del Carmen</div>
+          </div>
+        </div>
+        <div class="location-cell">
+          <div class="location-img">
+            <img src="akumal-turtles.jpg" alt="Akumal" loading="lazy" />
+          </div>
+          <div class="location-label">
+            <div class="location-dot"></div>
+            <div class="location-name">Akumal</div>
+          </div>
+        </div>
+        <div class="location-cell">
+          <div class="location-img">
+            <img src="puerto_aventuras.jpg" alt="Puerto Aventuras" loading="lazy" />
+          </div>
+          <div class="location-label">
+            <div class="location-dot"></div>
+            <div class="location-name">Puerto Aventuras</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-inner">
+      <p class="section-eyebrow">The process</p>
+      <h2 class="section-headline">Simple for you,<br><em>seamless for your guests.</em></h2>
+      <div class="how-layout">
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Free Property Assessment</h3>
+              <p>We visit your property, evaluate its rental potential, and provide a clear income projection — no obligation, no pressure.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Professional Setup</h3>
+              <p>We arrange professional photography, craft compelling listings in English and Spanish, and prepare your property for its first guests.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Active Management</h3>
+              <p>We handle all guest communication, bookings, check-ins, cleaning coordination, and any maintenance needs — start to finish.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>Regular Owner Reports</h3>
+              <p>Transparent monthly statements detailing occupancy, revenue, and expenses. You stay informed without doing any of the work.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h3>Ongoing Optimization</h3>
+              <p>We continuously refine pricing strategy, improve listings based on reviews, and adapt to market conditions to keep your income growing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="how-visual">
+          <p class="how-visual-eyebrow">What's included</p>
+          <h3>Everything your property needs to thrive</h3>
+          <ul class="how-visual-list">
+            <li><span class="check">✦</span> Guest screening &amp; communication</li>
+            <li><span class="check">✦</span> Dynamic pricing management</li>
+            <li><span class="check">✦</span> Professional cleaning coordination</li>
+            <li><span class="check">✦</span> Maintenance &amp; repairs oversight</li>
+            <li><span class="check">✦</span> Multi-platform listing management</li>
+            <li><span class="check">✦</span> Professional photography (setup)</li>
+            <li><span class="check">✦</span> Monthly income statements</li>
+            <li><span class="check">✦</span> 24/7 guest emergency support</li>
+            <li><span class="check">✦</span> Local legal &amp; tax guidance</li>
+          </ul>
+          <a href="#contact" class="how-visual-cta">Schedule a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section class="properties" id="properties">
+    <div class="section-inner">
+      <div class="properties-header">
+        <div>
+          <p class="section-eyebrow">Types of properties we manage</p>
+          <h2 class="section-headline" style="margin-bottom:0">The right care for<br><em>every kind of home.</em></h2>
+        </div>
+        <a href="#contact" class="btn-primary" style="background:var(--slate);white-space:nowrap">List Your Property</a>
+      </div>
+      <div class="properties-grid">
+        <div class="prop-card">
+          <div class="prop-img">
+            <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=700&q=80&auto=format&fit=crop" alt="Beachfront villa on the Caribbean" loading="lazy" />
+          </div>
+          <div class="prop-info">
+            <p class="prop-location">Beachfront Villas</p>
+            <h3 class="prop-name">Caribbean Frontline</h3>
+            <p class="prop-desc">Private villas with direct beach access command the highest rental rates in the Riviera Maya. We handle the complex logistics these properties demand — from pool and garden maintenance to seamless guest arrivals — so your frontline home performs as beautifully as it looks.</p>
+            <div class="prop-tags"><span class="prop-tag">Beachfront</span><span class="prop-tag">Private Pool</span><span class="prop-tag">Premium Rates</span></div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-img">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80&auto=format&fit=crop" alt="Luxury condominium interior" loading="lazy" />
+          </div>
+          <div class="prop-info">
+            <p class="prop-location">Condominiums</p>
+            <h3 class="prop-name">Lock &amp; Leave Living</h3>
+            <p class="prop-desc">Condos are the most popular investment property in the Riviera Maya — and the easiest to monetize when managed well. We coordinate with building administration, handle HOA compliance, and keep your unit in guest-ready condition year-round, whether you visit once a year or never.</p>
+            <div class="prop-tags"><span class="prop-tag">Low Overhead</span><span class="prop-tag">High Demand</span><span class="prop-tag">HOA Coordination</span></div>
+          </div>
+        </div>
+        <div class="prop-card">
+          <div class="prop-img">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80&auto=format&fit=crop" alt="Home in a gated community" loading="lazy" />
+          </div>
+          <div class="prop-info">
+            <p class="prop-location">Homes in Gated Communities</p>
+            <h3 class="prop-name">Privacy &amp; Prestige</h3>
+            <p class="prop-desc">Gated community homes attract discerning guests who value security, space, and neighborhood amenities like golf, marinas, and beach clubs. We understand the access protocols and community standards of the Riviera Maya's top residential developments, ensuring a smooth experience for everyone.</p>
+            <div class="prop-tags"><span class="prop-tag">Secure Access</span><span class="prop-tag">Family Friendly</span><span class="prop-tag">Amenity-Rich</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="section-inner">
+      <p class="section-eyebrow">Guest reviews</p>
+      <h2 class="section-headline">What guests say about<br><em>At Home properties.</em></h2>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <p class="testi-quote">The vacation rental exceeded our expectations in every way. We had an amazing time and cannot wait to return!</p>
+          <p class="testi-author">Nina &amp; Tom Stone</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">Our experience was made truly exceptional by the attentive team. The level of care and professionalism was outstanding.</p>
+          <p class="testi-author">Angela Peterson</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">From the moment we booked, we knew we were in good hands. An unforgettable stay in a beautifully managed property.</p>
+          <p class="testi-author">Paul &amp; Susan Taylor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-headline">Let's talk about<br><em>your property.</em></h2>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <h3>Start with a free, no-obligation assessment of your property's rental potential.</h3>
+          <p>We'll walk through your property, discuss your goals, and give you a clear picture of what to expect — income projections, our management approach, and how we'd position your home in the market.</p>
+          <div class="contact-detail">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+              <a href="tel:+529842136512">+52 (984) 213-6512</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:athomerivieramaya@gmail.com">athomerivieramaya@gmail.com</a>
+            </div>
+
+          </div>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/mykqkqna" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" required />
+            </div>
+            <div class="form-field">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@email.com" required />
+          </div>
+          <div class="form-field">
+            <label for="location">Property Location</label>
+            <select id="location" name="location">
+              <option value="">Select a location…</option>
+              <option>Playa del Carmen</option>
+              <option>Akumal</option>
+              <option>Puerto Aventuras</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">Tell us about your property</label>
+            <textarea id="message" name="message" placeholder="Property type, current situation, questions…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+          <p id="form-success" style="display:none;color:var(--gold);font-size:0.85rem;margin-top:0.5rem">Thank you — we'll be in touch within one business day.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">At Home Riviera Maya<span>Property Management · Since 2011</span></div>
+    <ul class="footer-links">
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 At Home Riviera Maya. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Mobile menu
+    document.getElementById('mobileToggle').addEventListener('click', () => {
+      nav.classList.toggle('menu-open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('menu-open'));
+    });
+
+    // Hero image fade-in
+    const heroBg = document.getElementById('heroBg');
+    const img = new Image();
+    img.src = 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1800&q=80&auto=format&fit=crop';
+    img.onload = () => {
+      heroBg.style.backgroundImage = `url('${img.src}')`;
+      heroBg.classList.add('loaded');
+    };
+
+    // Form → Formspree
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('form-success').style.display = 'block';
+          form.reset();
+          btn.textContent = 'Sent!';
+        } else {
+          btn.textContent = 'Error — please email us directly';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Error — please email us directly';
+        btn.disabled = false;
+      }
+    }
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity = '1';
+          el.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.why-card, .how-step, .prop-card, .testi-card, .location-cell').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
