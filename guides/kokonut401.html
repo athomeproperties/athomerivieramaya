@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kokonut Condos #401 — Guest Guidebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F2B2E;
+    --ink-deep:#0A1F21;
+    --sand:#F6EFE3;
+    --sand-dim:#EAE1D0;
+    --brass:#B98B4E;
+    --brass-soft:#D8B37C;
+    --coral:#E4674B;
+    --seafoam:#A9C7C2;
+    --line: rgba(185,139,78,0.35);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 8% 12%, rgba(185,139,78,0.14), transparent 38%),
+      radial-gradient(circle at 92% 18%, rgba(169,199,194,0.10), transparent 38%),
+      radial-gradient(circle at 12% 88%, rgba(185,139,78,0.12), transparent 38%),
+      radial-gradient(circle at 90% 92%, rgba(169,199,194,0.09), transparent 38%),
+      repeating-linear-gradient(135deg, rgba(185,139,78,0.05) 0px, rgba(185,139,78,0.05) 1px, transparent 1px, transparent 46px),
+      var(--ink);
+    color:var(--sand);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  .wrap{max-width:720px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- WAVE TEXTURE ---------- */
+  .waves{position:absolute; inset:0; overflow:hidden; opacity:0.5; pointer-events:none;}
+  .waves svg{width:100%; position:absolute; bottom:-2px;}
+
+  /* ---------- LANGUAGE SWITCH ---------- */
+  .langbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,31,33,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .langbar-inner{
+    max-width:720px; margin:0 auto; padding:10px 32px;
+    display:flex; justify-content:flex-end; gap:6px;
+  }
+  .lang-btn{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--seafoam);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:5px 12px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn.active{
+    background:var(--brass-soft);
+    color:var(--ink);
+    border-color:var(--brass-soft);
+    font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:56px 0 56px;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(185,139,78,0.16), transparent 60%),
+      var(--ink);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px; height:1px; background:var(--brass-soft);
+  }
+  h1.property{
+    font-family:var(--display);
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-top:18px;
+    color:var(--sand);
+  }
+  h1.property em{
+    font-style:italic;
+    color:var(--brass-soft);
+    font-weight:400;
+  }
+  .hero-sub{
+    margin-top:14px;
+    font-size:15px;
+    color:var(--seafoam);
+    max-width:38ch;
+  }
+  .hero-map{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:14px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--brass-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+  }
+  .hero-map:hover{color:var(--sand); border-color:var(--brass-soft);}
+  .hero-meta{
+    margin-top:32px;
+    display:flex;
+    gap:28px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--seafoam);
+  }
+  .hero-meta div span{display:block; color:var(--brass-soft); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;}
+  .hero-meta div b{color:var(--sand); font-weight:500; font-size:14px; font-family:var(--body);}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:28px;}
+  .section-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass-soft);
+  }
+  h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:28px;
+    margin-top:8px;
+    color:var(--sand);
+    letter-spacing:-0.01em;
+  }
+  p{font-size:15px; color:var(--seafoam);}
+  p + p{margin-top:12px;}
+
+  /* ---------- KEYCARD (signature element) ---------- */
+  .keycard{
+    position:relative;
+    background:var(--sand);
+    color:var(--ink);
+    border-radius:14px;
+    padding:26px 26px 24px;
+    box-shadow:0 24px 48px -20px rgba(0,0,0,0.55);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px);
+    animation:cardIn 0.7s ease forwards 0.15s;
+  }
+  @keyframes cardIn{ to{opacity:1; transform:translateY(0);} }
+  .keycard::before{
+    content:'';
+    position:absolute;
+    top:0; bottom:0; left:0;
+    width:10px;
+    background:repeating-linear-gradient(
+      to bottom,
+      var(--brass) 0px, var(--brass) 6px,
+      transparent 6px, transparent 14px
+    );
+  }
+  .keycard .kc-notch{
+    position:absolute;
+    top:50%; right:-11px;
+    width:22px; height:22px;
+    background:var(--ink);
+    border-radius:50%;
+    transform:translateY(-50%);
+  }
+  .kc-row{display:flex; justify-content:space-between; align-items:flex-start; padding-left:14px;}
+  .kc-label{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A7658;}
+  .kc-value{font-family:var(--mono); font-size:15px; font-weight:500; margin-top:6px; color:var(--ink);}
+  .kc-divider{height:1px; background:repeating-linear-gradient(to right, #C9BCA0 0, #C9BCA0 4px, transparent 4px, transparent 9px); margin:18px 0 18px 14px;}
+  .kc-note{
+    padding-left:14px;
+    font-size:13px;
+    color:#5B5140;
+    font-family:var(--body);
+  }
+  .kc-note b{color:var(--ink);}
+  .kc-wifi-connect{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-left:14px;
+    margin-top:14px;
+  }
+  .kc-wifi-connect img{
+    border-radius:6px;
+    border:1px solid #C9BCA0;
+    flex-shrink:0;
+  }
+  .kc-wifi-connect span{
+    font-size:12px;
+    color:#5B5140;
+    font-family:var(--body);
+    line-height:1.4;
+  }
+
+  /* ---------- STEP LIST (jacuzzi) ---------- */
+  .steps{list-style:none; margin-top:18px; counter-reset:step;}
+  .steps li{
+    counter-increment:step;
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .steps li:last-child{border-bottom:1px solid var(--line);}
+  .steps li::before{
+    content:counter(step);
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--ink);
+    background:var(--brass-soft);
+    width:26px; height:26px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .steps li p{font-size:14.5px; color:var(--sand); padding-top:2px;}
+  .callout{
+    margin-top:18px;
+    background:rgba(228,103,75,0.1);
+    border:1px solid rgba(228,103,75,0.35);
+    border-radius:10px;
+    padding:14px 16px;
+    font-size:13.5px;
+    color:#F0C4B8;
+  }
+  .callout b{color:var(--coral);}
+
+  /* ---------- INFO GRID (parking etc) ---------- */
+  .info-item{padding:18px 0; border-top:1px solid var(--line);}
+  .info-item:last-child{border-bottom:1px solid var(--line);}
+  .info-item h3{font-family:var(--body); font-weight:600; font-size:15px; color:var(--sand); margin-bottom:6px;}
+
+  /* ---------- HOUSE RULES ---------- */
+  .nb-group{margin-bottom:26px;}
+  .nb-group:last-child{margin-bottom:0;}
+  .nb-title{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass-soft); margin-bottom:10px;}
+  .nb-list{list-style:none;}
+  .nb-list li{
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:15px;
+    color:var(--sand);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .nb-list li:last-child{border-bottom:1px solid var(--line);}
+  .nb-list li span{font-family:var(--mono); font-size:11px; color:var(--seafoam);}
+
+  /* ---------- PLACE CARDS ---------- */
+  .place{
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .place:last-child{border-bottom:1px solid var(--line);}
+  .place-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+  }
+  .place-name{font-size:15.5px; font-weight:600; color:var(--sand);}
+  .place-kind{font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-soft); white-space:nowrap;}
+  .place-desc{font-size:13.5px; color:var(--seafoam); margin-top:6px; line-height:1.6;}
+  .place-map{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--coral);
+    text-decoration:none;
+  }
+  .place-map:hover{text-decoration:underline;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .contact-row:last-child{border-bottom:1px solid var(--line);}
+  .contact-row .who{font-size:15px; color:var(--sand); font-weight:500;}
+  .contact-row .how{font-family:var(--mono); font-size:12.5px; color:var(--seafoam); margin-top:2px;}
+  .btn{
+    font-family:var(--body);
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--brass-soft);
+    padding:9px 16px;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* ---------- REAL ESTATE SOFT PITCH ---------- */
+  .re-panel{
+    background:linear-gradient(160deg, var(--ink-deep), var(--ink));
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 26px;
+    position:relative;
+  }
+  .re-panel .section-label{color:var(--seafoam);}
+  .re-panel h2{font-size:24px;}
+  .re-panel p{color:var(--seafoam); font-size:14.5px; margin-top:10px;}
+  .re-brands{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--brass-soft);
+    letter-spacing:0.04em;
+  }
+  .re-brands .divider{width:1px; height:14px; background:var(--line);}
+  .re-cta{
+    margin-top:22px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .re-cta a{
+    font-family:var(--body);
+    font-size:13.5px;
+    font-weight:600;
+    padding:11px 18px;
+    border-radius:100px;
+    text-decoration:none;
+  }
+  .re-cta .primary{background:var(--coral); color:var(--sand);}
+  .re-cta .secondary{border:1px solid var(--line); color:var(--sand);}
+
+  footer{
+    padding:36px 0 60px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;
+    color:rgba(169,199,194,0.55);
+    letter-spacing:0.06em;
+  }
+
+  /* fade-in-on-scroll */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  a{color:inherit;}
+
+  /* ---------- DESKTOP FRAMING RAILS ---------- */
+  .rail{
+    position:fixed;
+    top:0; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, transparent, rgba(185,139,78,0.4) 10%, rgba(185,139,78,0.4) 90%, transparent);
+    pointer-events:none;
+    display:none;
+    z-index:1;
+  }
+  @media (min-width:900px){
+    .rail{display:block;}
+    .rail-left{left:calc(50% - 392px);}
+    .rail-right{right:calc(50% - 392px);}
+  }
+</style>
+</head>
+<body>
+<div class="rail rail-left"></div>
+<div class="rail rail-right"></div>
+
+<div class="langbar">
+  <div class="langbar-inner">
+    <button class="lang-btn active" data-lang-btn="en">EN</button>
+    <button class="lang-btn" data-lang-btn="es">ES</button>
+    <button class="lang-btn" data-lang-btn="fr">FR</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="waves">
+    <svg viewBox="0 0 600 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C100,100 200,20 300,60 C400,100 500,20 600,60 L600,120 L0,120 Z" fill="rgba(185,139,78,0.06)"/>
+      <path d="M0,80 C100,40 200,110 300,80 C400,50 500,110 600,80 L600,120 L0,120 Z" fill="rgba(185,139,78,0.10)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">Guest Guidebook</div>
+    <h1 class="property">Kokonut Condos<br><em>№ 401</em></h1>
+    <p class="hero-sub" data-i18n="heroSub">A spacious two-bedroom condo in the Grand Sirenis complex in Akumal, with a private jacuzzi tub. Everything you need for your stay, in one place.</p>
+    <a class="hero-map" href="https://maps.app.goo.gl/dvd1hctUZFv3YFC88" target="_blank" rel="noopener" data-i18n="heroMapLink">📍 View property on Google Maps ↗</a>
+    <div class="hero-meta">
+      <div><span data-i18n="checkinLabel">Check-in</span><b>10:00 AM</b></div>
+      <div><span data-i18n="checkoutLabel">Check-out</span><b>3:00 PM</b></div>
+      <div><span data-i18n="unitLabel">Unit</span><b>#401</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="hostsLabel">Your Hosts</div>
+      <h2 data-i18n="hostsTitle">Karla &amp; Craig</h2>
+    </div>
+    <p data-i18n="hostsBody">Karla is originally from Irapuato, Mexico, and has called Playa del Carmen home for the past 12 years. Craig is originally from Texas and has lived in Mexico for over 20 years. Together they run At Home Riviera Maya — we hope you love this place as much as we do, and we're just a message away if you need anything during your stay.</p>
+    <p style="margin-top:14px;"><a href="https://www.athomerivieramaya.com" target="_blank" rel="noopener" style="color:var(--brass-soft); font-weight:600; text-decoration:underline;">www.athomerivieramaya.com</a></p>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s1Label">01 — Getting In</div>
+      <h2 data-i18n="s1Title">Your access code</h2>
+    </div>
+    <div class="keycard">
+      <div class="kc-notch"></div>
+      <div class="kc-row">
+        <div>
+          <div class="kc-label" data-i18n="kcEntryMethod">Entry Method</div>
+          <div class="kc-value" data-i18n="kcEntryValue">Digital Deadbolt</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="kc-label" data-i18n="kcUnit">Unit</div>
+          <div class="kc-value">401</div>
+        </div>
+      </div>
+      <div class="kc-divider"></div>
+      <div class="kc-row">
+        <div>
+          <div class="kc-label" data-i18n="kcWifiNetwork">WiFi Network</div>
+          <div class="kc-value">INTEN-PLUG_7591</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="kc-label" data-i18n="kcWifiPassword">Password</div>
+          <div class="kc-value">56053219</div>
+        </div>
+      </div>
+      <div class="kc-wifi-connect">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=WIFI%3AT%3AWPA%3BS%3AINTEN-PLUG_7591%3BP%3A56053219%3B%3B" alt="WiFi QR code" width="82" height="82" loading="lazy">
+        <span data-i18n="kcWifiScan">Scan with your phone camera to join the WiFi automatically.</span>
+      </div>
+      <div class="kc-divider"></div>
+      <div class="kc-note" data-i18n="kcNote">
+        Your unique door code is sent through your <b>Airbnb messages</b> once the apartment is cleaned and ready for you — usually the morning of check-in. No code yet? Just message us on Airbnb.
+      </div>
+    </div>
+    <p style="margin-top:18px;" data-i18n="s1Note">Check-in is any time after <b style="color:var(--sand)">10:00 AM</b>. Check-out is by <b style="color:var(--sand)">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s2Label">02 — Getting Around</div>
+      <h2 data-i18n="s2Title">Parking &amp; transportation</h2>
+    </div>
+    <div class="info-item" style="border-top:none; padding-top:0;">
+      <h3 data-i18n="s2H3">Parking</h3>
+      <p data-i18n="s2Body">Parking is available within the Grand Sirenis complex — just park in an open guest spot near the building.</p>
+    </div>
+    <div class="info-item">
+      <h3 data-i18n="s2CarH3">Renting a car</h3>
+      <p data-i18n="s2CarBody">Given the location, we highly recommend renting a car for your stay. It makes it much easier to reach restaurants in Akumal, groceries in Puerto Aventuras, and everywhere in between without relying on taxis.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s3Label">03 — The Private Jacuzzi Tub</div>
+      <h2 data-i18n="s3Title">Getting it warm</h2>
+    </div>
+    <p data-i18n="s3Intro">The jetted tub in your unit is a jacuzzi bathtub — it doesn't heat on its own, but here's the trick to get it warm:</p>
+    <ol class="steps">
+      <li><p data-i18n="s3Step1">Turn on <b style="color:var(--brass-soft)">both</b> the hot and cold taps and fill the tub about <b style="color:var(--brass-soft)">3/4 of the way</b>.</p></li>
+      <li><p data-i18n="s3Step2">Turn both taps <b style="color:var(--brass-soft)">off</b> and let it sit for <b style="color:var(--brass-soft)">15–20 minutes</b>.</p></li>
+      <li><p data-i18n="s3Step3">Turn on <b style="color:var(--brass-soft)">only the hot water</b> and fill the rest of the way up.</p></li>
+    </ol>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s4Label">04 — House Rules</div>
+      <h2 data-i18n="s4Title">While you're here</h2>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s4GeneralTitle">General</div>
+      <ul class="nb-list">
+        <li><span data-i18n="s4G1">Quiet hours</span> <span data-i18n="s4G1v">10:00 PM – 8:00 AM</span></li>
+        <li><span data-i18n="s4G2">Please bag trash and use the bins provided</span> <span></span></li>
+        <li><span data-i18n="s4G3">No smoking inside the condo</span> <span></span></li>
+        <li><span data-i18n="s4G5">Pets are not permitted for guests</span> <span></span></li>
+        <li><span data-i18n="s4G6">Treat neighbors and staff with courtesy and respect</span> <span></span></li>
+      </ul>
+    </div>
+    <p style="margin-top:18px; font-size:13px;" data-i18n="s4Footer">Nothing complicated here — just the usual good-neighbor basics. Thanks for keeping the place easy and enjoyable for everyone.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s5Label">05 — Nearby</div>
+      <h2 data-i18n="s5Title">Eat, drink, explore</h2>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s5InComplexTitle">Inside the complex</div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">OXXO</div>
+          <div class="place-kind" data-i18n="p1kind">Convenience store</div>
+        </div>
+        <div class="place-desc" data-i18n="p1desc">Right inside Grand Sirenis — good for water, snacks, and quick essentials without leaving the complex.</div>
+      </div>
+
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s5RestTitle">Restaurants in Akumal</div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Lol-Ha</div>
+          <div class="place-kind" data-i18n="p3kind">Beachfront Mexican</div>
+        </div>
+        <div class="place-desc" data-i18n="p3desc">A classic beachfront spot right on Akumal Bay — Mexican and international dishes, with the best view in town and a popular happy hour at sunset.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Lol-Ha+Akumal" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Taverna</div>
+          <div class="place-kind" data-i18n="p4kind">Italian</div>
+        </div>
+        <div class="place-desc" data-i18n="p4desc">Authentic Italian in the heart of Akumal — fire-oven pizzas, homemade pasta, and risotto. Good for a romantic dinner or a family meal.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Taverna+Akumal" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Turtle Bay Café</div>
+          <div class="place-kind" data-i18n="p5kind">Breakfast &amp; bakery</div>
+        </div>
+        <div class="place-desc" data-i18n="p5desc">A local favorite for nearly 20 years — fresh-baked goods, hearty breakfasts, and a mix of local and international dishes.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Turtle+Bay+Cafe+Akumal" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Antojitos La Lunita</div>
+          <div class="place-kind" data-i18n="p6kind">Yucatecan breakfast</div>
+        </div>
+        <div class="place-desc" data-i18n="p6desc">A family-run spot in Akumal Pueblo — fresh salbutes, panuchos, and tacos. Cochinita pibil on Sundays, but it sells out early.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Antojitos+La+Lunita+Akumal" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s5GrocTitle">Groceries</div>
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Super Chedraui</div>
+          <div class="place-kind" data-i18n="p7kind">Grocery store</div>
+        </div>
+        <div class="place-desc" data-i18n="p7desc">In Puerto Aventuras, about a 10-minute drive south — a full supermarket with fresh produce, meats, and a pharmacy. Your best bet for a real grocery run.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Super+Chedraui+Puerto+Aventuras" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s5bLabel">06 — Extra Services</div>
+      <h2 data-i18n="s5bTitle">Make your stay easier</h2>
+    </div>
+    <div class="info-item" style="border-top:none; padding-top:0;">
+      <h3 data-i18n="s5bGroceryH3">Pre-arrival grocery stocking</h3>
+      <p data-i18n="s5bGroceryBody">We can have your kitchen stocked before you arrive, subject to availability. The cost is 20% of the grocery total, with a $35 USD minimum charge. Please request at least one week before arrival — just message us on Airbnb with your list.</p>
+    </div>
+    <div class="info-item">
+      <h3 data-i18n="s5bCleanH3">Mid-stay cleaning</h3>
+      <p data-i18n="s5bCleanBody">Your reservation fee already covers a cleaning after checkout. If you'd like a cleaning during your stay, it's available for $40 USD per day, subject to availability. Please request at least one week before arrival.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s6Label">07 — Need Anything?</div>
+      <h2 data-i18n="s6Title">Reach us</h2>
+    </div>
+    <div class="contact-row">
+      <div>
+        <div class="who" data-i18n="s6Who1">Airbnb Message</div>
+        <div class="how" data-i18n="s6How1">Fastest &amp; preferred way to reach us</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div>
+        <div class="who">Craig (WhatsApp)</div>
+        <div class="how" data-i18n="s6How2">+52 984 213 6512 — ONLY if Airbnb isn't working</div>
+      </div>
+      <a class="btn" href="https://wa.me/529842136512" target="_blank" rel="noopener" data-i18n="s6Btn">Message</a>
+    </div>
+  </section>
+
+  <section class="reveal" style="border-bottom:none; padding-bottom:0;">
+    <div class="re-panel">
+      <div class="section-label" data-i18n="reLabel">Before You Go</div>
+      <h2 data-i18n="reTitle">Thinking about owning<br>a place like this?</h2>
+      <p data-i18n="reBody">A lot of our guests fall in love with Playa del Carmen and start wondering what it would take to own here. If that's ever on your mind — now, or years from now — I'm a licensed real estate agent and happy to talk. No pressure, just a conversation.</p>
+      <div class="re-brands">
+        <span>At Home Realty</span>
+        <div class="divider"></div>
+        <span data-i18n="rePoweredBy">Powered by eXp Realty</span>
+      </div>
+      <div class="re-cta">
+        <a class="primary" href="https://exprealtymx.com/guides/welcome.html" target="_blank" rel="noopener" data-i18n="reCta1">Learn More &rarr;</a>
+        <a class="secondary" href="https://wa.me/529842136512" target="_blank" rel="noopener" data-i18n="reCta2">WhatsApp Craig</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Kokonut Condos #401 · At Home Riviera Maya</footer>
+
+<script>
+  const translations = {
+    en: {
+      eyebrow: "Guest Guidebook",
+      heroSub: "A spacious two-bedroom condo in the Grand Sirenis complex in Akumal, with a private jacuzzi tub. Everything you need for your stay, in one place.",
+      heroMapLink: "📍 View property on Google Maps ↗",
+      checkinLabel: "Check-in", checkoutLabel: "Check-out", unitLabel: "Unit",
+      hostsLabel: "Your Hosts", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla is originally from the state of Guanajuato, Mexico, and has called Playa del Carmen home for the past 12 years. Craig is originally from Texas and has lived in Mexico for over 20 years. Together they run At Home Riviera Maya — we hope you love this place as much as we do, and we're just a message away if you need anything during your stay.",
+      s1Label: "01 — Getting In", s1Title: "Your access code",
+      kcEntryMethod: "Entry Method", kcEntryValue: "Digital Deadbolt", kcUnit: "Unit",
+      kcWifiNetwork: "WiFi Network", kcWifiPassword: "Password",
+      kcWifiScan: "Scan with your phone camera to join the WiFi automatically.",
+      kcNote: "Your unique door code is sent through your <b>Airbnb messages</b> once the apartment is cleaned and ready for you — usually the morning of check-in. No code yet? Just message us on Airbnb.",
+      s1Note: "Check-in is any time after <b style=\"color:var(--sand)\">10:00 AM</b>. Check-out is by <b style=\"color:var(--sand)\">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.",
+      s2Label: "02 — Getting Around", s2Title: "Parking &amp; transportation",
+      s2H3: "Parking",
+      s2Body: "Parking is available within the Grand Sirenis complex — just park in an open guest spot near the building.",
+      s2CarH3: "Renting a car",
+      s2CarBody: "Given the location, we highly recommend renting a car for your stay. It makes it much easier to reach restaurants in Akumal, groceries in Puerto Aventuras, and everywhere in between without relying on taxis.",
+      s3Label: "03 — The Private Jacuzzi Tub", s3Title: "Getting it warm",
+      s3Intro: "The jetted tub in your unit is a jacuzzi bathtub — it doesn't heat on its own, but here's the trick to get it warm:",
+      s3Step1: "Turn on <b style=\"color:var(--brass-soft)\">both</b> the hot and cold taps and fill the tub about <b style=\"color:var(--brass-soft)\">3/4 of the way</b>.",
+      s3Step2: "Turn both taps <b style=\"color:var(--brass-soft)\">off</b> and let it sit for <b style=\"color:var(--brass-soft)\">15–20 minutes</b>.",
+      s3Step3: "Turn on <b style=\"color:var(--brass-soft)\">only the hot water</b> and fill the rest of the way up.",
+      s4Label: "04 — House Rules", s4Title: "While you're here",
+      s4GeneralTitle: "General",
+      s4G1: "Quiet hours", s4G1v: "10:00 PM – 8:00 AM",
+      s4G2: "Please bag trash and use the bins provided",
+      s4G3: "No smoking inside the condo",
+      s4G5: "Pets are not permitted for guests",
+      s4G6: "Treat neighbors and staff with courtesy and respect",
+      s4Footer: "Nothing complicated here — just the usual good-neighbor basics. Thanks for keeping the place easy and enjoyable for everyone.",
+      s5Label: "05 — Nearby", s5Title: "Eat, drink, explore",
+      s5InComplexTitle: "Inside the complex",
+      p1kind: "Convenience store", p1desc: "Right inside Grand Sirenis — good for water, snacks, and quick essentials without leaving the complex.",
+      s5RestTitle: "Restaurants in Akumal",
+      p3kind: "Beachfront Mexican", p3desc: "A classic beachfront spot right on Akumal Bay — Mexican and international dishes, with the best view in town and a popular happy hour at sunset.",
+      p4kind: "Italian", p4desc: "Authentic Italian in the heart of Akumal — fire-oven pizzas, homemade pasta, and risotto. Good for a romantic dinner or a family meal.",
+      p5kind: "Breakfast & bakery", p5desc: "A local favorite for nearly 20 years — fresh-baked goods, hearty breakfasts, and a mix of local and international dishes.",
+      p6kind: "Yucatecan breakfast", p6desc: "A family-run spot in Akumal Pueblo — fresh salbutes, panuchos, and tacos. Cochinita pibil on Sundays, but it sells out early.",
+      p7kind: "Grocery store", p7desc: "In Puerto Aventuras, about a 10-minute drive south — a full supermarket with fresh produce, meats, and a pharmacy. Your best bet for a real grocery run.",
+      mapLink: "View on Google Maps ↗",
+      s5GrocTitle: "Groceries",
+      s5bLabel: "06 — Extra Services", s5bTitle: "Make your stay easier",
+      s5bGroceryH3: "Pre-arrival grocery stocking",
+      s5bGroceryBody: "We can have your kitchen stocked before you arrive, subject to availability. The cost is 20% of the grocery total, with a $35 USD minimum charge. Please request at least one week before arrival — just message us on Airbnb with your list.",
+      s5bCleanH3: "Mid-stay cleaning",
+      s5bCleanBody: "Your reservation fee already covers a cleaning after checkout. If you'd like a cleaning during your stay, it's available for $40 USD per day, subject to availability. Please request at least one week before arrival.",
+      s6Label: "07 — Need Anything?", s6Title: "Reach us",
+      s6Who1: "Airbnb Message", s6How1: "Fastest & preferred way to reach us",
+      s6How2: "+52 984 213 6512 — ONLY if Airbnb isn't working",
+      s6Btn: "Message",
+      reLabel: "Before You Go", reTitle: "Thinking about owning<br>a place like this?",
+      reBody: "A lot of our guests fall in love with Playa del Carmen and start wondering what it would take to own here. If that's ever on your mind — now, or years from now — I'm a licensed real estate agent and happy to talk. No pressure, just a conversation.",
+      rePoweredBy: "Powered by eXp Realty",
+      reCta1: "Learn More &rarr;", reCta2: "WhatsApp Craig"
+    },
+    es: {
+      eyebrow: "Guía del Huésped",
+      heroSub: "Un espacioso condominio de dos recámaras en el complejo Grand Sirenis en Akumal, con jacuzzi privado. Todo lo que necesitas para tu estancia, en un solo lugar.",
+      heroMapLink: "📍 Ver propiedad en Google Maps ↗",
+      checkinLabel: "Check-in", checkoutLabel: "Check-out", unitLabel: "Unidad",
+      hostsLabel: "Tus Anfitriones", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla es originaria del estado de Guanajuato, México, y ha vivido en Playa del Carmen los últimos 12 años. Craig es originario de Texas y ha vivido en México por más de 20 años. Juntos dirigen At Home Riviera Maya — esperamos que disfrutes este lugar tanto como nosotros, y estamos a un mensaje de distancia si necesitas algo durante tu estancia.",
+      s1Label: "01 — Acceso", s1Title: "Tu código de acceso",
+      kcEntryMethod: "Método de Entrada", kcEntryValue: "Cerradura Digital", kcUnit: "Unidad",
+      kcWifiNetwork: "Red WiFi", kcWifiPassword: "Contraseña",
+      kcWifiScan: "Escanea con la cámara de tu teléfono para conectarte al WiFi automáticamente.",
+      kcNote: "Tu código único de la puerta se envía por tus <b>mensajes de Airbnb</b> una vez que el departamento está limpio y listo — normalmente la mañana de tu check-in. ¿Aún no tienes el código? Solo escríbenos por Airbnb.",
+      s1Note: "El check-in es a partir de las <b style=\"color:var(--sand)\">10:00 AM</b>. El check-out es antes de las <b style=\"color:var(--sand)\">3:00 PM</b>. No es necesario reunirte con nadie en persona — entra tú mismo cuando llegues.",
+      s2Label: "02 — Cómo Moverte", s2Title: "Estacionamiento y transporte",
+      s2H3: "Estacionamiento",
+      s2Body: "Hay estacionamiento disponible dentro del complejo Grand Sirenis — solo busca un espacio disponible cerca del edificio.",
+      s2CarH3: "Rentar un auto",
+      s2CarBody: "Dada la ubicación, te recomendamos ampliamente rentar un auto durante tu estancia. Facilita mucho llegar a los restaurantes en Akumal, hacer las compras en Puerto Aventuras y moverte por la zona sin depender de taxis.",
+      s3Label: "03 — El Jacuzzi Privado", s3Title: "Cómo calentarlo",
+      s3Intro: "La tina con jets de tu unidad es una tina jacuzzi — no se calienta sola, pero aquí está el truco para calentarla:",
+      s3Step1: "Abre <b style=\"color:var(--brass-soft)\">ambas</b> llaves, caliente y fría, y llena la tina hasta <b style=\"color:var(--brass-soft)\">3/4 partes</b>.",
+      s3Step2: "Cierra ambas llaves y déjala reposar de <b style=\"color:var(--brass-soft)\">15 a 20 minutos</b>.",
+      s3Step3: "Abre <b style=\"color:var(--brass-soft)\">solo la llave caliente</b> y termina de llenarla.",
+      s4Label: "04 — Reglamento", s4Title: "Durante tu estancia",
+      s4GeneralTitle: "General",
+      s4G1: "Horario de silencio", s4G1v: "10:00 PM – 8:00 AM",
+      s4G2: "Por favor pon la basura en bolsas y usa los botes disponibles",
+      s4G3: "No fumar dentro del condominio",
+      s4G5: "No se permiten mascotas para huéspedes",
+      s4G6: "Trata a los vecinos y al personal con cortesía y respeto",
+      s4Footer: "Nada complicado aquí — solo lo básico de buena convivencia. Gracias por mantener todo sencillo y agradable para todos.",
+      s5Label: "05 — Alrededores", s5Title: "Come, bebe, explora",
+      s5InComplexTitle: "Dentro del complejo",
+      p1kind: "Tienda de conveniencia", p1desc: "Justo dentro de Grand Sirenis — bueno para agua, snacks y básicos sin salir del complejo.",
+      s5RestTitle: "Restaurantes en Akumal",
+      p3kind: "Mexicana frente al mar", p3desc: "Un clásico frente a la playa en la Bahía de Akumal — platillos mexicanos e internacionales, con la mejor vista del pueblo y un happy hour popular al atardecer.",
+      p4kind: "Italiana", p4desc: "Comida italiana auténtica en el corazón de Akumal — pizzas de horno de leña, pasta casera y risotto. Bueno para una cena romántica o en familia.",
+      p5kind: "Desayuno y panadería", p5desc: "Un favorito local desde hace casi 20 años — productos horneados frescos, desayunos abundantes y una mezcla de platillos locales e internacionales.",
+      p6kind: "Desayuno yucateco", p6desc: "Un lugar familiar en Akumal Pueblo — salbutes, panuchos y tacos frescos. Cochinita pibil los domingos, pero se agota temprano.",
+      p7kind: "Supermercado", p7desc: "En Puerto Aventuras, a unos 10 minutos en auto hacia el sur — un supermercado completo con productos frescos, carnes y farmacia. Tu mejor opción para una compra completa.",
+      mapLink: "Ver en Google Maps ↗",
+      s5GrocTitle: "Supermercado",
+      s5bLabel: "06 — Servicios Adicionales", s5bTitle: "Haz tu estancia más fácil",
+      s5bGroceryH3: "Surtido de despensa antes de tu llegada",
+      s5bGroceryBody: "Podemos tener tu cocina abastecida antes de que llegues, sujeto a disponibilidad. El costo es 20% del total de la compra, con un cargo mínimo de $35 USD. Por favor solicítalo con al menos una semana de anticipación — solo escríbenos por Airbnb con tu lista.",
+      s5bCleanH3: "Limpieza durante tu estancia",
+      s5bCleanBody: "La tarifa de tu reservación ya incluye una limpieza después del check-out. Si deseas una limpieza durante tu estancia, está disponible por $40 USD por día, sujeto a disponibilidad. Por favor solicítalo con al menos una semana de anticipación.",
+      s6Label: "07 — ¿Necesitas Algo?", s6Title: "Contáctanos",
+      s6Who1: "Mensaje por Airbnb", s6How1: "La forma más rápida y preferida de contactarnos",
+      s6How2: "+52 984 213 6512 — SOLO si Airbnb no funciona",
+      s6Btn: "Enviar mensaje",
+      reLabel: "Antes de Irte", reTitle: "¿Pensando en comprar<br>un lugar como este?",
+      reBody: "Muchos de nuestros huéspedes se enamoran de Playa del Carmen y comienzan a preguntarse qué se necesita para tener una propiedad aquí. Si alguna vez lo has pensado — ahora, o en unos años — soy agente inmobiliario certificado y con gusto platicamos. Sin presión, solo una conversación.",
+      rePoweredBy: "Con el respaldo de eXp Realty",
+      reCta1: "Saber M&aacute;s &rarr;", reCta2: "WhatsApp a Craig"
+    },
+    fr: {
+      eyebrow: "Guide de l'Hôte",
+      heroSub: "Un condo spacieux de deux chambres dans le complexe Grand Sirenis à Akumal, avec jacuzzi privé. Tout ce dont vous avez besoin pour votre séjour, au même endroit.",
+      heroMapLink: "📍 Voir la propriété sur Google Maps ↗",
+      checkinLabel: "Arrivée", checkoutLabel: "Départ", unitLabel: "Unité",
+      hostsLabel: "Vos Hôtes", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla est originaire de l'État de Guanajuato, au Mexique, et vit à Playa del Carmen depuis 12 ans. Craig est originaire du Texas et vit au Mexique depuis plus de 20 ans. Ensemble, ils dirigent At Home Riviera Maya — nous espérons que vous aimerez cet endroit autant que nous, et nous sommes à un message si vous avez besoin de quoi que ce soit pendant votre séjour.",
+      s1Label: "01 — Accès", s1Title: "Votre code d'accès",
+      kcEntryMethod: "Méthode d'Entrée", kcEntryValue: "Serrure Numérique", kcUnit: "Unité",
+      kcWifiNetwork: "Réseau WiFi", kcWifiPassword: "Mot de Passe",
+      kcWifiScan: "Scannez avec l'appareil photo de votre téléphone pour rejoindre le WiFi automatiquement.",
+      kcNote: "Votre code de porte unique est envoyé via vos <b>messages Airbnb</b> une fois l'appartement nettoyé et prêt — généralement le matin de votre arrivée. Pas encore de code ? Écrivez-nous simplement sur Airbnb.",
+      s1Note: "L'arrivée se fait à partir de <b style=\"color:var(--sand)\">10h00</b>. Le départ est avant <b style=\"color:var(--sand)\">15h00</b>. Pas besoin de rencontrer qui que ce soit en personne — entrez par vous-même à votre arrivée.",
+      s2Label: "02 — Se Déplacer", s2Title: "Stationnement et transport",
+      s2H3: "Stationnement",
+      s2Body: "Le stationnement est disponible dans le complexe Grand Sirenis — garez-vous simplement dans une place libre près de l'immeuble.",
+      s2CarH3: "Louer une voiture",
+      s2CarBody: "Étant donné l'emplacement, nous recommandons fortement de louer une voiture pour votre séjour. Cela facilite grandement l'accès aux restaurants d'Akumal, aux courses à Puerto Aventuras et aux alentours, sans dépendre des taxis.",
+      s3Label: "03 — Le Jacuzzi Privé", s3Title: "Comment le réchauffer",
+      s3Intro: "La baignoire à jets de votre unité est une baignoire jacuzzi — elle ne chauffe pas toute seule, mais voici l'astuce pour la réchauffer :",
+      s3Step1: "Ouvrez <b style=\"color:var(--brass-soft)\">les deux</b> robinets, chaud et froid, et remplissez la baignoire aux <b style=\"color:var(--brass-soft)\">3/4</b>.",
+      s3Step2: "Fermez les deux robinets et laissez reposer <b style=\"color:var(--brass-soft)\">15 à 20 minutes</b>.",
+      s3Step3: "Ouvrez <b style=\"color:var(--brass-soft)\">uniquement l'eau chaude</b> et terminez de remplir.",
+      s4Label: "04 — Règlement Intérieur", s4Title: "Pendant votre séjour",
+      s4GeneralTitle: "Général",
+      s4G1: "Heures de silence", s4G1v: "22h00 – 8h00",
+      s4G2: "Merci de mettre les déchets en sacs dans les bacs prévus",
+      s4G3: "Interdit de fumer à l'intérieur du condo",
+      s4G5: "Animaux non autorisés pour les invités",
+      s4G6: "Merci de traiter les voisins et le personnel avec courtoisie et respect",
+      s4Footer: "Rien de compliqué ici — juste les règles habituelles de bon voisinage. Merci de garder les choses simples et agréables pour tout le monde.",
+      s5Label: "05 — À Proximité", s5Title: "Manger, boire, explorer",
+      s5InComplexTitle: "Dans le complexe",
+      p1kind: "Supérette", p1desc: "Juste à l'intérieur de Grand Sirenis — pratique pour l'eau, les snacks et l'essentiel sans quitter le complexe.",
+      s5RestTitle: "Restaurants à Akumal",
+      p3kind: "Mexicain en bord de plage", p3desc: "Un classique en bord de plage sur la baie d'Akumal — plats mexicains et internationaux, avec la plus belle vue de la ville et un happy hour populaire au coucher du soleil.",
+      p4kind: "Italien", p4desc: "Cuisine italienne authentique au cœur d'Akumal — pizzas au feu de bois, pâtes maison et risotto. Idéal pour un dîner romantique ou en famille.",
+      p5kind: "Petit-déjeuner et boulangerie", p5desc: "Une adresse locale depuis presque 20 ans — pâtisseries fraîches, copieux petits-déjeuners et un mélange de plats locaux et internationaux.",
+      p6kind: "Petit-déjeuner yucatèque", p6desc: "Un lieu familial à Akumal Pueblo — salbutes, panuchos et tacos frais. Cochinita pibil le dimanche, mais épuisé tôt.",
+      p7kind: "Épicerie", p7desc: "À Puerto Aventuras, à environ 10 minutes en voiture vers le sud — un supermarché complet avec produits frais, viandes et pharmacie. Votre meilleure option pour de vraies courses.",
+      mapLink: "Voir sur Google Maps ↗",
+      s5GrocTitle: "Épicerie",
+      s5bLabel: "06 — Services Supplémentaires", s5bTitle: "Facilitez votre séjour",
+      s5bGroceryH3: "Courses avant votre arrivée",
+      s5bGroceryBody: "Nous pouvons remplir votre cuisine avant votre arrivée, sous réserve de disponibilité. Le coût est de 20% du total des courses, avec un minimum de 35 USD. Merci de faire votre demande au moins une semaine avant votre arrivée — écrivez-nous simplement sur Airbnb avec votre liste.",
+      s5bCleanH3: "Ménage pendant le séjour",
+      s5bCleanBody: "Les frais de votre réservation couvrent déjà un ménage après le départ. Si vous souhaitez un ménage pendant votre séjour, il est disponible pour 40 USD par jour, sous réserve de disponibilité. Merci de faire votre demande au moins une semaine avant votre arrivée.",
+      s6Label: "07 — Besoin d'Aide ?", s6Title: "Nous contacter",
+      s6Who1: "Message Airbnb", s6How1: "Le moyen le plus rapide et privilégié de nous joindre",
+      s6How2: "+52 984 213 6512 — UNIQUEMENT si Airbnb ne fonctionne pas",
+      s6Btn: "Envoyer un message",
+      reLabel: "Avant de Partir", reTitle: "Vous pensez acheter<br>un endroit comme celui-ci ?",
+      reBody: "Beaucoup de nos invités tombent amoureux de Playa del Carmen et commencent à se demander ce qu'il faudrait pour devenir propriétaire ici. Si l'idée vous traverse l'esprit — maintenant, ou dans quelques années — je suis agent immobilier agréé et je serai heureux d'en discuter. Sans pression, juste une conversation.",
+      rePoweredBy: "Avec le soutien d'eXp Realty",
+      reCta1: "En Savoir Plus &rarr;", reCta2: "WhatsApp Craig"
+    }
+  };
+
+  function applyLang(lang){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const dict = translations[lang] || translations.en;
+      if(dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+    try{ localStorage.setItem('kokonut401-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang-btn')));
+  });
+
+  let initialLang = 'en';
+  try{
+    const saved = localStorage.getItem('kokonut401-lang');
+    if(saved && translations[saved]) initialLang = saved;
+  }catch(e){}
+  applyLang(initialLang);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
