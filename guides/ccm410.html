@@ -203,7 +203,8 @@
   }
   .kc-row{display:flex; justify-content:space-between; align-items:flex-start; padding-left:14px;}
   .kc-label{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A7658;}
-  .kc-value{font-family:var(--mono); font-size:15px; font-weight:500; margin-top:6px; color:var(--ink);}
+  .kc-value{font-family:var(--mono); font-size:15px; font-weight:500; margin-top:6px; color:var(--ink); word-break:break-word;}
+  .kc-wifi-block{padding-left:14px; display:flex; flex-direction:column; gap:14px;}
   .kc-divider{height:1px; background:repeating-linear-gradient(to right, #C9BCA0 0, #C9BCA0 4px, transparent 4px, transparent 9px); margin:18px 0 18px 14px;}
   .kc-note{
     padding-left:14px;
@@ -468,12 +469,12 @@
         </div>
       </div>
       <div class="kc-divider"></div>
-      <div class="kc-row">
+      <div class="kc-wifi-block">
         <div>
           <div class="kc-label" data-i18n="kcWifiNetwork">WiFi Network</div>
           <div class="kc-value">INFINITUM4A9C_2.4</div>
         </div>
-        <div style="text-align:right;">
+        <div>
           <div class="kc-label" data-i18n="kcWifiPassword">Password</div>
           <div class="kc-value">8R9sx9RBwv</div>
         </div>
