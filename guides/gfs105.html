@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0F2B2E;
-    --ink-deep:#0A1F21;
-    --sand:#F6EFE3;
-    --sand-dim:#EAE1D0;
-    --brass:#B98B4E;
-    --brass-soft:#D8B37C;
+    --ink:#123B3E;
+    --ink-deep:#0B2A2C;
+    --sand:#FBF3E2;
+    --sand-dim:#F1E6CC;
+    --brass:#1B8F86;
+    --brass-soft:#5FC2B6;
     --coral:#E4674B;
-    --seafoam:#A9C7C2;
-    --line: rgba(185,139,78,0.35);
+    --seafoam:#5C7D79;
+    --line: rgba(27,143,134,0.28);
     --display: 'Fraunces', serif;
     --body: 'Inter', -apple-system, sans-serif;
     --mono: 'IBM Plex Mono', monospace;
@@ -26,13 +26,13 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(circle at 8% 12%, rgba(185,139,78,0.14), transparent 38%),
-      radial-gradient(circle at 92% 18%, rgba(169,199,194,0.10), transparent 38%),
-      radial-gradient(circle at 12% 88%, rgba(185,139,78,0.12), transparent 38%),
-      radial-gradient(circle at 90% 92%, rgba(169,199,194,0.09), transparent 38%),
-      repeating-linear-gradient(135deg, rgba(185,139,78,0.05) 0px, rgba(185,139,78,0.05) 1px, transparent 1px, transparent 46px),
-      var(--ink);
-    color:var(--sand);
+      radial-gradient(circle at 8% 12%, rgba(27,143,134,0.12), transparent 38%),
+      radial-gradient(circle at 92% 18%, rgba(95,194,182,0.12), transparent 38%),
+      radial-gradient(circle at 12% 88%, rgba(27,143,134,0.10), transparent 38%),
+      radial-gradient(circle at 90% 92%, rgba(95,194,182,0.10), transparent 38%),
+      repeating-linear-gradient(135deg, rgba(27,143,134,0.045) 0px, rgba(27,143,134,0.045) 1px, transparent 1px, transparent 46px),
+      var(--sand);
+    color:var(--ink);
     font-family:var(--body);
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
@@ -50,7 +50,7 @@
   /* ---------- LANGUAGE SWITCH ---------- */
   .langbar{
     position:sticky; top:0; z-index:50;
-    background:rgba(10,31,33,0.88);
+    background:rgba(251,243,226,0.88);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
@@ -82,8 +82,8 @@
     position:relative;
     padding:56px 0 56px;
     background:
-      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(185,139,78,0.16), transparent 60%),
-      var(--ink);
+      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(27,143,134,0.14), transparent 60%),
+      var(--sand);
     border-bottom:1px solid var(--line);
     overflow:hidden;
   }
@@ -92,14 +92,14 @@
     font-size:11px;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--brass-soft);
+    color:var(--brass);
     display:flex;
     align-items:center;
     gap:10px;
   }
   .eyebrow::before{
     content:'';
-    width:18px; height:1px; background:var(--brass-soft);
+    width:18px; height:1px; background:var(--brass);
   }
   h1.property{
     font-family:var(--display);
@@ -109,7 +109,7 @@
     line-height:1.05;
     letter-spacing:-0.01em;
     margin-top:18px;
-    color:var(--sand);
+    color:var(--ink);
   }
   h1.property em{
     font-style:italic;
@@ -118,7 +118,7 @@
   }
   .hero-sub{
     margin-top:14px;
-    font-size:15px;
+    font-size:16px;
     color:var(--seafoam);
     max-width:38ch;
   }
@@ -129,12 +129,12 @@
     margin-top:14px;
     font-family:var(--mono);
     font-size:12px;
-    color:var(--brass-soft);
+    color:var(--brass);
     text-decoration:none;
     border-bottom:1px solid var(--line);
     padding-bottom:2px;
   }
-  .hero-map:hover{color:var(--sand); border-color:var(--brass-soft);}
+  .hero-map:hover{color:var(--ink); border-color:var(--brass);}
   .hero-meta{
     margin-top:32px;
     display:flex;
@@ -143,8 +143,8 @@
     font-size:12px;
     color:var(--seafoam);
   }
-  .hero-meta div span{display:block; color:var(--brass-soft); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;}
-  .hero-meta div b{color:var(--sand); font-weight:500; font-size:14px; font-family:var(--body);}
+  .hero-meta div span{display:block; color:var(--brass); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;}
+  .hero-meta div b{color:var(--ink); font-weight:500; font-size:14px; font-family:var(--body);}
 
   /* ---------- SECTION SCAFFOLD ---------- */
   section{padding:56px 0; border-bottom:1px solid var(--line);}
@@ -155,23 +155,23 @@
     font-size:11px;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--brass-soft);
+    color:var(--brass);
   }
   h2{
     font-family:var(--display);
     font-weight:500;
     font-size:28px;
     margin-top:8px;
-    color:var(--sand);
+    color:var(--ink);
     letter-spacing:-0.01em;
   }
-  p{font-size:15px; color:var(--seafoam);}
+  p{font-size:16px; color:var(--seafoam);}
   p + p{margin-top:12px;}
 
   /* ---------- KEYCARD (signature element) ---------- */
   .keycard{
     position:relative;
-    background:var(--sand);
+    background:#FFFFFF;
     color:var(--ink);
     border-radius:14px;
     padding:26px 26px 24px;
@@ -197,18 +197,18 @@
     position:absolute;
     top:50%; right:-11px;
     width:22px; height:22px;
-    background:var(--ink);
+    background:var(--sand);
     border-radius:50%;
     transform:translateY(-50%);
   }
   .kc-row{display:flex; justify-content:space-between; align-items:flex-start; padding-left:14px;}
-  .kc-label{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A7658;}
-  .kc-value{font-family:var(--mono); font-size:15px; font-weight:500; margin-top:6px; color:var(--ink); word-break:break-word;}
+  .kc-label{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#6E938F;}
+  .kc-value{font-family:var(--mono); font-size:16px; font-weight:500; margin-top:6px; color:var(--ink); word-break:break-word;}
   .kc-wifi-block{padding-left:14px; display:flex; flex-direction:column; gap:14px;}
-  .kc-divider{height:1px; background:repeating-linear-gradient(to right, #C9BCA0 0, #C9BCA0 4px, transparent 4px, transparent 9px); margin:18px 0 18px 14px;}
+  .kc-divider{height:1px; background:repeating-linear-gradient(to right, #C7DDD9 0, #C7DDD9 4px, transparent 4px, transparent 9px); margin:18px 0 18px 14px;}
   .kc-note{
     padding-left:14px;
-    font-size:13px;
+    font-size:14px;
     color:#5B5140;
     font-family:var(--body);
   }
@@ -222,7 +222,7 @@
   }
   .kc-wifi-connect img{
     border-radius:6px;
-    border:1px solid #C9BCA0;
+    border:1px solid #C7DDD9;
     flex-shrink:0;
   }
   .kc-wifi-connect span{
@@ -253,33 +253,33 @@
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
-  .steps li p{font-size:14.5px; color:var(--sand); padding-top:2px;}
+  .steps li p{font-size:15.5px; color:var(--ink); padding-top:2px;}
   .callout{
     margin-top:18px;
     background:rgba(228,103,75,0.1);
     border:1px solid rgba(228,103,75,0.35);
     border-radius:10px;
     padding:14px 16px;
-    font-size:13.5px;
-    color:#F0C4B8;
+    font-size:14.5px;
+    color:#8A3220;
   }
   .callout b{color:var(--coral);}
 
   /* ---------- INFO GRID (parking etc) ---------- */
   .info-item{padding:18px 0; border-top:1px solid var(--line);}
   .info-item:last-child{border-bottom:1px solid var(--line);}
-  .info-item h3{font-family:var(--body); font-weight:600; font-size:15px; color:var(--sand); margin-bottom:6px;}
+  .info-item h3{font-family:var(--body); font-weight:600; font-size:15px; color:var(--ink); margin-bottom:6px;}
 
   /* ---------- HOUSE RULES ---------- */
   .nb-group{margin-bottom:26px;}
   .nb-group:last-child{margin-bottom:0;}
-  .nb-title{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass-soft); margin-bottom:10px;}
+  .nb-title{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass); margin-bottom:10px;}
   .nb-list{list-style:none;}
   .nb-list li{
     padding:12px 0;
     border-top:1px solid var(--line);
-    font-size:15px;
-    color:var(--sand);
+    font-size:16px;
+    color:var(--ink);
     display:flex;
     justify-content:space-between;
     align-items:baseline;
@@ -299,9 +299,9 @@
     align-items:baseline;
     gap:12px;
   }
-  .place-name{font-size:15.5px; font-weight:600; color:var(--sand);}
-  .place-kind{font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-soft); white-space:nowrap;}
-  .place-desc{font-size:13.5px; color:var(--seafoam); margin-top:6px; line-height:1.6;}
+  .place-name{font-size:15.5px; font-weight:600; color:var(--ink);}
+  .place-kind{font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); white-space:nowrap;}
+  .place-desc{font-size:14.5px; color:var(--seafoam); margin-top:6px; line-height:1.6;}
   .place-map{
     display:inline-flex;
     align-items:center;
@@ -323,8 +323,8 @@
     border-top:1px solid var(--line);
   }
   .contact-row:last-child{border-bottom:1px solid var(--line);}
-  .contact-row .who{font-size:15px; color:var(--sand); font-weight:500;}
-  .contact-row .how{font-family:var(--mono); font-size:12.5px; color:var(--seafoam); margin-top:2px;}
+  .contact-row .who{font-size:15px; color:var(--ink); font-weight:500;}
+  .contact-row .how{font-family:var(--mono); font-size:13.5px; color:var(--seafoam); margin-top:2px;}
   .btn{
     font-family:var(--body);
     font-size:13px;
@@ -345,9 +345,9 @@
     padding:30px 26px;
     position:relative;
   }
-  .re-panel .section-label{color:var(--seafoam);}
+  .re-panel .section-label{color:var(--brass-soft);}
   .re-panel h2{font-size:24px;}
-  .re-panel p{color:var(--seafoam); font-size:14.5px; margin-top:10px;}
+  .re-panel p{color:rgba(251,243,226,0.78); font-size:15.5px; margin-top:10px;}
   .re-brands{
     margin-top:20px;
     display:flex;
@@ -381,7 +381,7 @@
     text-align:center;
     font-family:var(--mono);
     font-size:11px;
-    color:rgba(169,199,194,0.55);
+    color:rgba(18,59,62,0.55);
     letter-spacing:0.06em;
   }
 
@@ -396,7 +396,7 @@
     position:fixed;
     top:0; bottom:0;
     width:1px;
-    background:linear-gradient(to bottom, transparent, rgba(185,139,78,0.4) 10%, rgba(185,139,78,0.4) 90%, transparent);
+    background:linear-gradient(to bottom, transparent, rgba(27,143,134,0.4) 10%, rgba(27,143,134,0.4) 90%, transparent);
     pointer-events:none;
     display:none;
     z-index:1;
@@ -423,8 +423,8 @@
 <div class="hero">
   <div class="waves">
     <svg viewBox="0 0 600 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,60 C100,100 200,20 300,60 C400,100 500,20 600,60 L600,120 L0,120 Z" fill="rgba(185,139,78,0.06)"/>
-      <path d="M0,80 C100,40 200,110 300,80 C400,50 500,110 600,80 L600,120 L0,120 Z" fill="rgba(185,139,78,0.10)"/>
+      <path d="M0,60 C100,100 200,20 300,60 C400,100 500,20 600,60 L600,120 L0,120 Z" fill="rgba(27,143,134,0.08)"/>
+      <path d="M0,80 C100,40 200,110 300,80 C400,50 500,110 600,80 L600,120 L0,120 Z" fill="rgba(27,143,134,0.14)"/>
     </svg>
   </div>
   <div class="wrap">
@@ -488,7 +488,7 @@
         Your unique door code is sent through your <b>Airbnb messages</b> once the apartment is cleaned and ready for you — usually right around the 3:00 PM check-in time. No code yet? Just message us on Airbnb.
       </div>
     </div>
-    <p style="margin-top:18px;" data-i18n="s1Note">Check-in is any time after <b style="color:var(--sand)">10:00 AM</b>. Check-out is by <b style="color:var(--sand)">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.</p>
+    <p style="margin-top:18px;" data-i18n="s1Note">Check-in is any time after <b style="color:var(--ink)">10:00 AM</b>. Check-out is by <b style="color:var(--ink)">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.</p>
     <div class="callout" data-i18n="s1LockWarning"><b>Important:</b> on the inside of the door, the lock has a small green button. Please don't press or move it — doing so will disable the code entry from the outside, and you won't be able to get back in.</div>
   </section>
 
@@ -499,7 +499,7 @@
     </div>
     <div class="info-item" style="border-top:none; padding-top:0;">
       <h3 data-i18n="s2H3">Street parking</h3>
-      <p data-i18n="s2Body">There's no garage at this building — parking is on the street nearby. It's metered from roughly <b style="color:var(--sand)">10:00 AM to 10:00 PM</b>, at about <b style="color:var(--sand)">$6 pesos per hour</b>. Outside those hours, street parking is free.</p>
+      <p data-i18n="s2Body">There's no garage at this building — parking is on the street nearby. It's metered from roughly <b style="color:var(--ink)">10:00 AM to 10:00 PM</b>, at about <b style="color:var(--ink)">$6 pesos per hour</b>. Outside those hours, street parking is free.</p>
     </div>
   </section>
 
@@ -690,11 +690,11 @@
       kcWifiNetwork: "WiFi Network", kcWifiPassword: "Password",
       kcWifiScan: "Scan with your phone camera to join the WiFi automatically.",
       kcNote: "Your unique door code is sent through your <b>Airbnb messages</b> once the apartment is cleaned and ready for you — usually right around the 3:00 PM check-in time. No code yet? Just message us on Airbnb.",
-      s1Note: "Check-in is any time after <b style=\"color:var(--sand)\">10:00 AM</b>. Check-out is by <b style=\"color:var(--sand)\">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.",
+      s1Note: "Check-in is any time after <b style=\"color:var(--ink)\">10:00 AM</b>. Check-out is by <b style=\"color:var(--ink)\">3:00 PM</b>. No need to meet anyone in person — let yourself in whenever you arrive.",
       s1LockWarning: "<b>Important:</b> on the inside of the door, the lock has a small green button. Please don't press or move it — doing so will disable the code entry from the outside, and you won't be able to get back in.",
       s2Label: "02 — Parking", s2Title: "Where to park",
       s2H3: "Street parking",
-      s2Body: "There's no garage at this building — parking is on the street nearby. It's metered from roughly <b style=\"color:var(--sand)\">10:00 AM to 10:00 PM</b>, at about <b style=\"color:var(--sand)\">$6 pesos per hour</b>. Outside those hours, street parking is free.",
+      s2Body: "There's no garage at this building — parking is on the street nearby. It's metered from roughly <b style=\"color:var(--ink)\">10:00 AM to 10:00 PM</b>, at about <b style=\"color:var(--ink)\">$6 pesos per hour</b>. Outside those hours, street parking is free.",
       s4Label: "03 — House Rules", s4Title: "While you're here",
       s4GeneralTitle: "General",
       s4G3: "Nothing hung on windows, balconies, or common areas",
@@ -755,11 +755,11 @@
       kcWifiNetwork: "Red WiFi", kcWifiPassword: "Contraseña",
       kcWifiScan: "Escanea con la cámara de tu teléfono para conectarte al WiFi automáticamente.",
       kcNote: "Tu código único de la puerta se envía por tus <b>mensajes de Airbnb</b> una vez que el departamento está limpio y listo — normalmente justo alrededor de las 3:00 PM, la hora de check-in. ¿Aún no tienes el código? Solo escríbenos por Airbnb.",
-      s1Note: "El check-in es a partir de las <b style=\"color:var(--sand)\">10:00 AM</b>. El check-out es antes de las <b style=\"color:var(--sand)\">3:00 PM</b>. No es necesario reunirte con nadie en persona — entra tú mismo cuando llegues.",
+      s1Note: "El check-in es a partir de las <b style=\"color:var(--ink)\">10:00 AM</b>. El check-out es antes de las <b style=\"color:var(--ink)\">3:00 PM</b>. No es necesario reunirte con nadie en persona — entra tú mismo cuando llegues.",
       s1LockWarning: "<b>Importante:</b> del lado interior de la puerta, la cerradura tiene un pequeño botón verde. Por favor no lo presiones ni lo muevas — hacerlo desactivará la entrada por código desde afuera y no podrás volver a entrar.",
       s2Label: "02 — Estacionamiento", s2Title: "Dónde estacionarte",
       s2H3: "Estacionamiento en la calle",
-      s2Body: "Este edificio no cuenta con garaje — el estacionamiento es en la calle cercana. Tiene parquímetro aproximadamente de <b style=\"color:var(--sand)\">10:00 AM a 10:00 PM</b>, a unos <b style=\"color:var(--sand)\">$6 pesos por hora</b>. Fuera de ese horario, el estacionamiento en la calle es gratuito.",
+      s2Body: "Este edificio no cuenta con garaje — el estacionamiento es en la calle cercana. Tiene parquímetro aproximadamente de <b style=\"color:var(--ink)\">10:00 AM a 10:00 PM</b>, a unos <b style=\"color:var(--ink)\">$6 pesos por hora</b>. Fuera de ese horario, el estacionamiento en la calle es gratuito.",
       s4Label: "03 — Reglamento", s4Title: "Durante tu estancia",
       s4GeneralTitle: "General",
       s4G3: "No colgar nada de ventanas, balcones o áreas comunes",
@@ -820,11 +820,11 @@
       kcWifiNetwork: "Réseau WiFi", kcWifiPassword: "Mot de Passe",
       kcWifiScan: "Scannez avec l'appareil photo de votre téléphone pour rejoindre le WiFi automatiquement.",
       kcNote: "Votre code de porte unique est envoyé via vos <b>messages Airbnb</b> une fois l'appartement nettoyé et prêt — généralement autour de 15h00, l'heure d'arrivée. Pas encore de code ? Écrivez-nous simplement sur Airbnb.",
-      s1Note: "L'arrivée se fait à partir de <b style=\"color:var(--sand)\">10h00</b>. Le départ est avant <b style=\"color:var(--sand)\">15h00</b>. Pas besoin de rencontrer qui que ce soit en personne — entrez par vous-même à votre arrivée.",
+      s1Note: "L'arrivée se fait à partir de <b style=\"color:var(--ink)\">10h00</b>. Le départ est avant <b style=\"color:var(--ink)\">15h00</b>. Pas besoin de rencontrer qui que ce soit en personne — entrez par vous-même à votre arrivée.",
       s1LockWarning: "<b>Important :</b> à l'intérieur de la porte, la serrure a un petit bouton vert. Merci de ne pas y toucher ni le déplacer — cela désactiverait l'entrée par code depuis l'extérieur, et vous ne pourriez plus rentrer.",
       s2Label: "02 — Stationnement", s2Title: "Où se garer",
       s2H3: "Stationnement dans la rue",
-      s2Body: "Cet immeuble n'a pas de parking — le stationnement se fait dans la rue à proximité. Il est payant environ de <b style=\"color:var(--sand)\">10h00 à 22h00</b>, à environ <b style=\"color:var(--sand)\">6 pesos de l'heure</b>. En dehors de ces horaires, le stationnement dans la rue est gratuit.",
+      s2Body: "Cet immeuble n'a pas de parking — le stationnement se fait dans la rue à proximité. Il est payant environ de <b style=\"color:var(--ink)\">10h00 à 22h00</b>, à environ <b style=\"color:var(--ink)\">6 pesos de l'heure</b>. En dehors de ces horaires, le stationnement dans la rue est gratuit.",
       s4Label: "03 — Règlement Intérieur", s4Title: "Pendant votre séjour",
       s4GeneralTitle: "Général",
       s4G3: "Rien ne doit être suspendu aux fenêtres, balcons ou espaces communs",
