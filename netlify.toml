@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Each property gets its own page at /stay/<slug>, all served by property.html
+[[redirects]]
+  from = "/stay/*"
+  to = "/property.html"
+  status = 200

@@ -1,0 +1,515 @@
+{
+  "properties": [
+    {
+      "slug": "casa-cooper",
+      "name": "Casa Cooper",
+      "area": {
+        "en": "Aventuras Akumal",
+        "es": "Aventuras Akumal"
+      },
+      "bedrooms": 4,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A spacious 4-bedroom beachfront villa in Aventuras Akumal — direct beach access, right on the sand.",
+        "es": "Una espaciosa villa de 4 recámaras frente al mar en Aventuras Akumal — acceso directo a la playa, justo sobre la arena."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/01.jpg",
+          "alt": "Casa Cooper – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/02.jpg",
+          "alt": "Casa Cooper – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/03.jpg",
+          "alt": "Casa Cooper – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/04.jpg",
+          "alt": "Casa Cooper – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/05.jpg",
+          "alt": "Casa Cooper – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/06.jpg",
+          "alt": "Casa Cooper – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/07.jpg",
+          "alt": "Casa Cooper – photo 7"
+        }
+      ],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Aventuras+Akumal+Casa+Cooper",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "cruz-con-mar-311",
+      "name": "Cruz con Mar #311",
+      "area": {
+        "en": "Playa del Carmen · Mamitas Beach",
+        "es": "Playa del Carmen · Mamitas Beach"
+      },
+      "bedrooms": 1,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A luxurious one-bedroom retreat steps from Mamitas Beach, with a private jetted tub on the balcony.",
+        "es": "Un lujoso departamento de una recámara a pasos de Mamitas Beach, con tina de hidromasaje privada en el balcón."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/01.jpg",
+          "alt": "Cruz con Mar #311 – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/02.jpg",
+          "alt": "Cruz con Mar #311 – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/03.jpg",
+          "alt": "Cruz con Mar #311 – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/04.jpg",
+          "alt": "Cruz con Mar #311 – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/05.jpg",
+          "alt": "Cruz con Mar #311 – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/06.jpg",
+          "alt": "Cruz con Mar #311 – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/07.jpg",
+          "alt": "Cruz con Mar #311 – photo 7"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/08.jpg",
+          "alt": "Cruz con Mar #311 – photo 8"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/09.jpg",
+          "alt": "Cruz con Mar #311 – photo 9"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/10.jpg",
+          "alt": "Cruz con Mar #311 – photo 10"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/11.jpg",
+          "alt": "Cruz con Mar #311 – photo 11"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/12.jpg",
+          "alt": "Cruz con Mar #311 – photo 12"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/13.jpg",
+          "alt": "Cruz con Mar #311 – photo 13"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/14.jpg",
+          "alt": "Cruz con Mar #311 – photo 14"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/15.jpg",
+          "alt": "Cruz con Mar #311 – photo 15"
+        }
+      ],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Cruz+con+Mar+Playa+del+Carmen",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "cruz-con-mar-410",
+      "name": "Cruz con Mar #410",
+      "area": {
+        "en": "Playa del Carmen · Mamitas Beach",
+        "es": "Playa del Carmen · Mamitas Beach"
+      },
+      "bedrooms": 1,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A luxurious one-bedroom retreat steps from Mamitas Beach, with a private jetted tub on the balcony.",
+        "es": "Un lujoso departamento de una recámara a pasos de Mamitas Beach, con tina de hidromasaje privada en el balcón."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/01.jpg",
+          "alt": "Cruz con Mar #410 – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/02.jpg",
+          "alt": "Cruz con Mar #410 – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/03.jpg",
+          "alt": "Cruz con Mar #410 – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/04.jpg",
+          "alt": "Cruz con Mar #410 – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/05.jpg",
+          "alt": "Cruz con Mar #410 – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/06.jpg",
+          "alt": "Cruz con Mar #410 – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/07.jpg",
+          "alt": "Cruz con Mar #410 – photo 7"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/08.jpg",
+          "alt": "Cruz con Mar #410 – photo 8"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/09.jpg",
+          "alt": "Cruz con Mar #410 – photo 9"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/10.jpg",
+          "alt": "Cruz con Mar #410 – photo 10"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/11.jpg",
+          "alt": "Cruz con Mar #410 – photo 11"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/12.jpg",
+          "alt": "Cruz con Mar #410 – photo 12"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/13.jpg",
+          "alt": "Cruz con Mar #410 – photo 13"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/14.jpg",
+          "alt": "Cruz con Mar #410 – photo 14"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/15.jpg",
+          "alt": "Cruz con Mar #410 – photo 15"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/16.jpg",
+          "alt": "Cruz con Mar #410 – photo 16"
+        }
+      ],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Cruz+con+Mar+Playa+del+Carmen",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "grand-fifty-105",
+      "name": "Grand Fifty Suites #105",
+      "area": {
+        "en": "Downtown Playa del Carmen",
+        "es": "Centro de Playa del Carmen"
+      },
+      "bedrooms": 2,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A stylish two-bedroom suite on Calle 50, in the heart of downtown Playa del Carmen.",
+        "es": "Una elegante suite de dos recámaras en la Calle 50, en el corazón del centro de Playa del Carmen."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Grand+Fifty+Suites+Playa+del+Carmen",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "kokonut-401",
+      "name": "Kokonut Condos #401",
+      "area": {
+        "en": "Akumal · Grand Sirenis",
+        "es": "Akumal · Grand Sirenis"
+      },
+      "bedrooms": 2,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A spacious two-bedroom condo in the Grand Sirenis complex in Akumal, with a private jacuzzi tub.",
+        "es": "Un espacioso condominio de dos recámaras en el complejo Grand Sirenis en Akumal, con jacuzzi privado."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/02.jpg",
+          "alt": "Kokonut Condos #401 – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/03.jpg",
+          "alt": "Kokonut Condos #401 – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/01.jpg",
+          "alt": "Kokonut Condos #401 – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/04.jpg",
+          "alt": "Kokonut Condos #401 – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/05.jpg",
+          "alt": "Kokonut Condos #401 – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/06.jpg",
+          "alt": "Kokonut Condos #401 – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/07.jpg",
+          "alt": "Kokonut Condos #401 – photo 7"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/08.jpg",
+          "alt": "Kokonut Condos #401 – photo 8"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/09.jpg",
+          "alt": "Kokonut Condos #401 – photo 9"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/10.jpg",
+          "alt": "Kokonut Condos #401 – photo 10"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/11.jpg",
+          "alt": "Kokonut Condos #401 – photo 11"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/12.jpg",
+          "alt": "Kokonut Condos #401 – photo 12"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/13.jpg",
+          "alt": "Kokonut Condos #401 – photo 13"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/14.jpg",
+          "alt": "Kokonut Condos #401 – photo 14"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/15.jpg",
+          "alt": "Kokonut Condos #401 – photo 15"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/kokonut-401/16.jpg",
+          "alt": "Kokonut Condos #401 – photo 16"
+        }
+      ],
+      "mapUrl": "https://maps.app.goo.gl/dvd1hctUZFv3YFC88",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "las-palmas-s5",
+      "name": "Villas Las Palmas 1 — Unit S5",
+      "area": {
+        "en": "Puerto Aventuras",
+        "es": "Puerto Aventuras"
+      },
+      "bedrooms": 2,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A spacious two-bedroom condo on the golf course, near the entrance to Puerto Aventuras — about a 10–15 minute walk to the marina and its restaurants.",
+        "es": "Un espacioso condominio de dos recámaras sobre el campo de golf, cerca de la entrada de Puerto Aventuras — a unos 10–15 minutos caminando de la marina y sus restaurantes."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/01.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/02.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/03.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/04.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/05.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/06.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/07.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 7"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/08.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 8"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/09.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 9"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/10.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 10"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/11.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 11"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/12.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 12"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/13.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 13"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/14.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 14"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/15.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 15"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/16.jpg",
+          "alt": "Villas Las Palmas 1 — Unit S5 – photo 16"
+        }
+      ],
+      "mapUrl": "https://maps.app.goo.gl/d1HRPagaMGA3tgSR6",
+      "airbnbUrl": ""
+    },
+    {
+      "slug": "opal-304",
+      "name": "Opal Suites #304",
+      "area": {
+        "en": "Downtown Playa del Carmen",
+        "es": "Centro de Playa del Carmen"
+      },
+      "bedrooms": 1,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A cozy one-bedroom suite near Calle 38, a short walk from 5th Ave in downtown Playa del Carmen.",
+        "es": "Una acogedora suite de una recámara cerca de la Calle 38, a unos pasos de la 5ta Avenida en el centro de Playa del Carmen."
+      },
+      "amenities": {
+        "en": [],
+        "es": []
+      },
+      "photos": [
+        {
+          "src": "/photos/opal-304/01.jpg",
+          "alt": "Opal Suites #304 – photo 1"
+        },
+        {
+          "src": "/photos/opal-304/02.jpg",
+          "alt": "Opal Suites #304 – photo 2"
+        },
+        {
+          "src": "/photos/opal-304/03.jpg",
+          "alt": "Opal Suites #304 – photo 3"
+        },
+        {
+          "src": "/photos/opal-304/04.jpg",
+          "alt": "Opal Suites #304 – photo 4"
+        },
+        {
+          "src": "/photos/opal-304/05.jpg",
+          "alt": "Opal Suites #304 – photo 5"
+        },
+        {
+          "src": "/photos/opal-304/06.jpg",
+          "alt": "Opal Suites #304 – photo 6"
+        },
+        {
+          "src": "/photos/opal-304/07.jpg",
+          "alt": "Opal Suites #304 – photo 7"
+        },
+        {
+          "src": "/photos/opal-304/08.jpg",
+          "alt": "Opal Suites #304 – photo 8"
+        },
+        {
+          "src": "/photos/opal-304/09.jpg",
+          "alt": "Opal Suites #304 – photo 9"
+        },
+        {
+          "src": "/photos/opal-304/10.jpg",
+          "alt": "Opal Suites #304 – photo 10"
+        },
+        {
+          "src": "/photos/opal-304/11.jpg",
+          "alt": "Opal Suites #304 – photo 11"
+        },
+        {
+          "src": "/photos/opal-304/12.jpg",
+          "alt": "Opal Suites #304 – photo 12"
+        },
+        {
+          "src": "/photos/opal-304/13.jpg",
+          "alt": "Opal Suites #304 – photo 13"
+        },
+        {
+          "src": "/photos/opal-304/14.jpg",
+          "alt": "Opal Suites #304 – photo 14"
+        },
+        {
+          "src": "/photos/opal-304/15.jpg",
+          "alt": "Opal Suites #304 – photo 15"
+        },
+        {
+          "src": "/photos/opal-304/16.jpg",
+          "alt": "Opal Suites #304 – photo 16"
+        }
+      ],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Opal+Suites+Playa+del+Carmen",
+      "airbnbUrl": ""
+    }
+  ]
+}

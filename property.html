@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vacation Rental — At Home Riviera Maya</title>
+  <meta name="description" content="Book your stay directly with At Home Riviera Maya — vacation rentals in Playa del Carmen, Akumal and Puerto Aventuras." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FFFFFF; --off-white: #F8F6F2; --stone: #E8E3DB; --slate: #1C2B35; --slate-mid: #2E4150;
+      --gold: #B89A5A; --gold-light: #D4B878; --text: #2A2A2A; --muted: #6B6B6B;
+      --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'Inter', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--off-white); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,154,90,0.15); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--slate); text-decoration: none; letter-spacing: 0.02em; line-height: 1.2; }
+    .nav-logo span { display: block; font-size: 0.65rem; font-family: var(--font-body); font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 1px; }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-back { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); text-decoration: none; }
+    .nav-back:hover { color: var(--gold); }
+    .lang-toggle { display: flex; border: 1px solid var(--stone); overflow: hidden; }
+    .lang-btn { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; border: none; background: var(--white); color: var(--muted); }
+    .lang-btn.active { background: var(--slate); color: var(--white); }
+    .lang-btn:hover:not(.active) { background: var(--off-white); color: var(--slate); }
+
+    /* PAGE */
+    main { max-width: 1160px; margin: 0 auto; padding: 104px 5% 5rem; }
+    .crumbs { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1.25rem; }
+    .crumbs a { text-decoration: none; } .crumbs a:hover { color: var(--gold); }
+    .eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    h1 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 400; line-height: 1.12; color: var(--slate); margin-bottom: 1.5rem; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 3rem; align-items: start; }
+
+    /* GALLERY */
+    .gallery-main { position: relative; aspect-ratio: 16/10; background: linear-gradient(135deg, #0d3d4a 0%, #1a5c6e 40%, #4a9fa8 100%); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .gallery-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .gallery-empty { color: rgba(255,255,255,0.85); text-align: center; font-family: var(--font-display); font-size: 1.4rem; padding: 1rem; }
+    .gallery-empty small { display: block; font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.75; }
+    .thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; margin-top: 6px; }
+    .thumb { aspect-ratio: 4/3; border: 2px solid transparent; padding: 0; cursor: pointer; background: var(--stone); overflow: hidden; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb.active { border-color: var(--gold); }
+
+    /* DETAILS */
+    .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.75rem 0 1.5rem; }
+    .chip { background: var(--white); border: 1px solid var(--stone); padding: 0.6rem 1rem; }
+    .chip span { display: block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .chip b { font-size: 0.95rem; font-weight: 500; color: var(--slate); }
+    .about { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 640px; }
+    h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--slate); margin: 2.25rem 0 0.9rem; }
+    .amenities { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; font-size: 0.92rem; color: var(--text); }
+    .amenities li::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--gold); margin-right: 0.7rem; vertical-align: middle; }
+    .links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.75rem; font-size: 0.85rem; }
+    .links a { color: var(--slate); border-bottom: 1px solid var(--gold); text-decoration: none; padding-bottom: 2px; }
+
+    /* BOOKING CARD */
+    .book { position: sticky; top: 92px; background: var(--white); border-top: 3px solid var(--gold); padding: 1.6rem; box-shadow: 0 8px 30px rgba(28,43,53,0.08); }
+    .book h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--slate); margin-bottom: 0.25rem; }
+    .book .sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.1rem; line-height: 1.5; }
+
+    .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .cal-title { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: capitalize; color: var(--slate); }
+    .cal-nav { width: 32px; height: 32px; border: 1px solid var(--stone); background: var(--white); cursor: pointer; font-size: 1rem; color: var(--slate); line-height: 1; }
+    .cal-nav:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+    .cal-nav:disabled { opacity: 0.3; cursor: default; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-dow { font-size: 0.62rem; font-weight: 600; text-align: center; color: var(--muted); padding: 0.35rem 0; text-transform: uppercase; letter-spacing: 0.06em; }
+    .cal-day { aspect-ratio: 1; border: 0; background: var(--white); font-family: var(--font-body); font-size: 0.82rem; color: var(--slate); cursor: pointer; position: relative; }
+    .cal-day:hover:not(:disabled) { background: var(--stone); }
+    .cal-day:disabled { cursor: default; color: #b9b9b9; background: transparent; }
+    .cal-day.blocked:disabled { text-decoration: line-through; background: repeating-linear-gradient(45deg, #f3f0ea, #f3f0ea 4px, #ebe6dc 4px, #ebe6dc 8px); }
+    .cal-day.blank { background: transparent; cursor: default; }
+    .cal-day.in-range { background: rgba(184,154,90,0.22); }
+    .cal-day.sel { background: var(--slate); color: var(--white); }
+    .cal-day.sel:hover { background: var(--slate); }
+    .cal-day.today::after { content: ''; position: absolute; bottom: 4px; left: 50%; width: 4px; height: 4px; margin-left: -2px; background: var(--gold); border-radius: 50%; }
+    .cal-key { display: flex; gap: 1rem; font-size: 0.68rem; color: var(--muted); margin: 0.6rem 0 0; flex-wrap: wrap; }
+    .cal-key i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
+    .cal-status { font-size: 0.72rem; color: var(--muted); margin-top: 0.6rem; min-height: 1em; }
+    .cal-status.warn { color: #9a6a00; }
+
+    .summary { margin: 1rem 0 0.25rem; padding: 0.8rem 1rem; background: var(--off-white); font-size: 0.85rem; color: var(--slate); display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+    .summary button { background: none; border: 0; color: var(--muted); font-size: 0.72rem; text-decoration: underline; cursor: pointer; font-family: var(--font-body); }
+
+    form { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.35rem; }
+    input, select, textarea { width: 100%; padding: 0.7rem 0.8rem; border: 1px solid var(--stone); background: var(--white); font-family: var(--font-body); font-size: 0.9rem; color: var(--text); outline: none; border-radius: 0; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    input[readonly] { background: var(--off-white); }
+    textarea { resize: vertical; min-height: 70px; }
+    .phone { display: grid; grid-template-columns: 96px 1fr; gap: 0.5rem; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .submit { padding: 0.95rem 1.5rem; background: var(--slate); color: var(--white); border: 0; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .submit:hover:not(:disabled) { background: var(--gold); }
+    .submit:disabled { opacity: 0.6; cursor: default; }
+    .msg { font-size: 0.8rem; line-height: 1.5; }
+    .msg.err { color: #b3261e; }
+    .fine { font-size: 0.7rem; color: var(--muted); line-height: 1.5; }
+    .ok { display: none; text-align: center; padding: 1.5rem 0.5rem; }
+    .ok h4 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--slate); margin-bottom: 0.6rem; }
+    .ok p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    .notfound { text-align: center; padding: 6rem 1rem; }
+    .notfound a { color: var(--gold); }
+
+    footer { background: var(--slate); padding: 2.5rem 5%; text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    footer a { color: var(--gold-light); text-decoration: none; }
+
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.28); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; gap: 2rem; }
+      .book { position: static; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; } .nav-back { display: none; }
+      main { padding: 92px 4% 4rem; }
+      .amenities { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; }
+      .wa-float { right: 14px; bottom: 14px; width: 54px; height: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">At Home Riviera Maya<span data-i18n="tag">Vacation Rentals</span></a>
+    <div class="nav-right">
+      <a href="/#stay" class="nav-back" data-i18n="allRentals">All rentals</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btnES" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="app">
+    <p style="color:var(--muted);padding:3rem 0">Loading…</p>
+  </main>
+
+  <footer>© At Home Riviera Maya · <a href="/">athomerivieramaya.com</a></footer>
+
+  <a id="waFloat" class="wa-float" href="https://wa.me/529842136512" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23z"/></svg>
+  </a>
+
+  <script>
+  (function () {
+    'use strict';
+    // ── i18n ──
+    var T = {
+      en: {
+        tag: 'Vacation Rentals', allRentals: 'All rentals', home: 'Home', rentals: 'Vacation rentals',
+        bedrooms: 'Bedrooms', bedroomsOne: 'Bedroom', checkin: 'Check-in', checkout: 'Check-out', area: 'Area',
+        about: 'About this rental', amenities: 'Amenities', map: 'View on Google Maps ↗', airbnb: 'Also on Airbnb ↗',
+        photosSoon: 'Photos coming soon',
+        bookTitle: 'Request to book', bookSub: 'Pick your dates, send your request, and we’ll get back to you within one business day with the rate and next steps.',
+        legendFree: 'Available', legendTaken: 'Booked', legendSel: 'Your stay',
+        syncNote: 'This calendar syncs with our Airbnb calendar. It can take a few hours to reflect the newest bookings, so we always confirm your dates.',
+        syncWarn: 'We couldn’t load the latest availability. You can still send a request and we’ll confirm your dates.',
+        selectIn: 'Select your check-in date', selectOut: 'Now select your check-out date',
+        minNights: 'Minimum stay is {n} nights.', nights1: '1 night', nightsN: '{n} nights', clear: 'Clear dates',
+        fProperty: 'Property', fIn: 'Check-in', fOut: 'Check-out', fPick: 'Select on calendar', fGuests: 'Guests',
+        fName: 'Full name', fEmail: 'Email', fPhone: 'Phone / WhatsApp', fPhonePh: 'Phone number', fMsg: 'Message (optional)', fMsgPh: 'Anything we should know? Arrival time, celebration, questions…',
+        send: 'Send request', sending: 'Sending…',
+        fine: 'This is a request, not a confirmed booking. Nothing is charged now.',
+        okTitle: 'Request sent!', okBody: 'Thank you. We’ll reply by email or WhatsApp within one business day to confirm the rate and your dates.',
+        errDates: 'Please select your check-in and check-out dates on the calendar.',
+        errFields: 'Please check your name, email and phone number.',
+        errTaken: 'Sorry, those dates were just taken. Please choose other dates.',
+        errGeneric: 'We couldn’t send your request. Please message us on WhatsApp instead.',
+        notFound: 'We couldn’t find that rental.', backHome: 'See all rentals',
+        waMsg: 'Hi! I have a question about {p}.'
+      },
+      es: {
+        tag: 'Rentas Vacacionales', allRentals: 'Todas las rentas', home: 'Inicio', rentals: 'Rentas vacacionales',
+        bedrooms: 'Recámaras', bedroomsOne: 'Recámara', checkin: 'Entrada', checkout: 'Salida', area: 'Zona',
+        about: 'Acerca de esta propiedad', amenities: 'Amenidades', map: 'Ver en Google Maps ↗', airbnb: 'También en Airbnb ↗',
+        photosSoon: 'Fotos próximamente',
+        bookTitle: 'Solicitar reservación', bookSub: 'Elige tus fechas, envía tu solicitud y te responderemos en un día hábil con la tarifa y los siguientes pasos.',
+        legendFree: 'Disponible', legendTaken: 'Ocupado', legendSel: 'Tu estancia',
+        syncNote: 'Este calendario se sincroniza con nuestro calendario de Airbnb. Puede tardar unas horas en reflejar las reservas más recientes, por eso siempre confirmamos tus fechas.',
+        syncWarn: 'No pudimos cargar la disponibilidad más reciente. Aún puedes enviar tu solicitud y confirmaremos tus fechas.',
+        selectIn: 'Selecciona tu fecha de entrada', selectOut: 'Ahora selecciona tu fecha de salida',
+        minNights: 'La estancia mínima es de {n} noches.', nights1: '1 noche', nightsN: '{n} noches', clear: 'Borrar fechas',
+        fProperty: 'Propiedad', fIn: 'Entrada', fOut: 'Salida', fPick: 'Elige en el calendario', fGuests: 'Huéspedes',
+        fName: 'Nombre completo', fEmail: 'Correo electrónico', fPhone: 'Teléfono / WhatsApp', fPhonePh: 'Número de teléfono', fMsg: 'Mensaje (opcional)', fMsgPh: '¿Algo que debamos saber? Hora de llegada, celebración, preguntas…',
+        send: 'Enviar solicitud', sending: 'Enviando…',
+        fine: 'Esto es una solicitud, no una reservación confirmada. No se realiza ningún cargo ahora.',
+        okTitle: '¡Solicitud enviada!', okBody: 'Gracias. Te responderemos por correo o WhatsApp en un día hábil para confirmar la tarifa y tus fechas.',
+        errDates: 'Selecciona tus fechas de entrada y salida en el calendario.',
+        errFields: 'Revisa tu nombre, correo y teléfono.',
+        errTaken: 'Lo sentimos, esas fechas se acaban de ocupar. Elige otras fechas.',
+        errGeneric: 'No pudimos enviar tu solicitud. Escríbenos por WhatsApp.',
+        notFound: 'No encontramos esa propiedad.', backHome: 'Ver todas las rentas',
+        waMsg: '¡Hola! Tengo una pregunta sobre {p}.'
+      }
+    };
+
+    var DIAL = [['US','United States',1],['MX','Mexico',52],['CA','Canada',1],['GB','United Kingdom',44],['DE','Germany',49],['FR','France',33],['ES','Spain',34],['IT','Italy',39],
+      ['NL','Netherlands',31],['CH','Switzerland',41],['SE','Sweden',46],['NO','Norway',47],['DK','Denmark',45],['FI','Finland',358],['IE','Ireland',353],['PT','Portugal',351],['BE','Belgium',32],
+      ['AT','Austria',43],['PL','Poland',48],['CZ','Czechia',420],['BR','Brazil',55],['AR','Argentina',54],['CO','Colombia',57],['CL','Chile',56],['PE','Peru',51],['CR','Costa Rica',506],
+      ['PA','Panama',507],['GT','Guatemala',502],['DO','Dominican Republic',1],['PR','Puerto Rico',1],['AU','Australia',61],['NZ','New Zealand',64],['ZA','South Africa',27],['IL','Israel',972],
+      ['AE','United Arab Emirates',971],['IN','India',91],['JP','Japan',81],['KR','South Korea',82],['CN','China',86],['SG','Singapore',65],['UA','Ukraine',380],['RO','Romania',40],['HU','Hungary',36],['GR','Greece',30],['TR','Turkey',90]];
+
+    var lang = 'en';
+    try { lang = localStorage.getItem('lang') || (/^es/i.test(navigator.language || '') ? 'es' : 'en'); } catch (e) {}
+    var t = function (k, v) { var s = (T[lang] && T[lang][k]) || T.en[k] || k; if (v) for (var x in v) s = s.replace('{' + x + '}', v[x]); return s; };
+
+    var app = document.getElementById('app');
+    var PROP = null, blocked = new Set(), availOk = true;
+    var S = { checkIn: null, checkOut: null, y: 0, m: 0, hint: '' };
+    var pageLoaded = Date.now();
+
+    // ── date helpers (plain YYYY-MM-DD strings) ──
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var iso = function (y, m, d) { return y + '-' + pad(m + 1) + '-' + pad(d); };
+    var addDays = function (s, n) { var p = s.split('-'); var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + n)); return iso(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()); };
+    var TODAY = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Cancun' }).format(new Date());
+    var nightsCount = function (a, b) { var n = 0; for (var d = a; d < b && n < 400; d = addDays(d, 1)) n++; return n; };
+    var fmt = function (s) { var p = s.split('-'); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString(lang, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }); };
+    // The latest date a guest arriving on `ci` may check out: the first booked night after it (they leave that morning).
+    var maxCheckout = function (ci) { for (var d = addDays(ci, 1), i = 0; i < 400; d = addDays(d, 1), i++) if (blocked.has(d)) return d; return addDays(ci, 90); };
+
+    var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+    var L = function (o) { return (o && (o[lang] || o.en)) || ''; };
+
+    // ── boot ──
+    function slugFromUrl() {
+      var q = new URLSearchParams(location.search).get('p');
+      if (q) return q;
+      var last = location.pathname.replace(/\/+$/, '').split('/').pop();
+      return last === 'property.html' ? '' : decodeURIComponent(last);
+    }
+
+    fetch('/properties.json').then(function (r) { return r.json(); }).then(function (data) {
+      var slug = slugFromUrl();
+      PROP = (data.properties || []).find(function (p) { return p.slug === slug; });
+      if (!PROP) { renderNotFound(); return; }
+      var now = new Date(TODAY + 'T12:00:00Z');
+      S.y = now.getUTCFullYear(); S.m = now.getUTCMonth();
+      renderPage();
+      loadAvailability();
+    }).catch(function () { renderNotFound(); });
+
+    function loadAvailability() {
+      fetch('/api/availability?slug=' + encodeURIComponent(PROP.slug))
+        .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function (d) { blocked = new Set(d.blocked || []); availOk = d.icalOk !== false; })
+        .catch(function () { availOk = false; })
+        .then(function () { drawCalendar(); });
+    }
+
+    function renderNotFound() {
+      app.innerHTML = '<div class="notfound"><h1>' + esc(t('notFound')) + '</h1><p><a href="/#stay">' + esc(t('backHome')) + '</a></p></div>';
+    }
+
+    // ── page ──
+    function renderPage() {
+      var p = PROP;
+      document.title = p.name + ' — At Home Riviera Maya';
+      document.documentElement.lang = lang;
+      var beds = p.bedrooms ? '<div class="chip"><span>' + esc(t(p.bedrooms === 1 ? 'bedroomsOne' : 'bedrooms')) + '</span><b>' + esc(p.bedrooms) + '</b></div>' : '';
+      var am = (p.amenities && p.amenities[lang] || p.amenities && p.amenities.en || []);
+      var links = '';
+      if (p.mapUrl) links += '<a href="' + esc(p.mapUrl) + '" target="_blank" rel="noopener">' + esc(t('map')) + '</a>';
+      if (p.airbnbUrl) links += '<a href="' + esc(p.airbnbUrl) + '" target="_blank" rel="noopener">' + esc(t('airbnb')) + '</a>';
+
+      app.innerHTML =
+        '<p class="crumbs"><a href="/">' + esc(t('home')) + '</a> / <a href="/#stay">' + esc(t('rentals')) + '</a> / ' + esc(p.name) + '</p>' +
+        '<p class="eyebrow">' + esc(L(p.area)) + '</p><h1>' + esc(p.name) + '</h1>' +
+        '<div class="layout"><div>' +
+          '<div id="gallery"></div>' +
+          '<div class="chips">' + beds +
+            '<div class="chip"><span>' + esc(t('checkin')) + '</span><b>' + esc(p.checkIn) + '</b></div>' +
+            '<div class="chip"><span>' + esc(t('checkout')) + '</span><b>' + esc(p.checkOut) + '</b></div>' +
+            '<div class="chip"><span>' + esc(t('area')) + '</span><b>' + esc(L(p.area)) + '</b></div></div>' +
+          '<h2 style="margin-top:0">' + esc(t('about')) + '</h2><p class="about">' + esc(L(p.description)) + '</p>' +
+          (am.length ? '<h2>' + esc(t('amenities')) + '</h2><ul class="amenities">' + am.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' : '') +
+          (links ? '<div class="links">' + links + '</div>' : '') +
+        '</div>' +
+        '<aside class="book" id="book"><h3>' + esc(t('bookTitle')) + '</h3><p class="sub">' + esc(t('bookSub')) + '</p>' +
+          '<div id="cal"></div>' +
+          '<div id="summary"></div>' +
+          '<div id="formWrap">' + formHtml() + '</div>' +
+          '<div class="ok" id="ok"><h4>' + esc(t('okTitle')) + '</h4><p>' + esc(t('okBody')) + '</p></div>' +
+        '</aside></div>';
+
+      drawGallery(0);
+      drawCalendar();
+      bindForm();
+      var wa = document.getElementById('waFloat');
+      wa.href = 'https://wa.me/529842136512?text=' + encodeURIComponent(t('waMsg', { p: p.name }));
+    }
+
+    var galleryIdx = 0;
+    function drawGallery(i) {
+      galleryIdx = i;
+      var ph = PROP.photos || [], g = document.getElementById('gallery');
+      if (!ph.length) { g.innerHTML = '<div class="gallery-main"><div class="gallery-empty">' + esc(PROP.name) + '<small>' + esc(t('photosSoon')) + '</small></div></div>'; return; }
+      var cur = ph[i];
+      g.innerHTML = '<div class="gallery-main"><img src="' + esc(cur.src) + '" alt="' + esc(cur.alt || PROP.name) + '"></div>' +
+        (ph.length > 1 ? '<div class="thumbs">' + ph.map(function (x, k) { return '<button type="button" class="thumb' + (k === i ? ' active' : '') + '" data-i="' + k + '" aria-label="Photo ' + (k + 1) + '"><img src="' + esc(x.src) + '" alt="" loading="lazy"></button>'; }).join('') + '</div>' : '');
+      g.querySelectorAll('.thumb').forEach(function (b) { b.addEventListener('click', function () { drawGallery(+b.dataset.i); }); });
+    }
+
+    // ── calendar ──
+    function canCheckIn(d) { return d >= TODAY && !blocked.has(d); }
+
+    function drawCalendar() {
+      var box = document.getElementById('cal'); if (!box) return;
+      var first = new Date(Date.UTC(S.y, S.m, 1));
+      var startDow = first.getUTCDay(), daysIn = new Date(Date.UTC(S.y, S.m + 1, 0)).getUTCDate();
+      var title = first.toLocaleDateString(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' });
+      var todayD = new Date(TODAY + 'T12:00:00Z');
+      var atStart = S.y === todayD.getUTCFullYear() && S.m === todayD.getUTCMonth();
+      var monthsAhead = (S.y - todayD.getUTCFullYear()) * 12 + (S.m - todayD.getUTCMonth());
+
+      var html = '<div class="cal-head"><button type="button" class="cal-nav" id="calPrev" aria-label="Previous month"' + (atStart ? ' disabled' : '') + '>‹</button>' +
+        '<div class="cal-title">' + esc(title) + '</div>' +
+        '<button type="button" class="cal-nav" id="calNext" aria-label="Next month"' + (monthsAhead >= 17 ? ' disabled' : '') + '>›</button></div><div class="cal-grid">';
+      for (var w = 0; w < 7; w++) html += '<div class="cal-dow">' + new Date(Date.UTC(2023, 0, 1 + w)).toLocaleDateString(lang, { weekday: 'short', timeZone: 'UTC' }).slice(0, 2) + '</div>';
+      for (var b = 0; b < startDow; b++) html += '<div class="cal-day blank"></div>';
+
+      var picking = S.checkIn && !S.checkOut, maxOut = picking ? maxCheckout(S.checkIn) : null;
+      for (var d = 1; d <= daysIn; d++) {
+        var ds = iso(S.y, S.m, d), cls = 'cal-day', dis = false;
+        var isBlocked = blocked.has(ds), past = ds < TODAY;
+        if (picking) {
+          if (ds > S.checkIn) dis = ds > maxOut;
+          else dis = !canCheckIn(ds);
+        } else dis = past || isBlocked;
+        if (isBlocked) cls += ' blocked';
+        if (S.checkIn && (ds === S.checkIn || ds === S.checkOut)) cls += ' sel';
+        else if (S.checkIn && S.checkOut && ds > S.checkIn && ds < S.checkOut) cls += ' in-range';
+        if (ds === TODAY) cls += ' today';
+        // A booked night can still be picked as check-out day (guest leaves that morning).
+        var coOnly = picking && ds === maxOut && isBlocked;
+        if (coOnly) { dis = false; cls = cls.replace(' blocked', ''); }
+        html += '<button type="button" class="' + cls + '" data-d="' + ds + '"' + (dis ? ' disabled' : '') + '>' + d + '</button>';
+      }
+      html += '</div><div class="cal-key"><span><i style="background:var(--white);border:1px solid var(--stone)"></i>' + esc(t('legendFree')) + '</span>' +
+        '<span><i style="background:repeating-linear-gradient(45deg,#f3f0ea,#f3f0ea 2px,#ebe6dc 2px,#ebe6dc 4px)"></i>' + esc(t('legendTaken')) + '</span>' +
+        '<span><i style="background:var(--slate)"></i>' + esc(t('legendSel')) + '</span></div>' +
+        '<p class="cal-status' + (availOk ? '' : ' warn') + '" id="calStatus">' + esc(S.hint || (!availOk ? t('syncWarn') : (S.checkIn && !S.checkOut ? t('selectOut') : (!S.checkIn ? t('selectIn') : '')))) + '</p>' +
+        '<p class="fine" style="margin-top:.4rem">' + esc(t('syncNote')) + '</p>';
+      box.innerHTML = html;
+
+      box.querySelector('#calPrev').addEventListener('click', function () { shiftMonth(-1); });
+      box.querySelector('#calNext').addEventListener('click', function () { shiftMonth(1); });
+      box.querySelectorAll('.cal-day[data-d]').forEach(function (el) { el.addEventListener('click', function () { pick(el.dataset.d); }); });
+      drawSummary();
+    }
+
+    function shiftMonth(n) { S.m += n; if (S.m < 0) { S.m = 11; S.y--; } if (S.m > 11) { S.m = 0; S.y++; } drawCalendar(); }
+
+    function pick(d) {
+      S.hint = '';
+      var min = PROP.minNights || 1;
+      if (!S.checkIn || S.checkOut) {
+        if (canCheckIn(d)) { S.checkIn = d; S.checkOut = null; }
+      } else if (d <= S.checkIn) {
+        if (canCheckIn(d)) S.checkIn = d;
+      } else if (d <= maxCheckout(S.checkIn)) {
+        if (nightsCount(S.checkIn, d) < min) S.hint = t('minNights', { n: min });
+        else S.checkOut = d;
+      }
+      fillDates();
+      drawCalendar();
+    }
+
+    function clearDates() { S.checkIn = S.checkOut = null; S.hint = ''; fillDates(); drawCalendar(); }
+
+    function drawSummary() {
+      var el = document.getElementById('summary'); if (!el) return;
+      if (S.checkIn && S.checkOut) {
+        var n = nightsCount(S.checkIn, S.checkOut);
+        el.innerHTML = '<div class="summary"><span>' + esc(fmt(S.checkIn)) + ' → ' + esc(fmt(S.checkOut)) + '<br><b>' + esc(n === 1 ? t('nights1') : t('nightsN', { n: n })) + '</b></span><button type="button" id="clr">' + esc(t('clear')) + '</button></div>';
+        el.querySelector('#clr').addEventListener('click', clearDates);
+      } else el.innerHTML = '';
+    }
+
+    // ── form ──
+    function defaultDial() {
+      var region = ((navigator.language || 'en-US').split('-')[1] || '').toUpperCase();
+      var hit = DIAL.find(function (x) { return x[0] === region; });
+      return hit ? hit[0] : 'US';
+    }
+    function formHtml() {
+      var dd = defaultDial();
+      var opts = DIAL.map(function (x) { return '<option value="' + x[2] + '" data-iso="' + x[0] + '"' + (x[0] === dd ? ' selected' : '') + ' title="' + esc(x[1]) + '">' + x[0] + ' +' + x[2] + '</option>'; }).join('');
+      return '<form id="bf" novalidate>' +
+        '<div><label for="f-prop">' + esc(t('fProperty')) + '</label><input id="f-prop" name="property" value="' + esc(PROP.name) + '" readonly></div>' +
+        '<div class="row"><div><label for="f-in">' + esc(t('fIn')) + '</label><input id="f-in" readonly placeholder="' + esc(t('fPick')) + '"></div>' +
+        '<div><label for="f-out">' + esc(t('fOut')) + '</label><input id="f-out" readonly placeholder="' + esc(t('fPick')) + '"></div></div>' +
+        '<div class="row"><div><label for="f-name">' + esc(t('fName')) + '</label><input id="f-name" name="name" autocomplete="name" maxlength="100" required></div>' +
+        '<div><label for="f-guests">' + esc(t('fGuests')) + '</label><input id="f-guests" name="guests" type="number" min="1" max="20" value="2" inputmode="numeric" required></div></div>' +
+        '<div><label for="f-email">' + esc(t('fEmail')) + '</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>' +
+        '<div><label for="f-phone">' + esc(t('fPhone')) + '</label><div class="phone"><select id="f-dial" aria-label="Country code">' + opts + '</select>' +
+        '<input id="f-phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="20" placeholder="' + esc(t('fPhonePh')) + '" required></div></div>' +
+        '<div><label for="f-msg">' + esc(t('fMsg')) + '</label><textarea id="f-msg" name="message" maxlength="1500" placeholder="' + esc(t('fMsgPh')) + '"></textarea></div>' +
+        '<div class="hp" aria-hidden="true"><label>Website</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>' +
+        '<p class="msg err" id="fmsg" role="alert" aria-live="polite"></p>' +
+        '<button class="submit" type="submit" id="fsub">' + esc(t('send')) + '</button>' +
+        '<p class="fine">' + esc(t('fine')) + '</p></form>';
+    }
+
+    function fillDates() {
+      var a = document.getElementById('f-in'), b = document.getElementById('f-out');
+      if (a) a.value = S.checkIn ? fmt(S.checkIn) : '';
+      if (b) b.value = S.checkOut ? fmt(S.checkOut) : '';
+    }
+
+    function bindForm() {
+      var form = document.getElementById('bf'); if (!form) return;
+      fillDates();
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var msg = document.getElementById('fmsg'), btn = document.getElementById('fsub');
+        msg.textContent = '';
+        if (!S.checkIn || !S.checkOut) { msg.textContent = t('errDates'); document.getElementById('cal').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+        var name = document.getElementById('f-name').value.trim(), email = document.getElementById('f-email').value.trim();
+        var national = document.getElementById('f-phone').value.replace(/\D/g, '').replace(/^0+/, '');
+        var dial = document.getElementById('f-dial').value;
+        var guests = parseInt(document.getElementById('f-guests').value, 10);
+        if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || national.length < 6 || national.length > 14 || !(guests >= 1 && guests <= 20)) { msg.textContent = t('errFields'); return; }
+        btn.disabled = true; btn.textContent = t('sending');
+        fetch('/api/request-booking', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug: PROP.slug, name: name, email: email, phone: '+' + dial + ' ' + national, guests: guests, start: S.checkIn, end: S.checkOut,
+            message: document.getElementById('f-msg').value, lang: lang, website: document.getElementById('f-web').value, t: Date.now() - pageLoaded })
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); })
+          .then(function (res) {
+            if (res.status === 200 && res.j.ok) {
+              document.getElementById('formWrap').style.display = 'none';
+              document.getElementById('cal').style.display = 'none';
+              document.getElementById('summary').style.display = 'none';
+              document.querySelector('.book .sub').style.display = 'none';
+              var ok = document.getElementById('ok'); ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              return;
+            }
+            btn.disabled = false; btn.textContent = t('send');
+            if (res.status === 409) { msg.textContent = t('errTaken'); S.checkIn = S.checkOut = null; fillDates(); loadAvailability(); }
+            else if (res.status === 400) msg.textContent = res.j.fields && res.j.fields.indexOf('dates') > -1 ? t('errDates') : t('errFields');
+            else msg.textContent = t('errGeneric');
+          })
+          .catch(function () { btn.disabled = false; btn.textContent = t('send'); msg.textContent = t('errGeneric'); });
+      });
+    }
+
+    // ── language ──
+    window.setLang = function (l) {
+      lang = l;
+      try { localStorage.setItem('lang', l); } catch (e) {}
+      document.getElementById('btnEN').classList.toggle('active', l === 'en');
+      document.getElementById('btnES').classList.toggle('active', l === 'es');
+      document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.dataset.i18n); });
+      if (PROP) {
+        // keep what the guest already typed
+        var keep = {}; ['f-name', 'f-email', 'f-phone', 'f-msg', 'f-guests'].forEach(function (id) { var el = document.getElementById(id); if (el) keep[id] = el.value; });
+        var dial = document.getElementById('f-dial'); var dialVal = dial && dial.selectedIndex;
+        renderPage();
+        Object.keys(keep).forEach(function (id) { var el = document.getElementById(id); if (el) el.value = keep[id]; });
+        if (dialVal != null) document.getElementById('f-dial').selectedIndex = dialVal;
+      } else if (!PROP && document.querySelector('.notfound')) renderNotFound();
+    };
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+    document.getElementById('btnES').classList.toggle('active', lang === 'es');
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.dataset.i18n); });
+  })();
+  </script>
+</body>
+</html>

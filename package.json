@@ -1,0 +1,9 @@
+{
+  "name": "athomerivieramaya",
+  "private": true,
+  "type": "module",
+  "description": "At Home Riviera Maya website + booking functions",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

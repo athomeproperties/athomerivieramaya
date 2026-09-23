@@ -196,11 +196,31 @@
     .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
 
     /* ── MOBILE ── */
+    /* Stay With Us (guest-facing rentals) */
+    .stay { background: var(--off-white); }
+    .stay-header { margin-bottom: 3rem; }
+    .stay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .stay-card { display: block; text-decoration: none; color: inherit; background: var(--white); overflow: hidden; border-top: 2px solid transparent; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .stay-card:hover { border-top-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(28,43,53,0.08); }
+    .stay-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; font-family: var(--font-display); font-size: 1.3rem; color: rgba(255,255,255,0.9); background: linear-gradient(135deg, #0d3d4a 0%, #1a5c6e 45%, #4a9fa8 100%); }
+    .stay-more { display: inline-block; margin-top: 1rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+    @media (max-width: 900px) { .stay-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .stay-grid { grid-template-columns: 1fr; } }
     /* Floating WhatsApp button */
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.28); transition: transform 0.2s, box-shadow 0.2s; }
     .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
     .wa-float svg { width: 32px; height: 32px; fill: #fff; }
     @media (max-width: 600px) { .wa-float { right: 14px; bottom: 14px; width: 54px; height: 54px; } }
+    /* Keep the nav on one row at tablet/laptop widths now that there are 5 links */
+    @media (min-width: 901px) and (max-width: 1150px) { .nav-links { gap: 1.1rem; } .nav-right { gap: 1rem; } .nav-links a { white-space: nowrap; font-size: 0.72rem; } .nav-cta { padding: 0.6rem 0.9rem; white-space: nowrap; } .nav-logo { white-space: nowrap; } .nav-logo span { white-space: nowrap; } }
+    /* Tablet: switch to the hamburger menu (the full menu no longer fits) */
+    @media (max-width: 900px) {
+      nav { padding: 0 4%; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+      nav.menu-open .nav-links { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 2rem 5%; gap: 1.5rem; border-bottom: 1px solid var(--stone); }
+      nav.menu-open .nav-links a { font-size: 0.9rem; }
+    }
     @media (max-width: 900px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: 1fr; gap: 1px; }
@@ -239,6 +259,7 @@
         <li><a href="#why-us" data-en="Why Us" data-es="Por Qué Nosotros">Why Us</a></li>
         <li><a href="#how-it-works" data-en="How It Works" data-es="El Proceso">How It Works</a></li>
         <li><a href="#properties" data-en="Properties" data-es="Propiedades">Properties</a></li>
+        <li><a href="#stay" data-en="Rentals" data-es="Rentas">Rentals</a></li>
         <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
       </ul>
       <div class="lang-toggle">
@@ -458,6 +479,18 @@
   </section>
 
   <!-- TESTIMONIALS -->
+  <!-- STAY WITH US (guest-facing vacation rentals) -->
+  <section class="stay" id="stay">
+    <div class="section-inner">
+      <div class="stay-header">
+        <p class="section-eyebrow" data-en="Vacation Rentals" data-es="Rentas Vacacionales">Vacation Rentals</p>
+        <h2 class="section-headline" style="margin-bottom:0.75rem" data-en="Book your stay<br><em>direct with your hosts.</em>" data-es="Reserva tu estancia<br><em>directo con tus anfitriones.</em>">Book your stay<br><em>direct with your hosts.</em></h2>
+        <p class="section-lead" data-en="Choose a home, pick your dates on the calendar, and send us a request. We reply within one business day." data-es="Elige una propiedad, selecciona tus fechas en el calendario y envíanos una solicitud. Respondemos en un día hábil.">Choose a home, pick your dates on the calendar, and send us a request. We reply within one business day.</p>
+      </div>
+      <div class="stay-grid" id="stayGrid"></div>
+    </div>
+  </section>
+
   <section class="testimonials" id="reviews">
     <div class="section-inner">
       <p class="section-eyebrow" data-en="Guest reviews" data-es="Reseñas de Huéspedes">Guest reviews</p>
@@ -548,6 +581,7 @@
       <li><a href="#why-us" data-en="Why Us" data-es="Por Qué Nosotros">Why Us</a></li>
       <li><a href="#how-it-works" data-en="How It Works" data-es="El Proceso">How It Works</a></li>
       <li><a href="#properties" data-en="Properties" data-es="Propiedades">Properties</a></li>
+      <li><a href="#stay" data-en="Vacation Rentals" data-es="Rentas Vacacionales">Vacation Rentals</a></li>
       <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     </ul>
     <p class="footer-copy" data-en="© 2025 At Home Riviera Maya. All rights reserved." data-es="© 2025 At Home Riviera Maya. Todos los derechos reservados.">© 2025 At Home Riviera Maya. All rights reserved.</p>
@@ -610,6 +644,9 @@
         wa.setAttribute('aria-label', lang === 'es' ? 'Chatea por WhatsApp' : 'Chat on WhatsApp');
       }
 
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      renderStay();
+
       // Swap select option text
       document.querySelectorAll('select option[data-' + lang + ']').forEach(opt => {
         opt.textContent = opt.getAttribute('data-' + lang);
@@ -658,6 +695,33 @@
       el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
       observer.observe(el);
     });
+  
+    // ── Stay With Us cards (from properties.json) ──
+    let stayProps = null;
+    function renderStay() {
+      const grid = document.getElementById('stayGrid');
+      if (!grid || !stayProps) return;
+      const es = currentLang === 'es';
+      const esc = (x) => String(x == null ? '' : x).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      grid.innerHTML = stayProps.map((p) => {
+        const photo = p.photos && p.photos[0];
+        const img = photo
+          ? '<img src="' + esc(photo.src) + '" alt="' + esc(photo.alt || p.name) + '" loading="lazy" />'
+          : '<div class="stay-ph">' + esc(p.name) + '</div>';
+        const beds = p.bedrooms ? p.bedrooms + (es ? (p.bedrooms === 1 ? ' recámara' : ' recámaras') : (p.bedrooms === 1 ? ' bedroom' : ' bedrooms')) : '';
+        return '<a class="prop-card stay-card" href="/stay/' + esc(p.slug) + '">' +
+          '<div class="prop-img">' + img + '</div><div class="prop-info">' +
+          '<p class="prop-location">' + esc((es ? p.area.es : p.area.en)) + '</p>' +
+          '<h3 class="prop-name">' + esc(p.name) + '</h3>' +
+          '<p class="prop-desc">' + esc(es ? p.description.es : p.description.en) + '</p>' +
+          (beds ? '<div class="prop-tags"><span class="prop-tag">' + beds + '</span></div>' : '') +
+          '<span class="stay-more">' + (es ? 'Ver y reservar →' : 'View &amp; book →') + '</span></div></a>';
+      }).join('');
+    }
+    fetch('/properties.json').then(r => r.json()).then(d => { stayProps = d.properties || []; renderStay(); }).catch(() => {});
+
+    // Restore the visitor's language choice (also used by the property pages)
+    try { if (localStorage.getItem('lang') === 'es') setLang('es'); } catch (e) {}
   </script>
 </body>
 </html>
