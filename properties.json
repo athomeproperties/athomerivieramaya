@@ -21,6 +21,10 @@
       },
       "photos": [
         {
+          "src": "/photos/casa-cooper/cover.jpg",
+          "alt": "Casa Cooper – beachfront view with pool"
+        },
+        {
           "src": "https://res.cloudinary.com/ffngk6tu/image/upload/casa-cooper/01.jpg",
           "alt": "Casa Cooper – photo 1"
         },
