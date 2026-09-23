@@ -433,6 +433,10 @@
       },
       "photos": [
         {
+          "src": "/photos/las-palmas-s5/cover.jpg",
+          "alt": "Las Palmas S5 – pool and golf course view"
+        },
+        {
           "src": "https://res.cloudinary.com/ffngk6tu/image/upload/las-palmas-s5/01.jpg",
           "alt": "Villas Las Palmas 1 — Unit S5 – photo 1"
         },
