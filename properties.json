@@ -73,6 +73,10 @@
       },
       "photos": [
         {
+          "src": "/photos/cruz-con-mar-311/rooftop.jpg",
+          "alt": "Cruz con Mar #311 – rooftop ocean view"
+        },
+        {
           "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-311/01.jpg",
           "alt": "Cruz con Mar #311 – photo 1"
         },
@@ -156,6 +160,10 @@
         "es": []
       },
       "photos": [
+        {
+          "src": "/photos/cruz-con-mar-410/rooftop.jpg",
+          "alt": "Cruz con Mar #410 – rooftop ocean view"
+        },
         {
           "src": "https://res.cloudinary.com/ffngk6tu/image/upload/cruz-con-mar-410/01.jpg",
           "alt": "Cruz con Mar #410 – photo 1"
@@ -243,7 +251,72 @@
         "en": [],
         "es": []
       },
-      "photos": [],
+      "photos": [
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/01.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 1"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/02.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 2"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/03.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 3"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/04.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 4"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/05.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 5"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/06.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 6"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/07.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 7"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/08.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 8"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/09.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 9"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/10.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 10"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/11.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 11"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/12.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 12"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/13.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 13"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/14.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 14"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/15.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 15"
+        },
+        {
+          "src": "https://res.cloudinary.com/ffngk6tu/image/upload/grand-fifty-105/16.jpg",
+          "alt": "Grand Fifty Suites #105 – photo 16"
+        }
+      ],
       "mapUrl": "https://www.google.com/maps/search/?api=1&query=Grand+Fifty+Suites+Playa+del+Carmen",
       "airbnbUrl": ""
     },
