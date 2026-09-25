@@ -10,3 +10,10 @@
   from = "/stay/*"
   to = "/property.html"
   status = 200
+
+# Fills in the real title, description, and content for each rental
+# server-side (for search engines and AI crawlers) before the redirect
+# above hands the request to property.html. See netlify/edge-functions/property-ssr.js.
+[[edge_functions]]
+  path = "/stay/*"
+  function = "property-ssr"
