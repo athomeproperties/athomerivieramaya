@@ -591,6 +591,130 @@
       ],
       "mapUrl": "https://www.google.com/maps/search/?api=1&query=Opal+Suites+Playa+del+Carmen",
       "airbnbUrl": ""
+    },
+    {
+      "slug": "mayakoba-lazy-river",
+      "name": "Mayakoba Lazy River Townhome",
+      "area": {
+        "en": "Lagunas de Mayakoba, Playa del Carmen",
+        "es": "Lagunas de Mayakoba, Playa del Carmen"
+      },
+      "bedrooms": 3,
+      "checkIn": "3:00 PM",
+      "checkOut": "10:00 AM",
+      "minNights": 1,
+      "description": {
+        "en": "A 3-bedroom, 2-story townhome in Lagunas de Mayakoba, a gated resort-style community near Playa del Carmen. Sleeps up to 8, with the community's lazy river, rooftop hot tubs, gym, coworking space and a kids' play area all just steps away.",
+        "es": "Un townhouse de 3 recámaras y 2 niveles en Lagunas de Mayakoba, un fraccionamiento tipo resort cerca de Playa del Carmen. Capacidad para 8 personas, con el río lento del fraccionamiento, jacuzzis en la azotea, gimnasio, espacio de coworking y área de juegos infantiles a pasos de distancia."
+      },
+      "amenities": {
+        "en": [
+          "Lazy river access",
+          "Rooftop hot tubs",
+          "Gym",
+          "Coworking space",
+          "Kids' play area",
+          "Pool",
+          "Free parking (2 spaces)",
+          "Wi-Fi",
+          "Air conditioning",
+          "Washer/dryer",
+          "Fully equipped kitchen",
+          "Private patio",
+          "Gated community"
+        ],
+        "es": [
+          "Acceso al río lento",
+          "Jacuzzis en la azotea",
+          "Gimnasio",
+          "Espacio de coworking",
+          "Área de juegos infantiles",
+          "Alberca",
+          "Estacionamiento gratuito (2 autos)",
+          "Wi-Fi",
+          "Aire acondicionado",
+          "Lavadora/secadora",
+          "Cocina totalmente equipada",
+          "Patio privado",
+          "Fraccionamiento con acceso controlado"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/photos/mayakoba-lazy-river/01.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 1"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/02.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 2"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/03.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 3"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/04.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 4"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/05.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 5"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/06.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 6"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/07.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 7"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/08.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 8"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/09.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 9"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/10.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 10"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/11.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 11"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/12.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 12"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/13.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 13"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/14.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 14"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/15.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 15"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/16.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 16"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/17.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 17"
+        },
+        {
+          "src": "/photos/mayakoba-lazy-river/18.jpg",
+          "alt": "Mayakoba Lazy River Townhome – photo 18"
+        }
+      ],
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Lagunas+de+Mayakoba+Playa+del+Carmen",
+      "airbnbUrl": ""
     }
   ]
 }
