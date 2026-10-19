@@ -1,5 +1,5 @@
 /* At Home Riviera Maya — shared script for the home page and the owners page.
-   Handles: nav, EN/ES toggle, the availability search + cards, the availability chart, and the owner contact form. */
+   Handles: nav, EN/ES toggle, the availability search + cards, and the owner contact form. */
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -19,8 +19,6 @@
       clear: 'Clear dates', noneOpen: 'No homes are open for those dates. Try nearby dates, or message us on WhatsApp and we will look for options.',
       errDates: 'Choose both a check-in and a check-out date.', errOrder: 'Check-out must be after check-in.', errPast: 'Check-in cannot be in the past.',
       searchHint: 'Pick your dates to see which homes are open.',
-      free: 'Open', book: 'Booked', unk: 'Calendar not synced yet',
-      chartNote: 'Updated from our Airbnb calendars and direct bookings each time you load this page.',
       sending: 'Sending…', sent: 'Sent', errSend: 'Could not send. Please email us directly.',
       nights: 'nights'
     },
@@ -34,8 +32,6 @@
       clear: 'Borrar fechas', noneOpen: 'No hay propiedades disponibles en esas fechas. Prueba con fechas cercanas o escríbenos por WhatsApp y buscamos opciones.',
       errDates: 'Elige la fecha de llegada y la de salida.', errOrder: 'La salida debe ser después de la llegada.', errPast: 'La llegada no puede ser en el pasado.',
       searchHint: 'Elige tus fechas para ver qué propiedades están disponibles.',
-      free: 'Disponible', book: 'Ocupada', unk: 'Calendario aún sin sincronizar',
-      chartNote: 'Se actualiza con nuestros calendarios de Airbnb y las reservas directas cada vez que cargas esta página.',
       sending: 'Enviando…', sent: 'Enviado', errSend: 'No se pudo enviar. Escríbenos directamente por correo.',
       nights: 'noches'
     }
@@ -62,8 +58,7 @@
   var props = [];
   var avail = {};            // slug -> { blocked:Set, ok:boolean }
   var S = { ci: '', co: '', guests: 2, area: 'all' };
-  var DAYS = 120;
-
+  
   var areaKey = function (p) {
     var a = (p.area && p.area.en || '').toLowerCase();
     if (a.indexOf('puerto aventuras') > -1) return 'puerto';
@@ -136,39 +131,6 @@
     $$('.chip', box).forEach(function (b) { b.addEventListener('click', function () { S.area = b.dataset.k; renderChips(); renderCards(); }); });
   }
 
-  /* ---------- availability chart ---------- */
-  function renderChart() {
-    var box = $('#chart');
-    if (!box || !props.length) return;
-    var start = TODAY, i, months = '';
-    for (i = 0; i < DAYS; i++) {
-      var d = addDays(start, i), dd = parse(d);
-      if (i === 0 || dd.getUTCDate() === 1) {
-        months += '<span style="left:' + (i / DAYS * 100).toFixed(2) + '%">' + dd.toLocaleDateString(lang, { month: 'short', timeZone: 'UTC' }) + '</span>';
-      }
-    }
-    var rows = props.map(function (p) {
-      var a = avail[p.slug], cells = '';
-      for (i = 0; i < DAYS; i++) {
-        var day = addDays(start, i), cls = '';
-        if (!a || !a.ok) cls = 'u';
-        else if (a.blocked.has(day)) cls = 'b';
-        if (parse(day).getUTCDate() === 1) cls += ' m';
-        cells += '<i' + (cls ? ' class="' + cls.trim() + '"' : '') + '></i>';
-      }
-      return '<div class="crow"><a href="/stay/' + esc(p.slug) + '">' + esc(p.name) + '</a><div class="bar" style="--days:' + DAYS + '">' + cells + '</div></div>';
-    }).join('');
-
-    var pick = '';
-    if (S.ci && S.co && S.ci < addDays(start, DAYS)) {
-      var x = Math.max(0, diffDays(start, S.ci)), end = Math.min(DAYS, diffDays(start, S.co));
-      if (end > x) pick = '<div class="pick" style="--x:' + (x / DAYS).toFixed(4) + ';--w:' + ((end - x) / DAYS).toFixed(4) + '"></div>';
-    }
-    box.innerHTML = '<div class="chart-months">' + months + '</div><div class="chart-rows">' + rows + pick + '</div>' +
-      '<div class="legend"><span><i></i>' + t('free') + '</span><span><i class="b"></i>' + t('book') + '</span><span><i class="u"></i>' + t('unk') + '</span></div>' +
-      '<p class="chart-note">' + t('chartNote') + '</p>';
-  }
-
   /* ---------- search form ---------- */
   function setupSearch() {
     var form = $('#searchForm');
@@ -192,7 +154,7 @@
       note.textContent = '';
       S.ci = ci.value; S.co = co.value; S.guests = +gs.value || 2;
       try { history.replaceState(null, '', '?checkin=' + S.ci + '&checkout=' + S.co + '&guests=' + S.guests + '#homes'); } catch (x) {}
-      renderCards(); renderChart();
+      renderCards();
       var target = $('#homes'); if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     });
     // restore from URL
@@ -207,22 +169,22 @@
     S.ci = S.co = '';
     var ci = $('#ci'), co = $('#co'); if (ci) ci.value = ''; if (co) co.value = '';
     try { history.replaceState(null, '', location.pathname + '#homes'); } catch (x) {}
-    renderCards(); renderChart();
+    renderCards();
   }
 
   /* ---------- data ---------- */
   function load() {
-    if (!$('#homesGrid') && !$('#chart')) return;
+    if (!$('#homesGrid')) return;
     fetch('/properties.json').then(function (r) { return r.json(); }).then(function (d) {
       props = d.properties || [];
-      renderChips(); renderCards(); renderChart();
+      renderChips(); renderCards();
       return Promise.all(props.map(function (p) {
         return fetch('/api/availability?slug=' + encodeURIComponent(p.slug))
           .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
           .then(function (j) { avail[p.slug] = { blocked: new Set(j.blocked || []), ok: j.icalOk !== false && j.hasFeed !== false }; })
           .catch(function () { avail[p.slug] = { blocked: new Set(), ok: false }; });
       }));
-    }).then(function () { renderCards(); renderChart(); }).catch(function () {});
+    }).then(function () { renderCards(); }).catch(function () {});
   }
 
   /* ---------- language ---------- */
@@ -235,7 +197,7 @@
     var wa = $('#wa');
     if (wa) wa.href = 'https://wa.me/529842136512?text=' + encodeURIComponent(wa.getAttribute('data-msg-' + lang) || '');
     try { localStorage.setItem('lang', lang); } catch (e) {}
-    renderChips(); renderCards(); renderChart();
+    renderChips(); renderCards();
     var s = $('#searchNote'); if (s && !s.textContent) s.textContent = '';
   }
 
