@@ -136,7 +136,7 @@
   <nav>
     <a href="/" class="nav-logo">At Home Riviera Maya<span data-i18n="tag">Vacation Rentals</span></a>
     <div class="nav-right">
-      <a href="/#stay" class="nav-back" data-i18n="allRentals">All rentals</a>
+      <a href="/#homes" class="nav-back" data-i18n="allRentals">All rentals</a>
       <div class="lang-toggle">
         <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
         <button class="lang-btn" id="btnES" onclick="setLang('es')">ES</button>
@@ -258,11 +258,26 @@
         .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
         .then(function (d) { blocked = new Set(d.blocked || []); availOk = d.icalOk !== false; })
         .catch(function () { availOk = false; })
-        .then(function () { drawCalendar(); });
+        .then(function () { applyPrefill(); drawCalendar(); });
+    }
+
+    // Dates and guests chosen on the home page arrive as ?checkin=&checkout=&guests=
+    function applyPrefill() {
+      if (S.prefilled) return; S.prefilled = true;
+      var q = new URLSearchParams(location.search), a = q.get('checkin'), b = q.get('checkout');
+      var g = parseInt(q.get('guests'), 10), gi = document.getElementById('f-guests');
+      if (gi && g >= 1 && g <= 20) gi.value = String(g);
+      var okFmt = /^\d{4}-\d{2}-\d{2}$/;
+      if (!a || !b || !okFmt.test(a) || !okFmt.test(b) || b <= a || a < TODAY) return;
+      if (nightsCount(a, b) < (PROP.minNights || 1)) return;
+      for (var d = a; d < b; d = addDays(d, 1)) if (blocked.has(d)) return;
+      S.checkIn = a; S.checkOut = b;
+      var m = new Date(a + 'T12:00:00Z'); S.y = m.getUTCFullYear(); S.m = m.getUTCMonth();
+      fillDates();
     }
 
     function renderNotFound() {
-      app.innerHTML = '<div class="notfound"><h1>' + esc(t('notFound')) + '</h1><p><a href="/#stay">' + esc(t('backHome')) + '</a></p></div>';
+      app.innerHTML = '<div class="notfound"><h1>' + esc(t('notFound')) + '</h1><p><a href="/#homes">' + esc(t('backHome')) + '</a></p></div>';
     }
 
     // ── page ──
@@ -277,7 +292,7 @@
       if (p.airbnbUrl) links += '<a href="' + esc(p.airbnbUrl) + '" target="_blank" rel="noopener">' + esc(t('airbnb')) + '</a>';
 
       app.innerHTML =
-        '<p class="crumbs"><a href="/">' + esc(t('home')) + '</a> / <a href="/#stay">' + esc(t('rentals')) + '</a> / ' + esc(p.name) + '</p>' +
+        '<p class="crumbs"><a href="/">' + esc(t('home')) + '</a> / <a href="/#homes">' + esc(t('rentals')) + '</a> / ' + esc(p.name) + '</p>' +
         '<p class="eyebrow">' + esc(L(p.area)) + '</p><h1>' + esc(p.name) + '</h1>' +
         '<div class="layout"><div>' +
           '<div id="gallery"></div>' +

@@ -8,6 +8,7 @@
         "es": "Aventuras Akumal"
       },
       "bedrooms": 4,
+      "maxGuests": 12,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -64,6 +65,7 @@
         "es": "Playa del Carmen · Mamitas Beach"
       },
       "bedrooms": 1,
+      "maxGuests": 4,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -152,6 +154,7 @@
         "es": "Playa del Carmen · Mamitas Beach"
       },
       "bedrooms": 1,
+      "maxGuests": 4,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -244,6 +247,7 @@
         "es": "Centro de Playa del Carmen"
       },
       "bedrooms": 2,
+      "maxGuests": 4,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -332,6 +336,7 @@
         "es": "Akumal · Grand Sirenis"
       },
       "bedrooms": 2,
+      "maxGuests": 6,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -420,6 +425,7 @@
         "es": "Puerto Aventuras"
       },
       "bedrooms": 2,
+      "maxGuests": 6,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -512,6 +518,7 @@
         "es": "Centro de Playa del Carmen"
       },
       "bedrooms": 1,
+      "maxGuests": 2,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,
@@ -600,6 +607,7 @@
         "es": "Lagunas de Mayakoba, Playa del Carmen"
       },
       "bedrooms": 3,
+      "maxGuests": 8,
       "checkIn": "3:00 PM",
       "checkOut": "10:00 AM",
       "minNights": 1,

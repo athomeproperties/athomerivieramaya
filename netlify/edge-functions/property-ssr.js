@@ -80,7 +80,7 @@ export function renderSSR(html, p, origin) {
   if (p.airbnbUrl) links += `<a href="${esc(p.airbnbUrl)}" target="_blank" rel="noopener">${esc(T.airbnb)}</a>`;
 
   const appHtml =
-    `<p class="crumbs"><a href="/">${esc(T.home)}</a> / <a href="/#stay">${esc(T.rentals)}</a> / ${esc(name)}</p>` +
+    `<p class="crumbs"><a href="/">${esc(T.home)}</a> / <a href="/#homes">${esc(T.rentals)}</a> / ${esc(name)}</p>` +
     `<p class="eyebrow">${esc(areaText)}</p><h1>${esc(name)}</h1>` +
     `<div class="layout"><div>` +
     `<div id="gallery">${galleryHtml}</div>` +

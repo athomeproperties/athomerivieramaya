@@ -1,7 +1,7 @@
 # At Home Riviera Maya
 
-> Vacation rental property management in Mexico's Riviera Maya, serving
-> property owners in Playa del Carmen, Akumal, and Puerto Aventuras.
+> Vacation rentals you can book direct, and vacation rental property management,
+> in Mexico's Riviera Maya (Playa del Carmen, Akumal, and Puerto Aventuras).
 > Bilingual, family-run, operating since 2011.
 
 ## What we do
@@ -21,6 +21,6 @@ Phone / WhatsApp: +52 (984) 213-6512
 Email: athomerivieramaya@gmail.com
 
 ## Key pages
-- Why Us: https://athomerivieramaya.com/#why-us
-- How It Works: https://athomerivieramaya.com/#how-it-works
-- Contact: https://athomerivieramaya.com/#contact
+- Vacation rentals (check availability and book direct): https://athomerivieramaya.com/
+- Property management for owners: https://athomerivieramaya.com/owners
+- Individual homes: https://athomerivieramaya.com/stay/<home-name> (see sitemap.xml)

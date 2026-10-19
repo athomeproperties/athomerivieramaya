@@ -17,3 +17,9 @@
 [[edge_functions]]
   path = "/stay/*"
   function = "property-ssr"
+
+# Property owners page (owners.html) at a clean URL
+[[redirects]]
+  from = "/owners"
+  to = "/owners.html"
+  status = 200

@@ -1,666 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>At Home Riviera Maya — Luxury Property Management</title>
-  <meta name="description" content="Premium vacation rental management in the Riviera Maya. Serving Playa del Carmen, Akumal & Puerto Aventuras. 15+ years of local expertise." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --white:      #FFFFFF;
-      --off-white:  #F8F6F2;
-      --stone:      #E8E3DB;
-      --slate:      #1C2B35;
-      --slate-mid:  #2E4150;
-      --gold:       #B89A5A;
-      --gold-light: #D4B878;
-      --text:       #2A2A2A;
-      --muted:      #6B6B6B;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Inter', system-ui, sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 72px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(184,154,90,0.15);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--slate); text-decoration: none; letter-spacing: 0.02em; line-height: 1.2; }
-    .nav-logo span { display: block; font-size: 0.65rem; font-family: var(--font-body); font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 1px; }
-    .nav-right { display: flex; align-items: center; gap: 2rem; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--slate); color: var(--white); padding: 0.6rem 1.4rem; text-decoration: none; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--gold); }
-
-    /* Language toggle */
-    .lang-toggle {
-      display: flex; align-items: center; gap: 0;
-      border: 1px solid var(--stone); overflow: hidden;
-    }
-    .lang-btn {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
-      padding: 0.35rem 0.65rem; cursor: pointer; border: none;
-      background: var(--white); color: var(--muted);
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-btn.active { background: var(--slate); color: var(--white); }
-    .lang-btn:hover:not(.active) { background: var(--off-white); color: var(--slate); }
-
-    .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .nav-mobile-toggle span { display: block; width: 22px; height: 1.5px; background: var(--slate); margin: 5px 0; }
-
-    /* ── HERO ── */
-    .hero { position: relative; height: 100vh; min-height: 640px; padding-top: 96px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0d3d4a 0%, #1a5c6e 35%, #2a7a85 60%, #4a9fa8 100%); }
-    .hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 40%; opacity: 0; transition: opacity 1.2s ease; }
-    .hero-img.loaded { opacity: 1; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12,35,42,0.55) 0%, rgba(12,35,42,0.35) 50%, rgba(12,35,42,0.6) 100%); }
-    .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 5%; max-width: 860px; }
-    .hero-eyebrow { font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; }
-    .hero-headline { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 1.75rem; letter-spacing: -0.01em; }
-    .hero-headline em { font-style: italic; font-weight: 300; }
-    .hero-sub { font-size: clamp(0.95rem, 1.5vw, 1.1rem); font-weight: 300; color: rgba(255,255,255,0.82); line-height: 1.7; max-width: 520px; margin: 0 auto 2.5rem; }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-ghost { display: inline-block; padding: 0.9rem 2.2rem; border: 1px solid rgba(255,255,255,0.5); color: var(--white); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
-    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-    .btn-primary { display: inline-block; padding: 0.9rem 2.2rem; background: var(--gold); color: var(--white); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-    /* ── SECTION SCAFFOLDING ── */
-    section { padding: 6rem 5%; }
-    .section-inner { max-width: 1120px; margin: 0 auto; }
-    .section-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .section-headline { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--slate); margin-bottom: 1.25rem; }
-    .section-headline em { font-style: italic; }
-    .section-lead { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
-
-    /* ── STATS BAND ── */
-    .stats-band { background: var(--slate); padding: 3.5rem 5%; }
-    .stats-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-    .stat-number { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1; }
-    .stat-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.6rem; }
-
-    /* ── WHY US ── */
-    .why-card:nth-child(odd)  { background: var(--white); }
-    .why-card:nth-child(even) { background: var(--stone); }
-    .how-step:nth-child(odd)  { background: var(--white); padding-left: 1rem; padding-right: 1rem; }
-    .how-step:nth-child(even) { background: var(--stone); padding-left: 1rem; padding-right: 1rem; }
-    .why-us { background: var(--off-white); }
-    .why-us .section-eyebrow { color: var(--gold); }
-    .why-us .section-headline { color: var(--slate); }
-    .why-us .section-lead { color: var(--muted); }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 4rem; }
-    .why-card { background: var(--white); padding: 2.75rem 2.25rem; border-top: 2px solid transparent; transition: border-color 0.3s, transform 0.3s; }
-    .why-card:hover { border-top-color: var(--gold); transform: translateY(-3px); }
-    .why-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
-    .why-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
-    .why-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--slate); margin-bottom: 0.75rem; line-height: 1.25; }
-    .why-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
-
-    /* ── HOW IT WORKS ── */
-    .how-it-works { background: var(--off-white); }
-    .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
-    .how-steps { display: flex; flex-direction: column; }
-    .how-step { display: flex; gap: 1.75rem; padding: 2rem 0; border-bottom: 1px solid var(--stone); }
-    .how-step:first-child { padding-top: 2rem; }
-    .how-step:last-child { border-bottom: none; }
-    .step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1; flex-shrink: 0; width: 2rem; transition: color 0.3s; }
-    .how-step:hover .step-num { color: var(--gold); }
-    .step-body h3 { font-size: 1rem; font-weight: 600; color: var(--slate); margin-bottom: 0.5rem; }
-    .step-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-    .how-visual { position: sticky; top: 110px; background: var(--slate); padding: 3rem; color: var(--white); }
-    .how-visual-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-    .how-visual h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; line-height: 1.35; margin-bottom: 1.5rem; }
-    .how-visual-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-    .how-visual-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
-    .check { color: var(--gold); font-size: 1rem; line-height: 1.5; flex-shrink: 0; }
-    .how-visual-cta { display: inline-block; margin-top: 2rem; padding: 0.8rem 1.75rem; border: 1px solid var(--gold); color: var(--gold); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; }
-    .how-visual-cta:hover { background: var(--gold); color: var(--white); }
-
-    /* ── PROPERTIES ── */
-
-    /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--slate); padding: 6rem 5%; }
-    .testimonials .section-headline { color: var(--white); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 4rem; background: rgba(255,255,255,0.08); }
-    .testi-card { background: var(--slate); padding: 2.5rem; }
-    .testi-quote { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 1.75rem; }
-    .testi-quote::before { content: '\201C'; color: var(--gold); font-size: 2rem; line-height: 0; vertical-align: -0.4em; margin-right: 0.15em; }
-    .testi-author { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); }
-
-    /* ── LOCATIONS ── */
-    .locations { background: var(--white); }
-    .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-    .location-cell { background: var(--white); text-align: center; overflow: hidden; position: relative; transition: transform 0.3s; }
-    .location-cell:hover { transform: translateY(-4px); }
-    .location-img { height: 220px; overflow: hidden; }
-    .location-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .location-cell:hover .location-img img { transform: scale(1.05); }
-    .location-label { padding: 1.25rem; background: var(--white); border-top: 2px solid var(--stone); }
-    .location-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin: 0 auto 0.6rem; }
-    .location-name { font-size: 0.85rem; font-weight: 600; color: var(--slate); letter-spacing: 0.05em; }
-
-    /* ── CONTACT ── */
-    .contact-section { background: var(--off-white); }
-    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
-    .contact-info h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--slate); margin-bottom: 1rem; line-height: 1.3; }
-    .contact-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
-    .contact-detail { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-item { display: flex; gap: 0.75rem; align-items: center; }
-    .contact-item svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; flex-shrink: 0; }
-    .contact-item a { font-size: 0.9rem; color: var(--slate-mid); text-decoration: none; }
-    .contact-item a:hover { color: var(--gold); }
-    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-field label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
-    .form-field input, .form-field textarea, .form-field select { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--stone); background: var(--white); font-family: var(--font-body); font-size: 0.9rem; color: var(--text); outline: none; appearance: none; transition: border-color 0.2s; }
-    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
-    .form-field textarea { resize: vertical; min-height: 120px; }
-    .form-submit { display: inline-block; padding: 0.9rem 2rem; background: var(--slate); color: var(--white); border: none; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
-    .form-submit:hover { background: var(--gold); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--slate); padding: 3rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
-    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); }
-    .footer-logo span { display: block; font-size: 0.6rem; font-family: var(--font-body); letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
-    .footer-links { display: flex; gap: 2rem; list-style: none; }
-    .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
-
-    /* ── MOBILE ── */
-    .prop-card { background: var(--white); overflow: hidden; }
-    .prop-img { height: 240px; overflow: hidden; position: relative; background: var(--stone); }
-    .prop-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .prop-card:hover .prop-img img { transform: scale(1.04); }
-    .prop-info { padding: 1.5rem; }
-    .prop-location { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-    .prop-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--slate); margin-bottom: 0.5rem; }
-    .prop-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-    .prop-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1rem; }
-    .prop-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--stone); color: var(--slate-mid); padding: 0.3rem 0.6rem; }
-    /* Stay With Us (guest-facing rentals) */
-    .stay { background: var(--off-white); }
-    .stay-header { margin-bottom: 3rem; }
-    .stay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .stay-card { display: block; text-decoration: none; color: inherit; background: var(--white); overflow: hidden; border-top: 2px solid transparent; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
-    .stay-card:hover { border-top-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(28,43,53,0.08); }
-    .stay-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; font-family: var(--font-display); font-size: 1.3rem; color: rgba(255,255,255,0.9); background: linear-gradient(135deg, #0d3d4a 0%, #1a5c6e 45%, #4a9fa8 100%); }
-    .stay-more { display: inline-block; margin-top: 1rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
-    @media (max-width: 900px) { .stay-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .stay-grid { grid-template-columns: 1fr; } }
-    /* Floating WhatsApp button */
-    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.28); transition: transform 0.2s, box-shadow 0.2s; }
-    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-    .wa-float svg { width: 32px; height: 32px; fill: #fff; }
-    @media (max-width: 600px) { .wa-float { right: 14px; bottom: 14px; width: 54px; height: 54px; } }
-    /* Keep the nav on one row at tablet/laptop widths now that there are 5 links */
-    @media (min-width: 901px) and (max-width: 1150px) { .nav-links { gap: 1.1rem; } .nav-right { gap: 1rem; } .nav-links a { white-space: nowrap; font-size: 0.72rem; } .nav-cta { padding: 0.6rem 0.9rem; white-space: nowrap; } .nav-logo { white-space: nowrap; } .nav-logo span { white-space: nowrap; } }
-    /* Tablet: switch to the hamburger menu (the full menu no longer fits) */
-    @media (max-width: 900px) {
-      nav { padding: 0 4%; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-mobile-toggle { display: block; }
-      nav.menu-open .nav-links { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 2rem 5%; gap: 1.5rem; border-bottom: 1px solid var(--stone); }
-      nav.menu-open .nav-links a { font-size: 0.9rem; }
-    }
-    @media (max-width: 900px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: 1fr; gap: 1px; }
-      .how-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .how-visual { position: static; }
-      .testimonials-grid { grid-template-columns: 1fr; gap: 1px; }
-      .locations-grid { grid-template-columns: 1fr !important; }
-      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-      footer { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 600px) {
-      nav { padding: 0 4%; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-mobile-toggle { display: block; }
-      nav.menu-open .nav-links { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 2rem 5%; gap: 1.5rem; border-bottom: 1px solid var(--stone); }
-      nav.menu-open .nav-links a { font-size: 0.9rem; }
-      section { padding: 4rem 4%; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-      .locations-grid { grid-template-columns: 1fr !important; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>At Home Riviera Maya | Vacation Rentals in Playa del Carmen, Akumal &amp; Puerto Aventuras</title>
+  <meta name="description" content="Book vacation rentals in Playa del Carmen, Akumal and Puerto Aventuras direct with your hosts. Check live availability, then send a request. Run by a local, bilingual team.">
+  <link rel="canonical" href="https://athomerivieramaya.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="At Home Riviera Maya | Book direct with your hosts">
+  <meta property="og:description" content="Vacation rentals in Playa del Carmen, Akumal and Puerto Aventuras. Check live availability and book direct.">
+  <meta property="og:url" content="https://athomerivieramaya.com/">
+  <meta property="og:image" content="https://athomerivieramaya.com/photos/casa-cooper/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LodgingBusiness","name":"At Home Riviera Maya","url":"https://athomerivieramaya.com/","image":"https://athomerivieramaya.com/photos/casa-cooper/cover.jpg","telephone":"+52 984 213 6512","email":"athomerivieramaya@gmail.com","description":"Vacation rentals and vacation rental management in Playa del Carmen, Akumal and Puerto Aventuras, Quintana Roo, Mexico.","areaServed":["Playa del Carmen","Akumal","Puerto Aventuras"],"address":{"@type":"PostalAddress","addressLocality":"Playa del Carmen","addressRegion":"Quintana Roo","addressCountry":"MX"},"knowsLanguage":["en","es"]}
+  </script>
 </head>
 <body>
+  <a class="skip" href="#homes">Skip to the homes</a>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <a href="#" class="nav-logo">At Home Riviera Maya<span data-en="Property Management" data-es="Administración de Propiedades">Property Management</span></a>
-    <div class="nav-right">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#why-us" data-en="Why Us" data-es="Por Qué Nosotros">Why Us</a></li>
-        <li><a href="#how-it-works" data-en="How It Works" data-es="El Proceso">How It Works</a></li>
-        <li><a href="#stay" data-en="Rentals" data-es="Rentas">Rentals</a></li>
-        <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+  <header class="nav" id="nav">
+    <a class="logo" href="/">At Home Riviera Maya</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navRight"><span></span><span></span><span></span></button>
+    <div class="nav-right" id="navRight">
+      <ul class="nav-links">
+        <li><a href="#homes" data-en="Our homes" data-es="Nuestras propiedades">Our homes</a></li>
+        <li><a href="#availability" data-en="Availability" data-es="Disponibilidad">Availability</a></li>
+        <li><a href="#why-direct" data-en="Why book direct" data-es="Por qué reservar directo">Why book direct</a></li>
+        <li><a href="/owners" data-en="For property owners" data-es="Para propietarios">For property owners</a></li>
       </ul>
-      <div class="lang-toggle">
-        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" id="btnES" onclick="setLang('es')">ES</button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-l="en" aria-pressed="true">EN</button>
+        <button type="button" data-l="es" aria-pressed="false">ES</button>
       </div>
-      <a href="#contact" class="nav-cta" data-en="Schedule a Consultation" data-es="Agenda una Consulta">Schedule a Consultation</a>
+      <a class="nav-cta" href="#search" data-en="Check dates" data-es="Ver fechas">Check dates</a>
     </div>
-    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-img" id="heroBg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow" data-en="Riviera Maya's Premier Property Management" data-es="Administración de Propiedades Premium en la Riviera Maya">Riviera Maya's Premier Property Management</p>
-      <h1 class="hero-headline" data-en="Your property,<br><em>expertly cared for.</em>" data-es="Su propiedad,<br><em>en manos expertas.</em>">Your property,<br><em>expertly cared for.</em></h1>
-      <p class="hero-sub" data-en="We handle everything — from guest experience to maintenance — so you earn more from your property without the stress." data-es="Nos encargamos de todo — desde la experiencia de sus huéspedes hasta el mantenimiento — para que obtenga más de su propiedad sin preocupaciones.">We handle everything — from guest experience to maintenance — so you earn more from your property without the stress.</p>
-      <div class="hero-actions">
-        <a href="#how-it-works" class="btn-ghost" data-en="See How It Works" data-es="Conoce el Proceso">See How It Works</a>
-        <a href="#contact" class="btn-ghost" data-en="Own a property? List it with us" data-es="¿Tiene una propiedad? Regístrela con nosotros">Own a property? List it with us</a>
+  <main>
+    <div class="hero">
+      <div class="hero-img" role="img" aria-label="Beachfront villa with a pool on the Riviera Maya coast"></div>
+      <div class="hero-content">
+        <h1 data-en="Stay in the Riviera Maya, booked direct with your hosts." data-es="Hospédate en la Riviera Maya, reservando directo con tus anfitriones.">Stay in the Riviera Maya, booked direct with your hosts.</h1>
+        <p class="sub" data-en="Homes in Playa del Carmen, Akumal and Puerto Aventuras. Pick your dates, see what is open, and message us directly." data-es="Casas y departamentos en Playa del Carmen, Akumal y Puerto Aventuras. Elige tus fechas, mira qué hay disponible y escríbenos directamente.">Homes in Playa del Carmen, Akumal and Puerto Aventuras. Pick your dates, see what is open, and message us directly.</p>
       </div>
     </div>
-  </section>
 
-  <!-- STATS BAND -->
-  <div class="stats-band">
-    <div class="stats-inner">
-      <div><div class="stat-number">20+</div><div class="stat-label" data-en="Years in the Riviera Maya" data-es="Años en la Riviera Maya">Years in the Riviera Maya</div></div>
-      <div><div class="stat-number">3</div><div class="stat-label" data-en="Destination Communities" data-es="Comunidades Destino">Destination Communities</div></div>
-      <div><div class="stat-number">100%</div><div class="stat-label" data-en="Owner Transparency" data-es="Transparencia Total">Owner Transparency</div></div>
-      <div><div class="stat-number">AMPI</div><div class="stat-label" data-en="Certified Member" data-es="Miembro Certificado">Certified Member</div></div>
+    <div class="search-wrap wrap" id="search">
+      <form class="search" id="searchForm" novalidate>
+        <div class="field"><label for="ci" data-en="Check-in" data-es="Llegada">Check-in</label><input type="date" id="ci" name="checkin"></div>
+        <div class="field"><label for="co" data-en="Check-out" data-es="Salida">Check-out</label><input type="date" id="co" name="checkout"></div>
+        <div class="field guests"><label for="guests" data-en="Guests" data-es="Huéspedes">Guests</label>
+          <select id="guests" name="guests">
+            <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+          </select>
+        </div>
+        <button class="btn" type="submit" data-en="Check availability" data-es="Ver disponibilidad">Check availability</button>
+        <p class="search-note" id="searchNote" role="status"></p>
+      </form>
     </div>
-  </div>
 
-  <!-- WHY US -->
-  <section class="why-us" id="why-us">
-    <div class="section-inner">
-      <p class="section-eyebrow" data-en="Why property owners choose us" data-es="Por qué los propietarios nos eligen">Why property owners choose us</p>
-      <h2 class="section-headline" data-en="Local roots.<br><em>International results.</em>" data-es="Raíces locales.<br><em>Resultados internacionales.</em>">Local roots.<br><em>International results.</em></h2>
-      <p class="section-lead" data-en="We've been managing vacation properties in the Riviera Maya since 2011, with over two decades of living and working here. That depth of local knowledge is what sets your property apart." data-es="Administramos propiedades vacacionales en la Riviera Maya desde 2011, con más de dos décadas viviendo y trabajando aquí. Ese conocimiento local profundo es lo que distingue su propiedad.">We've been managing vacation properties in the Riviera Maya since 2011, with over two decades of living and working here. That depth of local knowledge is what sets your property apart.</p>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <h3 data-en="Hands-On Property Care" data-es="Cuidado Directo de su Propiedad">Hands-On Property Care</h3>
-          <p data-en="We personally oversee every property — regular inspections, trusted maintenance teams, and meticulous preparation before every guest arrival." data-es="Supervisamos personalmente cada propiedad — inspecciones regulares, equipos de mantenimiento de confianza y preparación meticulosa antes de cada llegada de huéspedes.">We personally oversee every property — regular inspections, trusted maintenance teams, and meticulous preparation before every guest arrival.</p>
+    <section id="homes" aria-labelledby="homesTitle">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 id="homesTitle" data-en="Our homes" data-es="Nuestras propiedades">Our homes</h2>
+            <p class="result-line" id="resultLine" role="status" aria-live="polite"></p>
+          </div>
         </div>
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <h3 data-en="Maximized Rental Income" data-es="Ingresos de Renta Maximizados">Maximized Rental Income</h3>
-          <p data-en="Strategic pricing, multi-platform visibility, and a loyal network of repeat guests — we work to keep your property occupied and profitable year-round." data-es="Precios estratégicos, visibilidad en múltiples plataformas y una red leal de huéspedes recurrentes — trabajamos para mantener su propiedad ocupada y rentable todo el año.">Strategic pricing, multi-platform visibility, and a loyal network of repeat guests — we work to keep your property occupied and profitable year-round.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <h3 data-en="Bilingual, Always Available" data-es="Bilingüe, Siempre Disponible">Bilingual, Always Available</h3>
-          <p data-en="Fluent in English and Spanish, we're the trusted bridge between your international guests and the local community — available when it matters most." data-es="Con dominio del inglés y español, somos el puente de confianza entre sus huéspedes internacionales y la comunidad local — disponibles cuando más se necesita.">Fluent in English and Spanish, we're the trusted bridge between your international guests and the local community — available when it matters most.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3 data-en="Full Transparency" data-es="Transparencia Total">Full Transparency</h3>
-          <p data-en="Regular owner reports, clear accounting, and direct communication. You always know exactly how your property is performing — no surprises." data-es="Reportes periódicos para propietarios, contabilidad clara y comunicación directa. Siempre sabrá exactamente cómo está rindiendo su propiedad — sin sorpresas.">Regular owner reports, clear accounting, and direct communication. You always know exactly how your property is performing — no surprises.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3 data-en="Curated Guest Experience" data-es="Experiencia de Huésped Curada">Curated Guest Experience</h3>
-          <p data-en="We screen guests carefully and provide a white-glove experience that earns five-star reviews and keeps your property's reputation impeccable." data-es="Seleccionamos cuidadosamente a los huéspedes y brindamos una experiencia de primera que genera reseñas de cinco estrellas y mantiene la reputación de su propiedad impecable.">We screen guests carefully and provide a white-glove experience that earns five-star reviews and keeps your property's reputation impeccable.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <h3 data-en="International Marketing Reach" data-es="Alcance de Marketing Internacional">International Marketing Reach</h3>
-          <p data-en="Your property reaches English- and Spanish-speaking markets through professional photography, premium listings, and targeted digital promotion." data-es="Su propiedad llega a mercados de habla inglesa y española a través de fotografía profesional, listados premium y promoción digital dirigida.">Your property reaches English- and Spanish-speaking markets through professional photography, premium listings, and targeted digital promotion.</p>
+        <div class="chips" id="areaChips" role="group" aria-label="Filter by area"></div>
+        <div class="grid" id="homesGrid"></div>
+      </div>
+    </section>
+
+    <section class="chart-sec" id="availability" aria-labelledby="availTitle">
+      <div class="wrap">
+        <h2 id="availTitle" data-en="The next four months, at a glance" data-es="Los próximos cuatro meses, de un vistazo">The next four months, at a glance</h2>
+        <p class="lead" data-en="Every home on one calendar. Light bars are open nights. Choose your dates above and your stay is outlined here." data-es="Todas las propiedades en un solo calendario. Las barras claras son noches disponibles. Elige tus fechas arriba y tu estancia aparece marcada aquí.">Every home on one calendar. Light bars are open nights. Choose your dates above and your stay is outlined here.</p>
+        <div class="chart" id="chart"></div>
+      </div>
+    </section>
+
+    <section id="why-direct" aria-labelledby="whyTitle">
+      <div class="wrap">
+        <h2 id="whyTitle" data-en="Book direct and deal with the people who look after the home." data-es="Reserva directo y trata con las personas que cuidan la propiedad." style="max-width:20ch">Book direct and deal with the people who look after the home.</h2>
+        <div class="three">
+          <div>
+            <h3 data-en="Message us on WhatsApp" data-es="Escríbenos por WhatsApp">Message us on WhatsApp</h3>
+            <p data-en="Ask about dates, parking or the building before you book. We answer ourselves, in English or Spanish." data-es="Pregunta por fechas, estacionamiento o el edificio antes de reservar. Respondemos nosotros mismos, en español o inglés.">Ask about dates, parking or the building before you book. We answer ourselves, in English or Spanish.</p>
+          </div>
+          <div>
+            <h3 data-en="A guidebook for every stay" data-es="Una guía para cada estancia">A guidebook for every stay</h3>
+            <p data-en="Wi-Fi, check-in, house rules, plus our favorite restaurants and grocery stores, all on one page you open on your phone." data-es="Wi-Fi, check-in, reglas de la casa, además de nuestros restaurantes y supermercados favoritos, todo en una página que abres en tu teléfono.">Wi-Fi, check-in, house rules, plus our favorite restaurants and grocery stores, all on one page you open on your phone.</p>
+          </div>
+          <div>
+            <h3 data-en="Extras arranged before you land" data-es="Extras listos antes de que llegues">Extras arranged before you land</h3>
+            <p data-en="We can stock the fridge before you arrive and add a mid-stay clean. Mention it when you send your request." data-es="Podemos surtir el refrigerador antes de tu llegada y agregar una limpieza a mitad de la estancia. Menciónalo al enviar tu solicitud.">We can stock the fridge before you arrive and add a mid-stay clean. Mention it when you send your request.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- LOCATIONS -->
-  <section class="locations" id="locations">
-    <div class="section-inner">
-      <p class="section-eyebrow" data-en="Where we operate" data-es="Dónde operamos">Where we operate</p>
-      <h2 class="section-headline" data-en="Across the <em>Riviera Maya</em>" data-es="A lo largo de la <em>Riviera Maya</em>">Across the <em>Riviera Maya</em></h2>
-      <div class="locations-grid">
-        <div class="location-cell">
-          <div class="location-img"><img src="playa_del_carmen.jpg" alt="Playa del Carmen" loading="lazy" /></div>
-          <div class="location-label"><div class="location-dot"></div><div class="location-name">Playa del Carmen</div></div>
-        </div>
-        <div class="location-cell">
-          <div class="location-img"><img src="akumal-turtles.jpg" alt="Akumal" loading="lazy" /></div>
-          <div class="location-label"><div class="location-dot"></div><div class="location-name">Akumal</div></div>
-        </div>
-        <div class="location-cell">
-          <div class="location-img"><img src="puerto_aventuras.jpg" alt="Puerto Aventuras" loading="lazy" /></div>
-          <div class="location-label"><div class="location-dot"></div><div class="location-name">Puerto Aventuras</div></div>
+    <section class="reviews" aria-labelledby="revTitle">
+      <div class="wrap">
+        <h2 id="revTitle" data-en="What guests say" data-es="Lo que dicen los huéspedes">What guests say</h2>
+        <div class="quotes">
+          <blockquote>
+            <p data-en="The vacation rental exceeded our expectations in every way. We had an amazing time and cannot wait to return!" data-es="La propiedad vacacional superó nuestras expectativas en todo sentido. ¡La pasamos increíble y ya queremos regresar!">The vacation rental exceeded our expectations in every way. We had an amazing time and cannot wait to return!</p>
+            <cite>Nina &amp; Tom Stone</cite>
+          </blockquote>
+          <blockquote>
+            <p data-en="Our experience was made truly exceptional by the attentive team. The level of care and professionalism was outstanding." data-es="El atento equipo hizo que nuestra experiencia fuera excepcional. El nivel de cuidado y profesionalismo fue sobresaliente.">Our experience was made truly exceptional by the attentive team. The level of care and professionalism was outstanding.</p>
+            <cite>Angela Peterson</cite>
+          </blockquote>
+          <blockquote>
+            <p data-en="From the moment we booked, we knew we were in good hands. An unforgettable stay in a beautifully managed property." data-es="Desde el momento en que reservamos, supimos que estábamos en buenas manos. Una estancia inolvidable en una propiedad muy bien administrada.">From the moment we booked, we knew we were in good hands. An unforgettable stay in a beautifully managed property.</p>
+            <cite>Paul &amp; Susan Taylor</cite>
+          </blockquote>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="section-inner">
-      <p class="section-eyebrow" data-en="The process" data-es="El proceso">The process</p>
-      <h2 class="section-headline" data-en="Simple for you,<br><em>seamless for your guests.</em>" data-es="Sencillo para usted,<br><em>perfecto para sus huéspedes.</em>">Simple for you,<br><em>seamless for your guests.</em></h2>
-      <div class="how-layout">
-        <div class="how-steps">
-          <div class="how-step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h3 data-en="Free Property Assessment" data-es="Evaluación Gratuita de su Propiedad">Free Property Assessment</h3>
-              <p data-en="We visit your property, evaluate its rental potential, and provide a clear income projection — no obligation, no pressure." data-es="Visitamos su propiedad, evaluamos su potencial de renta y le proporcionamos una proyección clara de ingresos — sin compromiso, sin presión.">We visit your property, evaluate its rental potential, and provide a clear income projection — no obligation, no pressure.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h3 data-en="Professional Setup" data-es="Configuración Profesional">Professional Setup</h3>
-              <p data-en="We arrange professional photography, craft compelling listings in English and Spanish, and prepare your property for its first guests." data-es="Coordinamos fotografía profesional, creamos anuncios atractivos en inglés y español, y preparamos su propiedad para sus primeros huéspedes.">We arrange professional photography, craft compelling listings in English and Spanish, and prepare your property for its first guests.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h3 data-en="Active Management" data-es="Gestión Activa">Active Management</h3>
-              <p data-en="We handle all guest communication, bookings, check-ins, cleaning coordination, and any maintenance needs — start to finish." data-es="Nos encargamos de toda la comunicación con huéspedes, reservas, check-ins, coordinación de limpieza y cualquier necesidad de mantenimiento — de principio a fin.">We handle all guest communication, bookings, check-ins, cleaning coordination, and any maintenance needs — start to finish.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <h3 data-en="Regular Owner Reports" data-es="Reportes Periódicos al Propietario">Regular Owner Reports</h3>
-              <p data-en="Transparent monthly statements detailing occupancy, revenue, and expenses. You stay informed without doing any of the work." data-es="Estados de cuenta mensuales transparentes con detalle de ocupación, ingresos y gastos. Usted se mantiene informado sin hacer ningún trabajo.">Transparent monthly statements detailing occupancy, revenue, and expenses. You stay informed without doing any of the work.</p>
-            </div>
-          </div>
-          <div class="how-step">
-            <div class="step-num">5</div>
-            <div class="step-body">
-              <h3 data-en="Ongoing Optimization" data-es="Optimización Continua">Ongoing Optimization</h3>
-              <p data-en="We continuously refine pricing strategy, improve listings based on reviews, and adapt to market conditions to keep your income growing." data-es="Refinamos continuamente la estrategia de precios, mejoramos los anuncios según las reseñas y nos adaptamos a las condiciones del mercado para mantener sus ingresos en crecimiento.">We continuously refine pricing strategy, improve listings based on reviews, and adapt to market conditions to keep your income growing.</p>
-            </div>
-          </div>
+    <section class="owner-band" aria-labelledby="ownTitle">
+      <div class="wrap">
+        <div>
+          <h2 id="ownTitle" data-en="Own a home in the Riviera Maya?" data-es="¿Tienes una propiedad en la Riviera Maya?">Own a home in the Riviera Maya?</h2>
+          <p data-en="The calendars above are the ones we run. See how we would manage yours." data-es="Los calendarios de arriba son los que administramos. Mira cómo administraríamos el tuyo.">The calendars above are the ones we run. See how we would manage yours.</p>
         </div>
-        <div class="how-visual">
-          <p class="how-visual-eyebrow" data-en="What's included" data-es="Qué incluye">What's included</p>
-          <h3 data-en="Everything your property needs to thrive" data-es="Todo lo que su propiedad necesita para prosperar">Everything your property needs to thrive</h3>
-          <ul class="how-visual-list">
-            <li><span class="check">✦</span><span data-en="Guest screening &amp; communication" data-es="Selección y comunicación con huéspedes">Guest screening &amp; communication</span></li>
-            <li><span class="check">✦</span><span data-en="Dynamic pricing management" data-es="Gestión de precios dinámicos">Dynamic pricing management</span></li>
-            <li><span class="check">✦</span><span data-en="Professional cleaning coordination" data-es="Coordinación de limpieza profesional">Professional cleaning coordination</span></li>
-            <li><span class="check">✦</span><span data-en="Maintenance &amp; repairs oversight" data-es="Supervisión de mantenimiento y reparaciones">Maintenance &amp; repairs oversight</span></li>
-            <li><span class="check">✦</span><span data-en="Multi-platform listing management" data-es="Gestión de anuncios en múltiples plataformas">Multi-platform listing management</span></li>
-            <li><span class="check">✦</span><span data-en="Professional photography (setup)" data-es="Fotografía profesional (configuración inicial)">Professional photography (setup)</span></li>
-            <li><span class="check">✦</span><span data-en="Monthly income statements" data-es="Estados de cuenta mensuales">Monthly income statements</span></li>
-            <li><span class="check">✦</span><span data-en="24/7 guest emergency support" data-es="Soporte de emergencia 24/7 para huéspedes">24/7 guest emergency support</span></li>
-            <li><span class="check">✦</span><span data-en="Local legal &amp; tax guidance" data-es="Asesoría legal y fiscal local">Local legal &amp; tax guidance</span></li>
-          </ul>
-          <a href="#contact" class="how-visual-cta" data-en="Schedule a Free Consultation" data-es="Agenda una Consulta Gratuita">Schedule a Free Consultation</a>
-        </div>
+        <a class="btn dark" href="/owners" data-en="Management for property owners" data-es="Administración para propietarios">Management for property owners</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- TESTIMONIALS -->
-  <!-- STAY WITH US (guest-facing vacation rentals) -->
-  <section class="stay" id="stay">
-    <div class="section-inner">
-      <div class="stay-header">
-        <p class="section-eyebrow" data-en="Vacation Rentals" data-es="Rentas Vacacionales">Vacation Rentals</p>
-        <h2 class="section-headline" style="margin-bottom:0.75rem" data-en="Book your stay<br><em>direct with your hosts.</em>" data-es="Reserva tu estancia<br><em>directo con tus anfitriones.</em>">Book your stay<br><em>direct with your hosts.</em></h2>
-        <p class="section-lead" data-en="Choose a home, pick your dates on the calendar, and send us a request. We reply within one business day." data-es="Elige una propiedad, selecciona tus fechas en el calendario y envíanos una solicitud. Respondemos en un día hábil.">Choose a home, pick your dates on the calendar, and send us a request. We reply within one business day.</p>
-      </div>
-      <div class="stay-grid" id="stayGrid"></div>
-    </div>
-  </section>
-
-  <section class="testimonials" id="reviews">
-    <div class="section-inner">
-      <p class="section-eyebrow" data-en="Guest reviews" data-es="Reseñas de Huéspedes">Guest reviews</p>
-      <h2 class="section-headline" data-en="What guests say about<br><em>At Home properties.</em>" data-es="Lo que dicen los huéspedes sobre<br><em>las propiedades At Home.</em>">What guests say about<br><em>At Home properties.</em></h2>
-      <div class="testimonials-grid">
-        <div class="testi-card">
-          <p class="testi-quote" data-en="The vacation rental exceeded our expectations in every way. We had an amazing time and cannot wait to return!" data-es="La propiedad vacacional superó nuestras expectativas en todos los sentidos. ¡Tuvimos una experiencia increíble y no podemos esperar para volver!">The vacation rental exceeded our expectations in every way. We had an amazing time and cannot wait to return!</p>
-          <p class="testi-author">Nina &amp; Tom Stone</p>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote" data-en="Our experience was made truly exceptional by the attentive team. The level of care and professionalism was outstanding." data-es="El atento equipo hizo que nuestra experiencia fuera verdaderamente excepcional. El nivel de cuidado y profesionalismo fue sobresaliente.">Our experience was made truly exceptional by the attentive team. The level of care and professionalism was outstanding.</p>
-          <p class="testi-author">Angela Peterson</p>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote" data-en="From the moment we booked, we knew we were in good hands. An unforgettable stay in a beautifully managed property." data-es="Desde el momento en que reservamos, supimos que estábamos en buenas manos. Una estancia inolvidable en una propiedad magníficamente administrada.">From the moment we booked, we knew we were in good hands. An unforgettable stay in a beautifully managed property.</p>
-          <p class="testi-author">Paul &amp; Susan Taylor</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="section-inner">
-      <p class="section-eyebrow" data-en="Get in touch" data-es="Contáctenos">Get in touch</p>
-      <h2 class="section-headline" data-en="Let's talk about<br><em>your property.</em>" data-es="Hablemos sobre<br><em>su propiedad.</em>">Let's talk about<br><em>your property.</em></h2>
-      <div class="contact-layout">
-        <div class="contact-info">
-          <h3 data-en="Start with a free, no-obligation assessment of your property's rental potential." data-es="Comience con una evaluación gratuita y sin compromiso del potencial de renta de su propiedad.">Start with a free, no-obligation assessment of your property's rental potential.</h3>
-          <p data-en="We'll walk through your property, discuss your goals, and give you a clear picture of what to expect — income projections, our management approach, and how we'd position your home in the market." data-es="Recorreremos su propiedad, hablaremos sobre sus objetivos y le daremos un panorama claro de qué esperar — proyecciones de ingresos, nuestro enfoque de administración y cómo posicionaríamos su hogar en el mercado.">We'll walk through your property, discuss your goals, and give you a clear picture of what to expect — income projections, our management approach, and how we'd position your home in the market.</p>
-          <div class="contact-detail">
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
-              <a href="tel:+529842136512">+52 (984) 213-6512</a>
-            </div>
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:athomerivieramaya@gmail.com">athomerivieramaya@gmail.com</a>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form" action="https://formsubmit.co/ajax/athomerivieramaya@gmail.com" method="POST" onsubmit="handleSubmit(event)" data-netlify="false">
-          <input type="hidden" name="_subject" value="New Contact Form Lead — At Home Riviera Maya">
-          <input type="hidden" name="_captcha" value="false">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="fname" data-en="First Name" data-es="Nombre">First Name</label>
-              <input type="text" id="fname" name="fname" data-placeholder-en="John" data-placeholder-es="Juan" placeholder="John" required />
-            </div>
-            <div class="form-field">
-              <label for="lname" data-en="Last Name" data-es="Apellido">Last Name</label>
-              <input type="text" id="lname" name="lname" data-placeholder-en="Smith" data-placeholder-es="García" placeholder="Smith" required />
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="email" data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
-            <input type="email" id="email" name="email" data-placeholder-en="john@email.com" data-placeholder-es="juan@correo.com" placeholder="john@email.com" required />
-          </div>
-          <div class="form-field">
-            <label for="phone" data-en="Phone Number" data-es="Teléfono">Phone Number</label>
-            <input type="tel" id="phone" name="phone" data-placeholder-en="+1 555 123 4567" data-placeholder-es="+52 984 123 4567" placeholder="+1 555 123 4567" autocomplete="tel" minlength="7" required />
-          </div>
-          <div class="form-field">
-            <label for="location" data-en="Property Location" data-es="Ubicación de la Propiedad">Property Location</label>
-            <select id="location" name="location">
-              <option value="" data-en="Select a location…" data-es="Seleccione una ubicación…">Select a location…</option>
-              <option>Playa del Carmen</option>
-              <option>Akumal</option>
-              <option>Puerto Aventuras</option>
-              <option data-en="Other" data-es="Otra">Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="message" data-en="Tell us about your property" data-es="Cuéntenos sobre su propiedad">Tell us about your property</label>
-            <textarea id="message" name="message" data-placeholder-en="Property type, current situation, questions…" data-placeholder-es="Tipo de propiedad, situación actual, preguntas…" placeholder="Property type, current situation, questions…"></textarea>
-          </div>
-          <button type="submit" class="form-submit" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
-          <p id="form-success" style="display:none;color:var(--gold);font-size:0.85rem;margin-top:0.5rem" data-en="Thank you — we'll be in touch within one business day." data-es="Gracias — nos pondremos en contacto dentro de un día hábil.">Thank you — we'll be in touch within one business day.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">At Home Riviera Maya<span data-en="Property Management · Since 2011" data-es="Administración de Propiedades · Desde 2011">Property Management · Since 2011</span></div>
-    <ul class="footer-links">
-      <li><a href="#why-us" data-en="Why Us" data-es="Por Qué Nosotros">Why Us</a></li>
-      <li><a href="#how-it-works" data-en="How It Works" data-es="El Proceso">How It Works</a></li>
-      <li><a href="#stay" data-en="Vacation Rentals" data-es="Rentas Vacacionales">Vacation Rentals</a></li>
-      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-    </ul>
-    <p class="footer-copy" data-en="© 2025 At Home Riviera Maya. All rights reserved." data-es="© 2025 At Home Riviera Maya. Todos los derechos reservados.">© 2025 At Home Riviera Maya. All rights reserved.</p>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="logo" href="/">At Home Riviera Maya</a>
+          <p style="margin-top:.6rem" data-en="Vacation rentals and property management since 2011." data-es="Rentas vacacionales y administración de propiedades desde 2011.">Vacation rentals and property management since 2011.</p>
+        </div>
+        <ul>
+          <li><a href="#homes" data-en="Our homes" data-es="Nuestras propiedades">Our homes</a></li>
+          <li><a href="/owners" data-en="For property owners" data-es="Para propietarios">For property owners</a></li>
+          <li><a href="tel:+529842136512">+52 (984) 213-6512</a></li>
+          <li><a href="mailto:athomerivieramaya@gmail.com">athomerivieramaya@gmail.com</a></li>
+        </ul>
+      </div>
+      <p class="copy" data-en="© 2026 At Home Riviera Maya. All rights reserved." data-es="© 2026 At Home Riviera Maya. Todos los derechos reservados.">© 2026 At Home Riviera Maya. All rights reserved.</p>
+    </div>
   </footer>
 
-    <!-- WHATSAPP FLOATING BUTTON -->
-  <a id="waFloat" class="wa-float" href="https://wa.me/529842136512?text=Hi%21%20I%27d%20like%20more%20information%20about%20vacation%20property%20management." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <a id="wa" class="wa" href="https://wa.me/529842136512" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+     data-msg-en="Hi! I'd like to ask about booking a stay." data-msg-es="¡Hola! Me gustaría preguntar por una reserva.">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23z"/></svg>
   </a>
 
-  <script>
-    // Nav scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
-
-    // Mobile menu
-    document.getElementById('mobileToggle').addEventListener('click', () => nav.classList.toggle('menu-open'));
-    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => nav.classList.remove('menu-open')));
-
-    // Hero image
-    const heroBg = document.getElementById('heroBg');
-    const img = new Image();
-    img.src = 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1800&q=80&auto=format&fit=crop';
-    img.onload = () => { heroBg.style.backgroundImage = `url('${img.src}')`; heroBg.classList.add('loaded'); };
-
-    // ── LANGUAGE TOGGLE ──
-    let currentLang = 'en';
-
-    function setLang(lang) {
-      currentLang = lang;
-      document.getElementById('btnEN').classList.toggle('active', lang === 'en');
-      document.getElementById('btnES').classList.toggle('active', lang === 'es');
-      document.documentElement.lang = lang;
-
-      // Swap all data-en / data-es text content
-      document.querySelectorAll('[data-en]').forEach(el => {
-        const text = el.getAttribute('data-' + lang);
-        if (!text) return;
-        // Use innerHTML for elements that contain HTML tags (em, br)
-        const tag = el.tagName.toLowerCase();
-        if (['h1','h2','h3','h4','p','a','button','span','label','li'].includes(tag)) {
-          el.innerHTML = text;
-        } else {
-          el.textContent = text;
-        }
-      });
-
-      // Swap placeholders
-      document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
-        el.placeholder = el.getAttribute('data-placeholder-' + lang);
-      });
-
-      // WhatsApp button: language-specific greeting and label
-      const wa = document.getElementById('waFloat');
-      if (wa) {
-        const msg = lang === 'es'
-          ? '¡Hola! Me gustaría más información sobre la administración de propiedades vacacionales.'
-          : "Hi! I'd like more information about vacation property management.";
-        wa.href = 'https://wa.me/529842136512?text=' + encodeURIComponent(msg);
-        wa.setAttribute('aria-label', lang === 'es' ? 'Chatea por WhatsApp' : 'Chat on WhatsApp');
-      }
-
-      try { localStorage.setItem('lang', lang); } catch (e) {}
-      renderStay();
-
-      // Swap select option text
-      document.querySelectorAll('select option[data-' + lang + ']').forEach(opt => {
-        opt.textContent = opt.getAttribute('data-' + lang);
-      });
-
-      // Reset form success message if visible
-      const s = document.getElementById('form-success');
-      if (s) s.textContent = lang === 'es' ? 'Gracias — nos pondremos en contacto dentro de un día hábil.' : 'Thank you — we\'ll be in touch within one business day.';
-    }
-
-    // Form → Formspree
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('.form-submit');
-      btn.textContent = currentLang === 'es' ? 'Enviando…' : 'Sending…';
-      btn.disabled = true;
-      try {
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: json
-        });
-        if (res.status === 200) {
-          document.getElementById('form-success').style.display = 'block';
-          form.reset();
-          btn.textContent = currentLang === 'es' ? '¡Enviado!' : 'Sent!';
-        } else {
-          btn.textContent = currentLang === 'es' ? 'Error — escríbanos directamente' : 'Error — please email us directly';
-          btn.disabled = false;
-        }
-      } catch {
-        btn.textContent = currentLang === 'es' ? 'Error — escríbanos directamente' : 'Error — please email us directly';
-        btn.disabled = false;
-      }
-    }
-
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => { if (el.isIntersecting) { el.target.style.opacity = '1'; el.target.style.transform = 'translateY(0)'; } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.why-card, .how-step, .prop-card, .testi-card, .location-cell').forEach(el => {
-      el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
-    });
-  
-    // ── Stay With Us cards (from properties.json) ──
-    let stayProps = null;
-    function renderStay() {
-      const grid = document.getElementById('stayGrid');
-      if (!grid || !stayProps) return;
-      const es = currentLang === 'es';
-      const esc = (x) => String(x == null ? '' : x).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-      grid.innerHTML = stayProps.map((p) => {
-        const photo = p.photos && p.photos[0];
-        const img = photo
-          ? '<img src="' + esc(photo.src) + '" alt="' + esc(photo.alt || p.name) + '" loading="lazy" />'
-          : '<div class="stay-ph">' + esc(p.name) + '</div>';
-        const beds = p.bedrooms ? p.bedrooms + (es ? (p.bedrooms === 1 ? ' recámara' : ' recámaras') : (p.bedrooms === 1 ? ' bedroom' : ' bedrooms')) : '';
-        return '<a class="prop-card stay-card" href="/stay/' + esc(p.slug) + '">' +
-          '<div class="prop-img">' + img + '</div><div class="prop-info">' +
-          '<p class="prop-location">' + esc((es ? p.area.es : p.area.en)) + '</p>' +
-          '<h3 class="prop-name">' + esc(p.name) + '</h3>' +
-          '<p class="prop-desc">' + esc(es ? p.description.es : p.description.en) + '</p>' +
-          (beds ? '<div class="prop-tags"><span class="prop-tag">' + beds + '</span></div>' : '') +
-          '<span class="stay-more">' + (es ? 'Ver y reservar →' : 'View &amp; book →') + '</span></div></a>';
-      }).join('');
-    }
-    fetch('/properties.json').then(r => r.json()).then(d => { stayProps = d.properties || []; renderStay(); }).catch(() => {});
-
-    // Restore the visitor's language choice (also used by the property pages)
-    try { if (localStorage.getItem('lang') === 'es') setLang('es'); } catch (e) {}
-  </script>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
