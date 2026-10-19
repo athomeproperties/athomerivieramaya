@@ -15,7 +15,7 @@
       minN: 'Minimum {n} nights', fits: 'Fits up to {n} guests',
       viewBook: 'View and book', viewHome: 'View home',
       all: 'All areas', playa: 'Playa del Carmen', akumal: 'Akumal', puerto: 'Puerto Aventuras',
-      result: '{a} of {b} homes open {from} to {to}', resultAsk: ' (plus {n} to confirm with us)',
+      result: '{a} homes open {from} to {to}', resultOne: '1 home open {from} to {to}', resultAsk: ' (plus {n} to confirm with us)', onlyAsk: '{n} to confirm with us for {from} to {to}',
       clear: 'Clear dates', noneOpen: 'No homes are open for those dates. Try nearby dates, or message us on WhatsApp and we will look for options.',
       errDates: 'Choose both a check-in and a check-out date.', errOrder: 'Check-out must be after check-in.', errPast: 'Check-in cannot be in the past.',
       searchHint: 'Pick your dates to see which homes are open.',
@@ -28,7 +28,7 @@
       minN: 'Mínimo {n} noches', fits: 'Hasta {n} huéspedes',
       viewBook: 'Ver y reservar', viewHome: 'Ver propiedad',
       all: 'Todas las zonas', playa: 'Playa del Carmen', akumal: 'Akumal', puerto: 'Puerto Aventuras',
-      result: '{a} de {b} propiedades disponibles del {from} al {to}', resultAsk: ' (y {n} por confirmar con nosotros)',
+      result: '{a} propiedades disponibles del {from} al {to}', resultOne: '1 propiedad disponible del {from} al {to}', resultAsk: ' (y {n} por confirmar con nosotros)', onlyAsk: '{n} por confirmar con nosotros del {from} al {to}',
       clear: 'Borrar fechas', noneOpen: 'No hay propiedades disponibles en esas fechas. Prueba con fechas cercanas o escríbenos por WhatsApp y buscamos opciones.',
       errDates: 'Elige la fecha de llegada y la de salida.', errOrder: 'La salida debe ser después de la llegada.', errPast: 'La llegada no puede ser en el pasado.',
       searchHint: 'Elige tus fechas para ver qué propiedades están disponibles.',
@@ -84,7 +84,9 @@
     if (!grid || !props.length) return;
     var list = props.filter(function (p) { return S.area === 'all' || areaKey(p) === S.area; })
       .map(function (p) { return { p: p, st: statusOf(p) }; });
-    var rank = { open: 0, ask: 1, idle: 1, min: 2, fits: 2, booked: 3 };
+    // After a search, show only homes that can be booked (open) or that we cannot confirm online (ask)
+    if (S.ci && S.co) list = list.filter(function (x) { return x.st.k === 'open' || x.st.k === 'ask'; });
+    var rank = { open: 0, ask: 1, idle: 1 };
     list.sort(function (a, b) { return rank[a.st.k] - rank[b.st.k]; });
 
     var qs = S.ci && S.co ? '?checkin=' + S.ci + '&checkout=' + S.co + '&guests=' + S.guests : '';
@@ -92,15 +94,11 @@
       var p = x.p, st = x.st, ph = p.photos && p.photos[0];
       var pill = '';
       if (st.k === 'open') pill = '<span class="pill open">' + t('open') + '</span>';
-      else if (st.k === 'booked') pill = '<span class="pill no">' + t('booked') + '</span>';
       else if (st.k === 'ask') pill = '<span class="pill">' + t('ask') + '</span>';
-      else if (st.k === 'min') pill = '<span class="pill no">' + t('minN', { n: st.n }) + '</span>';
-      else if (st.k === 'fits') pill = '<span class="pill no">' + t('fits', { n: st.n }) + '</span>';
       var beds = p.bedrooms ? (p.bedrooms === 1 ? t('beds1') : t('bedsN', { n: p.bedrooms })) : '';
       var sleeps = p.maxGuests ? t('sleeps', { n: p.maxGuests }) : '';
       var meta = [beds, sleeps].filter(Boolean).join(' · ');
-      var dim = (st.k === 'booked' || st.k === 'min' || st.k === 'fits') ? ' dim' : '';
-      return '<a class="home' + dim + '" href="/stay/' + esc(p.slug) + qs + '">' +
+      return '<a class="home" href="/stay/' + esc(p.slug) + qs + '">' +
         '<div class="ph">' + (ph ? '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt || p.name) + '" loading="lazy" width="800" height="600">' : '') + pill + '</div>' +
         '<p class="area">' + esc(L(p.area)) + '</p><h3>' + esc(p.name) + '</h3>' +
         (meta ? '<p class="meta">' + esc(meta) + '</p>' : '') +
@@ -113,7 +111,8 @@
       if (S.ci && S.co) {
         var open = list.filter(function (x) { return x.st.k === 'open'; }).length;
         var ask = list.filter(function (x) { return x.st.k === 'ask'; }).length;
-        var msg = open || ask ? t('result', { a: open, b: list.length, from: fmt(S.ci), to: fmt(S.co) }) + (ask ? t('resultAsk', { n: ask }) : '') : t('noneOpen');
+        var dates = { a: open, n: ask, from: fmt(S.ci), to: fmt(S.co) };
+        var msg = open ? t(open === 1 ? 'resultOne' : 'result', dates) + (ask ? t('resultAsk', dates) : '') : ask ? t('onlyAsk', dates) : t('noneOpen');
         line.innerHTML = esc(msg) + ' <button type="button" id="clearDates">' + t('clear') + '</button>';
         var cb = $('#clearDates'); if (cb) cb.addEventListener('click', clearSearch);
       } else {
