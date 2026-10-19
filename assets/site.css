@@ -42,11 +42,16 @@ p{max-width:62ch}
 .lang{display:flex;border:1px solid rgba(255,255,255,.4);border-radius:999px;overflow:hidden}
 .lang button{font:inherit;font-size:.8rem;font-weight:500;background:transparent;color:#fff;border:0;padding:.3rem .7rem;cursor:pointer}
 .lang button[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.lang-m{display:none}
 .nav-cta{font-size:.9rem;font-weight:500;text-decoration:none;background:var(--coral);color:#fff;padding:.6rem 1.15rem;border-radius:999px}
 .nav-cta:hover{background:var(--coral-hover)}
 .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;color:inherit}
 .burger span{display:block;width:22px;height:2px;background:currentColor;margin:5px auto;transition:transform .2s,opacity .2s}
 @media(max-width:860px){
+  .logo{font-size:1.15rem;line-height:1.05;white-space:normal;max-width:7.5rem}
+  .lang-m{display:flex;margin-left:auto}
+  .nav-right .lang{display:none}
+  .lang button{padding:.3rem .6rem}
   .burger{display:block}
   .nav-right{position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:1.25rem;background:var(--ink);padding:1.5rem var(--gutter) 2rem;transform:translateY(-120%);transition:transform .25s;visibility:hidden}
   .nav.open .nav-right{transform:none;visibility:visible}
