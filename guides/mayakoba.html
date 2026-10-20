@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mayakoba Townhouse — Guest Guidebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#123B3E;
+    --ink-deep:#0B2A2C;
+    --sand:#FBF3E2;
+    --sand-dim:#F1E6CC;
+    --brass:#1B8F86;
+    --brass-soft:#5FC2B6;
+    --coral:#E4674B;
+    --seafoam:#5C7D79;
+    --line: rgba(27,143,134,0.28);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 8% 12%, rgba(27,143,134,0.12), transparent 38%),
+      radial-gradient(circle at 92% 18%, rgba(95,194,182,0.12), transparent 38%),
+      radial-gradient(circle at 12% 88%, rgba(27,143,134,0.10), transparent 38%),
+      radial-gradient(circle at 90% 92%, rgba(95,194,182,0.10), transparent 38%),
+      repeating-linear-gradient(135deg, rgba(27,143,134,0.045) 0px, rgba(27,143,134,0.045) 1px, transparent 1px, transparent 46px),
+      var(--sand);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  .wrap{max-width:720px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- WAVE TEXTURE ---------- */
+  .waves{position:absolute; inset:0; overflow:hidden; opacity:0.5; pointer-events:none;}
+  .waves svg{width:100%; position:absolute; bottom:-2px;}
+
+  /* ---------- LANGUAGE SWITCH ---------- */
+  .langbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,243,226,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .langbar-inner{
+    max-width:720px; margin:0 auto; padding:10px 32px;
+    display:flex; justify-content:flex-end; gap:6px;
+  }
+  .lang-btn{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--seafoam);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:5px 12px;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn.active{
+    background:var(--brass-soft);
+    color:var(--ink);
+    border-color:var(--brass-soft);
+    font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:56px 0 56px;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 0%, rgba(27,143,134,0.14), transparent 60%),
+      var(--sand);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px; height:1px; background:var(--brass);
+  }
+  h1.property{
+    font-family:var(--display);
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-top:18px;
+    color:var(--ink);
+  }
+  h1.property em{
+    font-style:italic;
+    color:var(--brass-soft);
+    font-weight:400;
+  }
+  .hero-sub{
+    margin-top:14px;
+    font-size:16px;
+    color:var(--seafoam);
+    max-width:38ch;
+  }
+  .hero-map{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:14px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--brass);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+  }
+  .hero-map:hover{color:var(--ink); border-color:var(--brass);}
+  .hero-meta{
+    margin-top:32px;
+    display:flex;
+    gap:28px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--seafoam);
+  }
+  .hero-meta div span{display:block; color:var(--brass); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px;}
+  .hero-meta div b{color:var(--ink); font-weight:500; font-size:14px; font-family:var(--body);}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:28px;}
+  .section-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+  h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:28px;
+    margin-top:8px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  p{font-size:16px; color:var(--seafoam);}
+  p + p{margin-top:12px;}
+
+  /* ---------- KEYCARD (signature element) ---------- */
+  .keycard{
+    position:relative;
+    background:#FFFFFF;
+    color:var(--ink);
+    border-radius:14px;
+    padding:26px 26px 24px;
+    box-shadow:0 24px 48px -20px rgba(0,0,0,0.55);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px);
+    animation:cardIn 0.7s ease forwards 0.15s;
+  }
+  @keyframes cardIn{ to{opacity:1; transform:translateY(0);} }
+  .keycard::before{
+    content:'';
+    position:absolute;
+    top:0; bottom:0; left:0;
+    width:10px;
+    background:repeating-linear-gradient(
+      to bottom,
+      var(--brass) 0px, var(--brass) 6px,
+      transparent 6px, transparent 14px
+    );
+  }
+  .keycard .kc-notch{
+    position:absolute;
+    top:50%; right:-11px;
+    width:22px; height:22px;
+    background:var(--sand);
+    border-radius:50%;
+    transform:translateY(-50%);
+  }
+  .kc-row{display:flex; justify-content:space-between; align-items:flex-start; padding-left:14px;}
+  .kc-label{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#6E938F;}
+  .kc-value{font-family:var(--mono); font-size:16px; font-weight:500; margin-top:6px; color:var(--ink); word-break:break-word;}
+  .kc-wifi-block{padding-left:14px; display:flex; flex-direction:column; gap:14px;}
+  .kc-divider{height:1px; background:repeating-linear-gradient(to right, #C7DDD9 0, #C7DDD9 4px, transparent 4px, transparent 9px); margin:18px 0 18px 14px;}
+  .kc-note{
+    padding-left:14px;
+    font-size:14px;
+    color:#5B5140;
+    font-family:var(--body);
+  }
+  .kc-note b{color:var(--ink);}
+  .kc-wifi-connect{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-left:14px;
+    margin-top:14px;
+  }
+  .kc-wifi-connect img{
+    border-radius:6px;
+    border:1px solid #C7DDD9;
+    flex-shrink:0;
+  }
+  .kc-wifi-connect span{
+    font-size:12px;
+    color:#5B5140;
+    font-family:var(--body);
+    line-height:1.4;
+  }
+
+  /* ---------- STEP LIST (jacuzzi) ---------- */
+  .steps{list-style:none; margin-top:18px; counter-reset:step;}
+  .steps li{
+    counter-increment:step;
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .steps li:last-child{border-bottom:1px solid var(--line);}
+  .steps li::before{
+    content:counter(step);
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--ink);
+    background:var(--brass-soft);
+    width:26px; height:26px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .steps li p{font-size:15.5px; color:var(--ink); padding-top:2px;}
+  .callout{
+    margin-top:18px;
+    background:rgba(228,103,75,0.1);
+    border:1px solid rgba(228,103,75,0.35);
+    border-radius:10px;
+    padding:14px 16px;
+    font-size:14.5px;
+    color:#8A3220;
+  }
+  .callout b{color:var(--coral);}
+
+  /* ---------- INFO GRID (parking etc) ---------- */
+  .info-item{padding:18px 0; border-top:1px solid var(--line);}
+  .info-item:last-child{border-bottom:1px solid var(--line);}
+  .info-item h3{font-family:var(--body); font-weight:600; font-size:15px; color:var(--ink); margin-bottom:6px;}
+
+  /* ---------- HOUSE RULES ---------- */
+  .nb-group{margin-bottom:26px;}
+  .nb-group:last-child{margin-bottom:0;}
+  .nb-title{font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass); margin-bottom:10px;}
+  .nb-list{list-style:none;}
+  .nb-list li{
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:16px;
+    color:var(--ink);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .nb-list li:last-child{border-bottom:1px solid var(--line);}
+  .nb-list li span{font-family:var(--mono); font-size:11px; color:var(--seafoam);}
+
+  /* ---------- PLACE CARDS ---------- */
+  .place{
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .place:last-child{border-bottom:1px solid var(--line);}
+  .place-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+  }
+  .place-name{font-size:15.5px; font-weight:600; color:var(--ink);}
+  .place-kind{font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); white-space:nowrap;}
+  .place-desc{font-size:14.5px; color:var(--seafoam); margin-top:6px; line-height:1.6;}
+  .place-map{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--coral);
+    text-decoration:none;
+  }
+  .place-map:hover{text-decoration:underline;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .contact-row:last-child{border-bottom:1px solid var(--line);}
+  .contact-row .who{font-size:15px; color:var(--ink); font-weight:500;}
+  .contact-row .how{font-family:var(--mono); font-size:13.5px; color:var(--seafoam); margin-top:2px;}
+  .btn{
+    font-family:var(--body);
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--brass-soft);
+    padding:9px 16px;
+    border-radius:100px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* ---------- REAL ESTATE SOFT PITCH ---------- */
+  .re-panel{
+    background:linear-gradient(160deg, var(--ink-deep), var(--ink));
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 26px;
+    position:relative;
+  }
+  .re-panel .section-label{color:var(--brass-soft);}
+  .re-panel h2{font-size:24px; color:var(--sand);}
+  .re-panel p{color:rgba(251,243,226,0.78); font-size:15.5px; margin-top:10px;}
+  .re-brands{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--brass-soft);
+    letter-spacing:0.04em;
+  }
+  .re-brands .divider{width:1px; height:14px; background:var(--line);}
+  .re-cta{
+    margin-top:22px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .re-cta a{
+    font-family:var(--body);
+    font-size:13.5px;
+    font-weight:600;
+    padding:11px 18px;
+    border-radius:100px;
+    text-decoration:none;
+  }
+  .re-cta .primary{background:var(--coral); color:var(--sand);}
+  .re-cta .secondary{border:1px solid var(--line); color:var(--sand);}
+
+  footer{
+    padding:36px 0 60px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;
+    color:rgba(18,59,62,0.55);
+    letter-spacing:0.06em;
+  }
+
+  /* fade-in-on-scroll */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  a{color:inherit;}
+
+  /* ---------- DESKTOP FRAMING RAILS ---------- */
+  .rail{
+    position:fixed;
+    top:0; bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, transparent, rgba(27,143,134,0.4) 10%, rgba(27,143,134,0.4) 90%, transparent);
+    pointer-events:none;
+    display:none;
+    z-index:1;
+  }
+  @media (min-width:900px){
+    .rail{display:block;}
+    .rail-left{left:calc(50% - 392px);}
+    .rail-right{right:calc(50% - 392px);}
+  }
+</style>
+</head>
+<body>
+<div class="rail rail-left"></div>
+<div class="rail rail-right"></div>
+
+<div class="langbar">
+  <div class="langbar-inner">
+    <button class="lang-btn active" data-lang-btn="en">EN</button>
+    <button class="lang-btn" data-lang-btn="es">ES</button>
+    <button class="lang-btn" data-lang-btn="fr">FR</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="waves">
+    <svg viewBox="0 0 600 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C100,100 200,20 300,60 C400,100 500,20 600,60 L600,120 L0,120 Z" fill="rgba(27,143,134,0.08)"/>
+      <path d="M0,80 C100,40 200,110 300,80 C400,50 500,110 600,80 L600,120 L0,120 Z" fill="rgba(27,143,134,0.14)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">Guest Guidebook</div>
+    <h1 class="property">Mayakoba<br><em>Townhouse</em></h1>
+    <p class="hero-sub" data-i18n="heroSub">A spacious three-bedroom townhouse in the gated, resort-style community of Lagunas de Mayakoba, with a lazy river, pool, and rooftop hot tubs. Everything you need for your stay, in one place.</p>
+    <a class="hero-map" href="https://maps.app.goo.gl/dUvMtuT2kw4boT366" target="_blank" rel="noopener" data-i18n="heroMapLink">📍 View property on Google Maps ↗</a>
+    <div class="hero-meta">
+      <div><span data-i18n="checkinLabel">Check-in</span><b>3:00 PM</b></div>
+      <div><span data-i18n="checkoutLabel">Check-out</span><b>10:00 AM</b></div>
+      <div><span data-i18n="bedroomsLabel">Bedrooms</span><b>3</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="hostsLabel">Your Hosts</div>
+      <h2 data-i18n="hostsTitle">Karla &amp; Craig</h2>
+    </div>
+    <p data-i18n="hostsBody">Karla is originally from the state of Guanajuato, Mexico, and has called Playa del Carmen home for the past 12 years. Craig is originally from Texas and has lived in Mexico for over 20 years. Together they run At Home Riviera Maya — we hope you love this place as much as we do, and we're just a message away if you need anything during your stay.</p>
+    <p style="margin-top:14px;"><a href="https://www.athomerivieramaya.com" target="_blank" rel="noopener" style="color:var(--brass-soft); font-weight:600; text-decoration:underline;">www.athomerivieramaya.com</a></p>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s0Label">01 — The Home</div>
+      <h2 data-i18n="s0Title">Your townhouse</h2>
+    </div>
+    <p data-i18n="s0Body">A two-story townhouse with three air-conditioned bedrooms and three full bathrooms (the downstairs bedroom's bathroom is just outside the room). Downstairs you'll find an open living and dining area with a Smart TV, a fully equipped kitchen, a washer and dryer, and a private patio for morning coffee or evening drinks.</p>
+    <div class="nb-group" style="margin-top:22px;">
+      <div class="nb-title" data-i18n="s0BedTitle">Bedrooms</div>
+      <ul class="nb-list">
+        <li><span data-i18n="s0Bed1">Bedroom with a king bed</span> <span></span></li>
+        <li><span data-i18n="s0Bed2">Bedroom with a single bed</span> <span></span></li>
+        <li><span data-i18n="s0Bed3">Bedroom with a double bed and a single bed</span> <span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s1Label">02 — Getting In</div>
+      <h2 data-i18n="s1Title">Arrival &amp; access</h2>
+    </div>
+    <div class="keycard">
+      <div class="kc-notch"></div>
+      <div class="kc-row">
+        <div>
+          <div class="kc-label" data-i18n="kcEntryMethod">Community</div>
+          <div class="kc-value">Lagunas de Mayakoba</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="kc-label" data-i18n="kcSpot">Parking</div>
+          <div class="kc-value">V20</div>
+        </div>
+      </div>
+      <div class="kc-divider"></div>
+      <div class="kc-wifi-block">
+        <div>
+          <div class="kc-label" data-i18n="kcWifiNetwork">WiFi Network</div>
+          <div class="kc-value" style="font-size:13.5px;" data-i18n="kcWifiPlaceholder">See the label on the modem</div>
+        </div>
+        <div>
+          <div class="kc-label" data-i18n="kcWifiPassword">Password</div>
+          <div class="kc-value" style="font-size:13.5px;" data-i18n="kcWifiPlaceholder2">See the label on the modem</div>
+        </div>
+      </div>
+      <!-- TODO: when WiFi details are known, replace the two placeholders above with the real values and add the scan-to-connect QR (kc-wifi-connect block, same as the other guidebooks). -->
+      <div class="kc-divider"></div>
+      <div class="kc-note" data-i18n="kcNote">
+        Your <b>community QR code</b> is sent through your <b>Airbnb messages</b> once the townhouse is cleaned and ready for you — usually right around the 3:00 PM check-in time. No code yet? Just message us on Airbnb.
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><p data-i18n="st1">At the <b>main Mayakoba entrance</b>, tell the guard you're going to <b>Lagunas de Mayakoba</b> and show your ID.</p></li>
+      <li><p data-i18n="st2">At the <b>Lagunas de Mayakoba gate</b>, scan the QR code we sent you to get in.</p></li>
+      <li><p data-i18n="st3">Park in one of your <b>two spaces marked V20</b> and head to your townhouse.</p></li>
+    </ol>
+
+    <p style="margin-top:18px;" data-i18n="s1Note">Check-in is any time after <b style="color:var(--ink)">3:00 PM</b>. Check-out is by <b style="color:var(--ink)">10:00 AM</b>.</p>
+    <div class="callout" data-i18n="s1Callout"><b>Heads up:</b> please have a valid photo ID ready for the guard at the main Mayakoba entrance.</div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s2Label">03 — Parking</div>
+      <h2 data-i18n="s2Title">Where to park</h2>
+    </div>
+    <div class="info-item" style="border-top:none; padding-top:0;">
+      <h3 data-i18n="s2H3">Two assigned spaces</h3>
+      <p data-i18n="s2Body">Your townhouse comes with <b style="color:var(--ink)">2 parking spaces, both marked V20</b>. They're reserved for you during your stay.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s4Label">04 — Community</div>
+      <h2 data-i18n="s4Title">Resort-style amenities</h2>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s4AmTitle">Shared amenities</div>
+      <ul class="nb-list">
+        <li><span data-i18n="s4Pool">Pool</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Lazy">Lazy river</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Hot">Rooftop hot tubs</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Gym">Gym</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Cowork">Coworking space</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Kids">Kids' play area</span> <span></span></li>
+      </ul>
+    </div>
+    <p style="margin-top:18px; font-size:13px;" data-i18n="s4Footer">Please follow any signs posted at each amenity and be considerate of your neighbors. Not sure about something? Just message us.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s5Label">05 — Nearby</div>
+      <h2 data-i18n="s5Title">Eat, drink, explore</h2>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s5RestTitle">Restaurants &amp; cafés</div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Posada Margherita</div>
+          <div class="place-kind" data-i18n="p1kind">Italian, beachfront</div>
+        </div>
+        <div class="place-desc" data-i18n="p1desc">A well-known beachfront Italian restaurant in the Punta Bete area, a short drive north of Lagunas. Fresh pasta, seafood, and a relaxed setting right by the water. Check hours before you go.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Posada+Margherita+Playa+del+Carmen" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Koba Sports Bar</div>
+          <div class="place-kind" data-i18n="p2kind">Casual bar &amp; grill</div>
+        </div>
+        <div class="place-desc" data-i18n="p2desc">A casual sports bar inside the Mayakoba resort complex — good for drinks, a relaxed meal, and catching the game. Call ahead to confirm hours.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Koba+Sports+Bar+Mayakoba+Playa+del+Carmen" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Café Maya (Fairmont Mayakoba)</div>
+          <div class="place-kind" data-i18n="p3kind">Coffee shop</div>
+        </div>
+        <div class="place-desc" data-i18n="p3desc">The coffee shop at the Fairmont Mayakoba, a few minutes away — a nice spot for your morning coffee and a light bite.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Cafe+Maya+Fairmont+Mayakoba+Playa+del+Carmen" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="s5GrocTitle">Groceries</div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Soriana Híper</div>
+          <div class="place-kind" data-i18n="g1kind">Supermarket</div>
+        </div>
+        <div class="place-desc" data-i18n="g1desc">A large hypermarket on Highway 307 at the north end of Playa del Carmen — groceries, household items, and usually less crowded than the downtown stores. You'll need a car or taxi.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Soriana+Hiper+Carretera+307+Playa+del+Carmen" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+
+      <div class="place">
+        <div class="place-top">
+          <div class="place-name">Chedraui Selecto</div>
+          <div class="place-kind" data-i18n="g2kind">Upscale supermarket</div>
+        </div>
+        <div class="place-desc" data-i18n="g2desc">A larger, higher-end supermarket in Playa del Carmen with a wide selection, including imported and specialty items.</div>
+        <a class="place-map" href="https://www.google.com/maps/search/?api=1&query=Chedraui+Selecto+Avenida+10+Playa+del+Carmen" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s5bLabel">06 — Extra Services</div>
+      <h2 data-i18n="s5bTitle">Make your stay easier</h2>
+    </div>
+    <div class="info-item" style="border-top:none; padding-top:0;">
+      <h3 data-i18n="s5bGroceryH3">Pre-arrival grocery stocking</h3>
+      <p data-i18n="s5bGroceryBody">We can have your kitchen stocked before you arrive, subject to availability. The cost is 20% of the grocery total, with a $40 USD minimum charge. Please request at least one week before arrival — just message us on Airbnb with your list.</p>
+    </div>
+    <div class="info-item">
+      <h3 data-i18n="s5bCleanH3">Mid-stay cleaning</h3>
+      <p data-i18n="s5bCleanBody">Your reservation fee already covers a cleaning after checkout. If you'd like a cleaning during your stay, it's available for $50 USD per day, subject to availability. Please request at least one week before arrival.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-label" data-i18n="s6Label">07 — Need Anything?</div>
+      <h2 data-i18n="s6Title">Reach us</h2>
+    </div>
+    <div class="contact-row">
+      <div>
+        <div class="who" data-i18n="s6Who1">Airbnb Message</div>
+        <div class="how" data-i18n="s6How1">Fastest &amp; preferred way to reach us</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div>
+        <div class="who">Craig (WhatsApp)</div>
+        <div class="how" data-i18n="s6How2">+52 984 213 6512 — ONLY if Airbnb isn't working</div>
+      </div>
+      <a class="btn" href="https://wa.me/529842136512" target="_blank" rel="noopener" data-i18n="s6Btn">Message</a>
+    </div>
+  </section>
+
+  <section class="reveal" style="border-bottom:none; padding-bottom:0;">
+    <div class="re-panel">
+      <div class="section-label" data-i18n="reLabel">Before You Go</div>
+      <h2 data-i18n="reTitle">Thinking about owning<br>a place like this?</h2>
+      <p data-i18n="reBody">A lot of our guests fall in love with Playa del Carmen and start wondering what it would take to own here. If that's ever on your mind — now, or years from now — I'm a licensed real estate agent and happy to talk. No pressure, just a conversation.</p>
+      <div class="re-brands">
+        <span>At Home Realty</span>
+        <div class="divider"></div>
+        <span data-i18n="rePoweredBy">Powered by eXp Realty</span>
+      </div>
+      <div class="re-cta">
+        <a class="primary" href="https://exprealtymx.com/guides/welcome.html" target="_blank" rel="noopener" data-i18n="reCta1">Learn More &rarr;</a>
+        <a class="secondary" href="https://wa.me/529842136512" target="_blank" rel="noopener" data-i18n="reCta2">WhatsApp Craig</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Mayakoba Townhouse · At Home Riviera Maya</footer>
+
+<script>
+  const translations = {
+    en: {
+      eyebrow: "Guest Guidebook",
+      heroSub: "A spacious three-bedroom townhouse in the gated, resort-style community of Lagunas de Mayakoba, with a lazy river, pool, and rooftop hot tubs. Everything you need for your stay, in one place.",
+      heroMapLink: "📍 View property on Google Maps ↗",
+      checkinLabel: "Check-in", checkoutLabel: "Check-out", bedroomsLabel: "Bedrooms",
+      hostsLabel: "Your Hosts", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla is originally from the state of Guanajuato, Mexico, and has called Playa del Carmen home for the past 12 years. Craig is originally from Texas and has lived in Mexico for over 20 years. Together they run At Home Riviera Maya — we hope you love this place as much as we do, and we're just a message away if you need anything during your stay.",
+      s0Label: "01 — The Home", s0Title: "Your townhouse",
+      s0Body: "A two-story townhouse with three air-conditioned bedrooms and three full bathrooms (the downstairs bedroom's bathroom is just outside the room). Downstairs you'll find an open living and dining area with a Smart TV, a fully equipped kitchen, a washer and dryer, and a private patio for morning coffee or evening drinks.",
+      s0BedTitle: "Bedrooms",
+      s0Bed1: "Bedroom with a king bed",
+      s0Bed2: "Bedroom with a single bed",
+      s0Bed3: "Bedroom with a double bed and a single bed",
+      s1Label: "02 — Getting In", s1Title: "Arrival &amp; access",
+      kcEntryMethod: "Community", kcSpot: "Parking",
+      kcWifiNetwork: "WiFi Network", kcWifiPassword: "Password",
+      kcWifiPlaceholder: "See the label on the modem",
+      kcWifiPlaceholder2: "See the label on the modem",
+      kcNote: "Your <b>community QR code</b> is sent through your <b>Airbnb messages</b> once the townhouse is cleaned and ready for you — usually right around the 3:00 PM check-in time. No code yet? Just message us on Airbnb.",
+      st1: "At the <b>main Mayakoba entrance</b>, tell the guard you're going to <b>Lagunas de Mayakoba</b> and show your ID.",
+      st2: "At the <b>Lagunas de Mayakoba gate</b>, scan the QR code we sent you to get in.",
+      st3: "Park in one of your <b>two spaces marked V20</b> and head to your townhouse.",
+      s1Note: "Check-in is any time after <b style=\"color:var(--ink)\">3:00 PM</b>. Check-out is by <b style=\"color:var(--ink)\">10:00 AM</b>.",
+      s1Callout: "<b>Heads up:</b> please have a valid photo ID ready for the guard at the main Mayakoba entrance.",
+      s2Label: "03 — Parking", s2Title: "Where to park",
+      s2H3: "Two assigned spaces",
+      s2Body: "Your townhouse comes with <b style=\"color:var(--ink)\">2 parking spaces, both marked V20</b>. They're reserved for you during your stay.",
+      s4Label: "04 — Community", s4Title: "Resort-style amenities",
+      s4AmTitle: "Shared amenities",
+      s4Pool: "Pool", s4Lazy: "Lazy river", s4Hot: "Rooftop hot tubs", s4Gym: "Gym", s4Cowork: "Coworking space", s4Kids: "Kids' play area",
+      s4Hours: "9:00 AM – 9:00 PM",
+      s4Footer: "Please follow any signs posted at each amenity and be considerate of your neighbors. Not sure about something? Just message us.",
+      s5Label: "05 — Nearby", s5Title: "Eat, drink, explore",
+      s5RestTitle: "Restaurants &amp; cafés",
+      p1kind: "Italian, beachfront", p1desc: "A well-known beachfront Italian restaurant in the Punta Bete area, a short drive north of Lagunas. Fresh pasta, seafood, and a relaxed setting right by the water. Check hours before you go.",
+      p2kind: "Casual bar &amp; grill", p2desc: "A casual sports bar inside the Mayakoba resort complex — good for drinks, a relaxed meal, and catching the game. Call ahead to confirm hours.",
+      p3kind: "Coffee shop", p3desc: "The coffee shop at the Fairmont Mayakoba, a few minutes away — a nice spot for your morning coffee and a light bite.",
+      s5GrocTitle: "Groceries",
+      g1kind: "Supermarket", g1desc: "A large hypermarket on Highway 307 at the north end of Playa del Carmen — groceries, household items, and usually less crowded than the downtown stores. You'll need a car or taxi.",
+      g2kind: "Upscale supermarket", g2desc: "A larger, higher-end supermarket in Playa del Carmen with a wide selection, including imported and specialty items.",
+      mapLink: "View on Google Maps ↗",
+      s5bLabel: "06 — Extra Services", s5bTitle: "Make your stay easier",
+      s5bGroceryH3: "Pre-arrival grocery stocking",
+      s5bGroceryBody: "We can have your kitchen stocked before you arrive, subject to availability. The cost is 20% of the grocery total, with a $40 USD minimum charge. Please request at least one week before arrival — just message us on Airbnb with your list.",
+      s5bCleanH3: "Mid-stay cleaning",
+      s5bCleanBody: "Your reservation fee already covers a cleaning after checkout. If you'd like a cleaning during your stay, it's available for $50 USD per day, subject to availability. Please request at least one week before arrival.",
+      s6Label: "07 — Need Anything?", s6Title: "Reach us",
+      s6Who1: "Airbnb Message", s6How1: "Fastest &amp; preferred way to reach us",
+      s6How2: "+52 984 213 6512 — ONLY if Airbnb isn't working",
+      s6Btn: "Message",
+      reLabel: "Before You Go", reTitle: "Thinking about owning<br>a place like this?",
+      reBody: "A lot of our guests fall in love with Playa del Carmen and start wondering what it would take to own here. If that's ever on your mind — now, or years from now — I'm a licensed real estate agent and happy to talk. No pressure, just a conversation.",
+      rePoweredBy: "Powered by eXp Realty",
+      reCta1: "Learn More &rarr;", reCta2: "WhatsApp Craig"
+    },
+    es: {
+      eyebrow: "Guía del Huésped",
+      heroSub: "Una espaciosa casa de tres recámaras en la comunidad cerrada tipo resort de Lagunas de Mayakoba, con río lento, alberca y jacuzzis en la azotea. Todo lo que necesitas para tu estancia, en un solo lugar.",
+      heroMapLink: "📍 Ver propiedad en Google Maps ↗",
+      checkinLabel: "Check-in", checkoutLabel: "Check-out", bedroomsLabel: "Recámaras",
+      hostsLabel: "Tus Anfitriones", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla es originaria del estado de Guanajuato, México, y ha vivido en Playa del Carmen los últimos 12 años. Craig es originario de Texas y ha vivido en México por más de 20 años. Juntos dirigen At Home Riviera Maya — esperamos que disfrutes este lugar tanto como nosotros, y estamos a un mensaje de distancia si necesitas algo durante tu estancia.",
+      s0Label: "01 — La Casa", s0Title: "Tu casa",
+      s0Body: "Una casa de dos niveles con tres recámaras con aire acondicionado y tres baños completos (el baño de la recámara de la planta baja está justo afuera de la habitación). En la planta baja encontrarás una sala-comedor abierta con Smart TV, una cocina totalmente equipada, lavadora y secadora, y un patio privado para tu café de la mañana o una bebida por la noche.",
+      s0BedTitle: "Recámaras",
+      s0Bed1: "Recámara con cama king",
+      s0Bed2: "Recámara con una cama individual",
+      s0Bed3: "Recámara con una cama matrimonial y una individual",
+      s1Label: "02 — Acceso", s1Title: "Llegada y acceso",
+      kcEntryMethod: "Comunidad", kcSpot: "Estacionamiento",
+      kcWifiNetwork: "Red WiFi", kcWifiPassword: "Contraseña",
+      kcWifiPlaceholder: "Consulta la etiqueta del módem",
+      kcWifiPlaceholder2: "Consulta la etiqueta del módem",
+      kcNote: "Tu <b>código QR de la comunidad</b> se envía por tus <b>mensajes de Airbnb</b> una vez que la casa está limpia y lista — normalmente justo alrededor de las 3:00 PM, la hora de check-in. ¿Aún no tienes el código? Solo escríbenos por Airbnb.",
+      st1: "En la <b>entrada principal de Mayakoba</b>, dile al guardia que vas a <b>Lagunas de Mayakoba</b> y muestra tu identificación.",
+      st2: "En la <b>caseta de Lagunas de Mayakoba</b>, escanea el código QR que te enviamos para entrar.",
+      st3: "Estaciónate en uno de tus <b>dos lugares marcados V20</b> y dirígete a tu casa.",
+      s1Note: "El check-in es a partir de las <b style=\"color:var(--ink)\">3:00 PM</b>. El check-out es antes de las <b style=\"color:var(--ink)\">10:00 AM</b>.",
+      s1Callout: "<b>Importante:</b> por favor ten lista una identificación oficial con foto para el guardia en la entrada principal de Mayakoba.",
+      s2Label: "03 — Estacionamiento", s2Title: "Dónde estacionarte",
+      s2H3: "Dos lugares asignados",
+      s2Body: "Tu casa incluye <b style=\"color:var(--ink)\">2 lugares de estacionamiento, ambos marcados V20</b>. Están reservados para ti durante tu estancia.",
+      s4Label: "04 — Comunidad", s4Title: "Amenidades tipo resort",
+      s4AmTitle: "Amenidades compartidas",
+      s4Pool: "Alberca", s4Lazy: "Río lento", s4Hot: "Jacuzzis en la azotea", s4Gym: "Gimnasio", s4Cowork: "Espacio de coworking", s4Kids: "Área de juegos para niños",
+      s4Hours: "9:00 AM – 9:00 PM",
+      s4Footer: "Por favor sigue los avisos publicados en cada amenidad y sé considerado con tus vecinos. ¿Dudas sobre algo? Solo escríbenos.",
+      s5Label: "05 — Alrededores", s5Title: "Come, bebe, explora",
+      s5RestTitle: "Restaurantes y cafés",
+      p1kind: "Italiano, frente al mar", p1desc: "Un conocido restaurante italiano frente al mar en la zona de Punta Bete, a poca distancia al norte de Lagunas. Pasta fresca, mariscos y un ambiente relajado junto al agua. Revisa el horario antes de ir.",
+      p2kind: "Bar y parrilla casual", p2desc: "Un bar deportivo casual dentro del complejo Mayakoba — bueno para tomar algo, comer sin prisas y ver el partido. Llama antes para confirmar el horario.",
+      p3kind: "Cafetería", p3desc: "La cafetería del Fairmont Mayakoba, a pocos minutos — un buen lugar para tu café de la mañana y algo ligero para comer.",
+      s5GrocTitle: "Supermercados",
+      g1kind: "Supermercado", g1desc: "Un gran hipermercado sobre la Carretera 307, al norte de Playa del Carmen — despensa, artículos para el hogar y normalmente menos lleno que las tiendas del centro. Necesitarás auto o taxi.",
+      g2kind: "Supermercado de alta gama", g2desc: "Un supermercado grande y de mayor categoría en Playa del Carmen, con gran variedad, incluyendo productos importados y especiales.",
+      mapLink: "Ver en Google Maps ↗",
+      s5bLabel: "06 — Servicios Adicionales", s5bTitle: "Haz tu estancia más fácil",
+      s5bGroceryH3: "Surtido de despensa antes de tu llegada",
+      s5bGroceryBody: "Podemos tener tu cocina abastecida antes de que llegues, sujeto a disponibilidad. El costo es 20% del total de la compra, con un cargo mínimo de $40 USD. Por favor solicítalo con al menos una semana de anticipación — solo escríbenos por Airbnb con tu lista.",
+      s5bCleanH3: "Limpieza durante tu estancia",
+      s5bCleanBody: "La tarifa de tu reservación ya incluye una limpieza después del check-out. Si deseas una limpieza durante tu estancia, está disponible por $50 USD por día, sujeto a disponibilidad. Por favor solicítalo con al menos una semana de anticipación.",
+      s6Label: "07 — ¿Necesitas Algo?", s6Title: "Contáctanos",
+      s6Who1: "Mensaje por Airbnb", s6How1: "La forma más rápida y preferida de contactarnos",
+      s6How2: "+52 984 213 6512 — SOLO si Airbnb no funciona",
+      s6Btn: "Enviar mensaje",
+      reLabel: "Antes de Irte", reTitle: "¿Pensando en comprar<br>un lugar como este?",
+      reBody: "Muchos de nuestros huéspedes se enamoran de Playa del Carmen y comienzan a preguntarse qué se necesita para tener una propiedad aquí. Si alguna vez lo has pensado — ahora, o en unos años — soy agente inmobiliario certificado y con gusto platicamos. Sin presión, solo una conversación.",
+      rePoweredBy: "Con el respaldo de eXp Realty",
+      reCta1: "Saber M&aacute;s &rarr;", reCta2: "WhatsApp a Craig"
+    },
+    fr: {
+      eyebrow: "Guide de l'Hôte",
+      heroSub: "Une spacieuse maison de trois chambres dans la résidence fermée de style resort de Lagunas de Mayakoba, avec rivière paresseuse, piscine et jacuzzis sur le toit. Tout ce dont vous avez besoin pour votre séjour, au même endroit.",
+      heroMapLink: "📍 Voir la propriété sur Google Maps ↗",
+      checkinLabel: "Arrivée", checkoutLabel: "Départ", bedroomsLabel: "Chambres",
+      hostsLabel: "Vos Hôtes", hostsTitle: "Karla &amp; Craig",
+      hostsBody: "Karla est originaire de l'État de Guanajuato, au Mexique, et vit à Playa del Carmen depuis 12 ans. Craig est originaire du Texas et vit au Mexique depuis plus de 20 ans. Ensemble, ils dirigent At Home Riviera Maya — nous espérons que vous aimerez cet endroit autant que nous, et nous sommes à un message si vous avez besoin de quoi que ce soit pendant votre séjour.",
+      s0Label: "01 — La Maison", s0Title: "Votre maison",
+      s0Body: "Une maison de deux étages avec trois chambres climatisées et trois salles de bain complètes (la salle de bain de la chambre du rez-de-chaussée se trouve juste à l'extérieur de la chambre). Au rez-de-chaussée, vous trouverez un séjour ouvert avec salle à manger et Smart TV, une cuisine entièrement équipée, un lave-linge et un sèche-linge, ainsi qu'un patio privé pour votre café du matin ou un verre en soirée.",
+      s0BedTitle: "Chambres",
+      s0Bed1: "Chambre avec un lit king size",
+      s0Bed2: "Chambre avec un lit simple",
+      s0Bed3: "Chambre avec un lit double et un lit simple",
+      s1Label: "02 — Accès", s1Title: "Arrivée et accès",
+      kcEntryMethod: "Résidence", kcSpot: "Parking",
+      kcWifiNetwork: "Réseau WiFi", kcWifiPassword: "Mot de Passe",
+      kcWifiPlaceholder: "Voir l'étiquette sur le modem",
+      kcWifiPlaceholder2: "Voir l'étiquette sur le modem",
+      kcNote: "Votre <b>code QR de la résidence</b> est envoyé via vos <b>messages Airbnb</b> une fois la maison nettoyée et prête — généralement autour de 15h00, l'heure d'arrivée. Pas encore de code ? Écrivez-nous simplement sur Airbnb.",
+      st1: "À l'<b>entrée principale de Mayakoba</b>, dites au gardien que vous allez à <b>Lagunas de Mayakoba</b> et présentez votre pièce d'identité.",
+      st2: "À l'<b>entrée de Lagunas de Mayakoba</b>, scannez le code QR que nous vous avons envoyé pour entrer.",
+      st3: "Garez-vous dans l'une de vos <b>deux places marquées V20</b> et rendez-vous à votre maison.",
+      s1Note: "L'arrivée se fait à partir de <b style=\"color:var(--ink)\">15h00</b>. Le départ est avant <b style=\"color:var(--ink)\">10h00</b>.",
+      s1Callout: "<b>À noter :</b> merci d'avoir une pièce d'identité avec photo valide à présenter au gardien à l'entrée principale de Mayakoba.",
+      s2Label: "03 — Stationnement", s2Title: "Où se garer",
+      s2H3: "Deux places attribuées",
+      s2Body: "Votre maison dispose de <b style=\"color:var(--ink)\">2 places de parking, toutes deux marquées V20</b>. Elles vous sont réservées pendant votre séjour.",
+      s4Label: "04 — Résidence", s4Title: "Équipements de style resort",
+      s4AmTitle: "Équipements communs",
+      s4Pool: "Piscine", s4Lazy: "Rivière paresseuse", s4Hot: "Jacuzzis sur le toit", s4Gym: "Salle de sport", s4Cowork: "Espace de coworking", s4Kids: "Aire de jeux pour enfants",
+      s4Hours: "9h00 – 21h00",
+      s4Footer: "Merci de respecter les panneaux affichés à chaque équipement et de rester courtois envers vos voisins. Un doute ? Écrivez-nous simplement.",
+      s5Label: "05 — À Proximité", s5Title: "Manger, boire, explorer",
+      s5RestTitle: "Restaurants et cafés",
+      p1kind: "Italien, face à la mer", p1desc: "Un restaurant italien réputé en bord de mer dans la zone de Punta Bete, à courte distance au nord de Lagunas. Pâtes fraîches, fruits de mer et cadre décontracté au bord de l'eau. Vérifiez les horaires avant d'y aller.",
+      p2kind: "Bar et grill décontracté", p2desc: "Un bar sportif décontracté au sein du complexe Mayakoba — idéal pour boire un verre, manger tranquillement et regarder le match. Appelez avant pour confirmer les horaires.",
+      p3kind: "Café", p3desc: "Le café du Fairmont Mayakoba, à quelques minutes — un bel endroit pour votre café du matin et une petite collation.",
+      s5GrocTitle: "Épiceries",
+      g1kind: "Supermarché", g1desc: "Un grand hypermarché sur la route 307, au nord de Playa del Carmen — courses, articles ménagers et généralement moins fréquenté que les magasins du centre. Voiture ou taxi nécessaire.",
+      g2kind: "Supermarché haut de gamme", g2desc: "Un supermarché plus grand et haut de gamme à Playa del Carmen, avec un vaste choix, y compris des produits importés et spécialisés.",
+      mapLink: "Voir sur Google Maps ↗",
+      s5bLabel: "06 — Services Supplémentaires", s5bTitle: "Facilitez votre séjour",
+      s5bGroceryH3: "Courses avant votre arrivée",
+      s5bGroceryBody: "Nous pouvons remplir votre cuisine avant votre arrivée, sous réserve de disponibilité. Le coût est de 20% du total des courses, avec un minimum de 40 USD. Merci de faire votre demande au moins une semaine avant votre arrivée — écrivez-nous simplement sur Airbnb avec votre liste.",
+      s5bCleanH3: "Ménage pendant le séjour",
+      s5bCleanBody: "Les frais de votre réservation couvrent déjà un ménage après le départ. Si vous souhaitez un ménage pendant votre séjour, il est disponible pour 50 USD par jour, sous réserve de disponibilité. Merci de faire votre demande au moins une semaine avant votre arrivée.",
+      s6Label: "07 — Besoin d'Aide ?", s6Title: "Nous contacter",
+      s6Who1: "Message Airbnb", s6How1: "Le moyen le plus rapide et privilégié de nous joindre",
+      s6How2: "+52 984 213 6512 — UNIQUEMENT si Airbnb ne fonctionne pas",
+      s6Btn: "Envoyer un message",
+      reLabel: "Avant de Partir", reTitle: "Vous pensez acheter<br>un endroit comme celui-ci ?",
+      reBody: "Beaucoup de nos invités tombent amoureux de Playa del Carmen et commencent à se demander ce qu'il faudrait pour devenir propriétaire ici. Si l'idée vous traverse l'esprit — maintenant, ou dans quelques années — je suis agent immobilier agréé et je serai heureux d'en discuter. Sans pression, juste une conversation.",
+      rePoweredBy: "Avec le soutien d'eXp Realty",
+      reCta1: "En Savoir Plus &rarr;", reCta2: "WhatsApp Craig"
+    }
+  };
+
+  function applyLang(lang){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const dict = translations[lang] || translations.en;
+      if(dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+    try{ localStorage.setItem('mayakoba-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang-btn')));
+  });
+
+  let initialLang = 'en';
+  try{
+    const saved = localStorage.getItem('mayakoba-lang');
+    if(saved && translations[saved]) initialLang = saved;
+  }catch(e){}
+  applyLang(initialLang);
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
