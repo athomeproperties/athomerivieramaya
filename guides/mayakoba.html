@@ -287,6 +287,13 @@
   .nb-list li:last-child{border-bottom:1px solid var(--line);}
   .nb-list li span{font-family:var(--mono); font-size:11px; color:var(--seafoam);}
 
+  .rules-top{margin-top:38px; padding-top:26px; border-top:1px solid var(--line);}
+  .rules-top h3{font-family:var(--body); font-weight:600; font-size:17px; color:var(--ink); margin-bottom:8px;}
+  .rules-top p{font-size:14.5px; color:var(--seafoam); line-height:1.6; margin-bottom:22px;}
+  .nb-list li.rule{display:block; font-size:15px; line-height:1.55;}
+  .nb-list li.rule b{font-weight:600;}
+  .nb-list li.rule a{color:var(--coral); text-decoration:underline; white-space:nowrap;}
+
   /* ---------- PLACE CARDS ---------- */
   .place{
     padding:18px 0;
@@ -531,14 +538,64 @@
     <div class="nb-group">
       <div class="nb-title" data-i18n="s4AmTitle">Shared amenities</div>
       <ul class="nb-list">
-        <li><span data-i18n="s4Pool">Pool</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Pool">Pool</span> <span data-i18n="s4HoursPool">8:00 AM – 10:00 PM</span></li>
+        <li><span data-i18n="s4Kayak">Kayaks</span> <span data-i18n="s4HoursKayak">9:00 AM – 5:00 PM</span></li>
         <li><span data-i18n="s4Lazy">Lazy river</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
-        <li><span data-i18n="s4Hot">Rooftop hot tubs</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
-        <li><span data-i18n="s4Gym">Gym</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
+        <li><span data-i18n="s4Hot">Rooftop hot tubs</span> <span data-i18n="s4HoursHot">By reservation</span></li>
+        <li><span data-i18n="s4Gym">Gym</span> <span data-i18n="s4HoursGym">7 AM – 1 PM, 2 – 10 PM</span></li>
         <li><span data-i18n="s4Cowork">Coworking space</span> <span data-i18n="s4Hours">9:00 AM – 9:00 PM</span></li>
         <li><span data-i18n="s4Kids">Kids' play area</span> <span></span></li>
       </ul>
     </div>
+    <div class="rules-top">
+      <h3 data-i18n="rTitle">Amenity rules</h3>
+      <p data-i18n="rIntro"></p>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="rKayakTitle">Kayaks</div>
+      <ul class="nb-list">
+        <li class="rule" data-i18n="rKayak1"></li>
+        <li class="rule" data-i18n="rKayak2"></li>
+        <li class="rule" data-i18n="rKayak3"></li>
+        <li class="rule" data-i18n="rKayak4"></li>
+      </ul>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="rHotTitle">Hot tubs (by reservation)</div>
+      <ul class="nb-list">
+        <li class="rule" data-i18n="rHot1"></li>
+        <li class="rule" data-i18n="rHot2"></li>
+        <li class="rule" data-i18n="rHotBook"></li>
+        <li class="rule" data-i18n="rHot3"></li>
+      </ul>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="rPoolTitle">Pools</div>
+      <ul class="nb-list">
+        <li class="rule" data-i18n="rPool1"></li>
+        <li class="rule" data-i18n="rPool2"></li>
+        <li class="rule" data-i18n="rPool3"></li>
+        <li class="rule" data-i18n="rPool4"></li>
+      </ul>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="rGymTitle">Gym</div>
+      <ul class="nb-list">
+        <li class="rule" data-i18n="rGym1"></li>
+        <li class="rule" data-i18n="rGym2"></li>
+        <li class="rule" data-i18n="rGym3"></li>
+        <li class="rule" data-i18n="rGym4"></li>
+        <li class="rule" data-i18n="rGym5"></li>
+      </ul>
+    </div>
+    <div class="nb-group">
+      <div class="nb-title" data-i18n="rPetsTitle">Pets</div>
+      <ul class="nb-list">
+        <li class="rule" data-i18n="rPets1"></li>
+        <li class="rule" data-i18n="rPets2"></li>
+      </ul>
+    </div>
+    <div class="callout" data-i18n="rEnforce"></div>
     <p style="margin-top:18px; font-size:13px;" data-i18n="s4Footer">Please follow any signs posted at each amenity and be considerate of your neighbors. Not sure about something? Just message us.</p>
   </section>
 
@@ -691,6 +748,38 @@
       s4Pool: "Pool", s4Lazy: "Lazy river", s4Hot: "Rooftop hot tubs", s4Gym: "Gym", s4Cowork: "Coworking space", s4Kids: "Kids' play area",
       s4Hours: "9:00 AM – 9:00 PM",
       s4Footer: "Please follow any signs posted at each amenity and be considerate of your neighbors. Not sure about something? Just message us.",
+      s4HoursPool: "8:00 AM – 10:00 PM",
+      s4HoursKayak: "9:00 AM – 5:00 PM",
+      s4HoursHot: "By reservation",
+      s4HoursGym: "7 AM – 1 PM, 2 – 10 PM",
+      s4Kayak: "Kayaks",
+      rTitle: "Amenity rules",
+      rIntro: "To keep the facilities in excellent shape and everyone comfortable, the community asks all guests to follow these rules.",
+      rKayakTitle: "Kayaks",
+      rKayak1: "<b>Hours:</b> 9:00 AM – 5:00 PM.",
+      rKayak2: "<b>To borrow paddles:</b> go to the Concierge office and leave a physical official ID as a deposit. You get it back when you return the paddles.",
+      rKayak3: "<b>Safety:</b> a swimsuit is required. Children under 13 must always be with an adult.",
+      rKayak4: "<b>Not allowed:</b> swimming in the lagoon, jumping from the kayak into the water, and bringing pets, food or glass.",
+      rHotTitle: "Hot tubs (by reservation)",
+      rHot1: "<b>Hours:</b> 1:00 PM – 4:00 PM or 6:00 PM – 9:00 PM.",
+      rHot2: "<b>Reservations:</b> 1 to 7 days in advance. Same-day reservations are not accepted.",
+      rHotBook: "<b>Book early:</b> the hot tubs tend to fill up quickly, so reserve as early as you can. You can reserve in person at the Clubhouse or by WhatsApp at <a href='https://wa.me/529841688103' target='_blank' rel='noopener'>+52 (984) 168-8103</a>.",
+      rHot3: "<b>Food and drinks:</b> not allowed in the water. Each hot tub has a bar and tables around it for this.",
+      rPoolTitle: "Pools",
+      rPool1: "<b>Hours:</b> 8:00 AM – 10:00 PM.",
+      rPool2: "<b>Hygiene:</b> out of respect for the community, no eating or drinking in the water.",
+      rPool3: "<b>Food and drinks:</b> please use only the palapas, tables, chairs and bars.",
+      rPool4: "<b>Half-moon loungers:</b> reservations are limited to 2 hours per unit per day.",
+      rGymTitle: "Gym",
+      rGym1: "<b>Age:</b> no one under 17 is allowed in, under any circumstances.",
+      rGym2: "<b>Audio:</b> headphones are required. No speakers or phones on speaker.",
+      rGym3: "<b>Equipment:</b> do not slam the equipment. Wipe down and put away every weight and bench after use.",
+      rGym4: "<b>Clothing:</b> sportswear and sneakers are required. Sandals, dress shoes, boots and bare feet are not allowed.",
+      rGym5: "<b>Hours:</b> 7:00 AM – 1:00 PM and 2:00 PM – 10:00 PM. Closed 1:00 – 2:00 PM for cleaning.",
+      rPetsTitle: "Pets",
+      rPets1: "<b>Restricted areas:</b> pets are strictly not allowed at the pools, gym, hot tubs and kayaks.",
+      rPets2: "<b>Hallways and common areas:</b> pets must be on a leash at all times.",
+      rEnforce: "<b>If the rules are broken:</b> a violation brings a preventive warning. Repeat violations lead to a fine charged directly to the unit's account. If a guest causes a fine, the guest is responsible for paying it. Thank you for helping keep our community harmonious.",
       s5Label: "05 — Nearby", s5Title: "Eat, drink, explore",
       s5RestTitle: "Restaurants &amp; cafés",
       p1kind: "Italian, beachfront", p1desc: "A well-known beachfront Italian restaurant in the Punta Bete area, a short drive north of Lagunas. Fresh pasta, seafood, and a relaxed setting right by the water. Check hours before you go.",
@@ -746,6 +835,38 @@
       s4Pool: "Alberca", s4Lazy: "Río lento", s4Hot: "Jacuzzis en la azotea", s4Gym: "Gimnasio", s4Cowork: "Espacio de coworking", s4Kids: "Área de juegos para niños",
       s4Hours: "9:00 AM – 9:00 PM",
       s4Footer: "Por favor sigue los avisos publicados en cada amenidad y sé considerado con tus vecinos. ¿Dudas sobre algo? Solo escríbenos.",
+      s4HoursPool: "8:00 AM – 10:00 PM",
+      s4HoursKayak: "9:00 AM – 5:00 PM",
+      s4HoursHot: "Previa reserva",
+      s4HoursGym: "7 AM – 1 PM, 2 – 10 PM",
+      s4Kayak: "Kayaks",
+      rTitle: "Reglamento de amenidades",
+      rIntro: "Para mantener las instalaciones en excelentes condiciones y una convivencia armónica, la comunidad pide a todos los huéspedes seguir estos lineamientos.",
+      rKayakTitle: "Kayaks",
+      rKayak1: "<b>Horario:</b> 9:00 AM a 5:00 PM.",
+      rKayak2: "<b>Préstamo de remos:</b> acudir a la oficina de Concierge y dejar una identificación oficial física en garantía. Se te devuelve al regresar los remos.",
+      rKayak3: "<b>Seguridad:</b> uso obligatorio de traje de baño. Menores de 13 años siempre acompañados por un adulto.",
+      rKayak4: "<b>Prohibido:</b> nadar en la laguna, saltar del kayak al agua e ingresar con mascotas, alimentos o vidrio.",
+      rHotTitle: "Jacuzzis (previa reserva)",
+      rHot1: "<b>Horarios:</b> 1:00 PM – 4:00 PM o 6:00 PM – 9:00 PM.",
+      rHot2: "<b>Reservas:</b> de 1 a 7 días de anticipación. No se aceptan reservas el mismo día.",
+      rHotBook: "<b>Reserva con tiempo:</b> los jacuzzis suelen llenarse rápido, así que reserva lo antes posible. Puedes reservar directamente en el Clubhouse o por WhatsApp al <a href='https://wa.me/529841688103' target='_blank' rel='noopener'>+52 (984) 168-8103</a>.",
+      rHot3: "<b>Alimentos y bebidas:</b> no se permiten dentro del agua. Cada jacuzzi cuenta con barras y mesas alrededor para este fin.",
+      rPoolTitle: "Albercas",
+      rPool1: "<b>Horario:</b> 8:00 AM a 10:00 PM.",
+      rPool2: "<b>Higiene:</b> por respeto a la comunidad, no se permite comer ni beber dentro del agua.",
+      rPool3: "<b>Alimentos y bebidas:</b> utilizar exclusivamente palapas, mesas, sillas y barras.",
+      rPool4: "<b>Medias lunas:</b> la reserva está limitada a 2 horas por departamento al día.",
+      rGymTitle: "Gimnasio",
+      rGym1: "<b>Acceso:</b> bajo ningún motivo se permite la entrada a menores de 17 años.",
+      rGym2: "<b>Audio:</b> uso obligatorio de audífonos. Prohibidas las bocinas y los celulares en altavoz.",
+      rGym3: "<b>Cuidado del equipo:</b> no azotar el equipo. Limpiar y acomodar cada pesa o banco después de usarlo.",
+      rGym4: "<b>Vestimenta:</b> ropa y tenis deportivos obligatorios. Prohibido usar sandalias, zapatos, botas o estar descalzo.",
+      rGym5: "<b>Horario:</b> 7:00 AM a 1:00 PM y 2:00 PM a 10:00 PM. Cierra de 1:00 a 2:00 PM por limpieza.",
+      rPetsTitle: "Mascotas",
+      rPets1: "<b>Áreas restringidas:</b> acceso estrictamente prohibido a albercas, gimnasio, jacuzzis y kayaks.",
+      rPets2: "<b>Pasillos y zonas comunes:</b> deben portar correa en todo momento.",
+      rEnforce: "<b>Si no se cumplen las normas:</b> el incumplimiento genera una amonestación preventiva. La reincidencia deriva en una sanción económica con cargo directo al estado de cuenta de la unidad. Si un huésped provoca una sanción, será responsable de pagarla. Gracias por ayudarnos a mantener la armonía de la comunidad.",
       s5Label: "05 — Alrededores", s5Title: "Come, bebe, explora",
       s5RestTitle: "Restaurantes y cafés",
       p1kind: "Italiano, frente al mar", p1desc: "Un conocido restaurante italiano frente al mar en la zona de Punta Bete, a poca distancia al norte de Lagunas. Pasta fresca, mariscos y un ambiente relajado junto al agua. Revisa el horario antes de ir.",
@@ -801,6 +922,38 @@
       s4Pool: "Piscine", s4Lazy: "Rivière paresseuse", s4Hot: "Jacuzzis sur le toit", s4Gym: "Salle de sport", s4Cowork: "Espace de coworking", s4Kids: "Aire de jeux pour enfants",
       s4Hours: "9h00 – 21h00",
       s4Footer: "Merci de respecter les panneaux affichés à chaque équipement et de rester courtois envers vos voisins. Un doute ? Écrivez-nous simplement.",
+      s4HoursPool: "8h00 – 22h00",
+      s4HoursKayak: "9h00 – 17h00",
+      s4HoursHot: "Sur réservation",
+      s4HoursGym: "7h – 13h, 14h – 22h",
+      s4Kayak: "Kayaks",
+      rTitle: "Règlement des équipements",
+      rIntro: "Pour garder les installations en excellent état et assurer le confort de tous, la résidence demande à chaque voyageur de respecter ces règles.",
+      rKayakTitle: "Kayaks",
+      rKayak1: "<b>Horaires :</b> 9h00 – 17h00.",
+      rKayak2: "<b>Prêt des pagaies :</b> se rendre au bureau de la conciergerie et laisser une pièce d'identité officielle physique en garantie. Elle vous est rendue au retour des pagaies.",
+      rKayak3: "<b>Sécurité :</b> maillot de bain obligatoire. Les enfants de moins de 13 ans doivent toujours être accompagnés d'un adulte.",
+      rKayak4: "<b>Interdit :</b> se baigner dans la lagune, sauter du kayak dans l'eau, et venir avec des animaux, de la nourriture ou du verre.",
+      rHotTitle: "Jacuzzis (sur réservation)",
+      rHot1: "<b>Horaires :</b> 13h00 – 16h00 ou 18h00 – 21h00.",
+      rHot2: "<b>Réservations :</b> de 1 à 7 jours à l'avance. Aucune réservation le jour même.",
+      rHotBook: "<b>Réservez tôt :</b> les jacuzzis se remplissent vite, réservez donc le plus tôt possible. Vous pouvez réserver directement au Clubhouse ou par WhatsApp au <a href='https://wa.me/529841688103' target='_blank' rel='noopener'>+52 (984) 168-8103</a>.",
+      rHot3: "<b>Nourriture et boissons :</b> interdites dans l'eau. Chaque jacuzzi dispose de comptoirs et de tables tout autour pour cela.",
+      rPoolTitle: "Piscines",
+      rPool1: "<b>Horaires :</b> 8h00 – 22h00.",
+      rPool2: "<b>Hygiène :</b> par respect pour la communauté, il est interdit de manger ou de boire dans l'eau.",
+      rPool3: "<b>Nourriture et boissons :</b> utilisez uniquement les palapas, tables, chaises et comptoirs.",
+      rPool4: "<b>Transats demi-lune :</b> la réservation est limitée à 2 heures par logement et par jour.",
+      rGymTitle: "Salle de sport",
+      rGym1: "<b>Accès :</b> l'entrée est strictement interdite aux moins de 17 ans.",
+      rGym2: "<b>Audio :</b> écouteurs obligatoires. Enceintes et téléphones en haut-parleur interdits.",
+      rGym3: "<b>Matériel :</b> ne pas jeter le matériel. Nettoyer et ranger chaque haltère ou banc après usage.",
+      rGym4: "<b>Tenue :</b> vêtements et chaussures de sport obligatoires. Sandales, chaussures de ville, bottes et pieds nus interdits.",
+      rGym5: "<b>Horaires :</b> 7h00 – 13h00 et 14h00 – 22h00. Fermée de 13h00 à 14h00 pour le nettoyage.",
+      rPetsTitle: "Animaux",
+      rPets1: "<b>Zones interdites :</b> accès strictement interdit aux piscines, à la salle de sport, aux jacuzzis et aux kayaks.",
+      rPets2: "<b>Couloirs et espaces communs :</b> les animaux doivent être tenus en laisse à tout moment.",
+      rEnforce: "<b>En cas de non-respect :</b> un manquement donne lieu à un avertissement préventif. En cas de récidive, une amende est facturée directement au compte du logement. Si un voyageur est à l'origine d'une amende, il est responsable de son paiement. Merci de nous aider à préserver l'harmonie de la résidence.",
       s5Label: "05 — À Proximité", s5Title: "Manger, boire, explorer",
       s5RestTitle: "Restaurants et cafés",
       p1kind: "Italien, face à la mer", p1desc: "Un restaurant italien réputé en bord de mer dans la zone de Punta Bete, à courte distance au nord de Lagunas. Pâtes fraîches, fruits de mer et cadre décontracté au bord de l'eau. Vérifiez les horaires avant d'y aller.",
